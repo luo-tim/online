@@ -4,27 +4,38 @@
 package recruitSystem.view;
 
 /**
- * @author 72412
- *工作实体类
+ * @author 72412 工作实体类
  */
 public class Job {
 
-	private int id;//主键
-	private String jobName;//工作的名字
-	private String salary;//薪水
-	private String city;//城市
-	private String jobType;//工作类型
-	private String experience;//工作经验要求
-	private String education;//学历要求
-	private int flag;  //工作的状态标识
-	private String jobDescription;//工作描述
-	private String workaddress;//工作地址
-	private String jobRequest;//工作的具体要求
-	private String releaseTime;//发布时间
+	private int id;// 主键
+	private String jobName;// 工作的名字
+	private int bossId;// 老板ID
+	private String salary;// 薪水
+	private String city;// 城市
+	private String jobType;// 工作类型
+	private String experience;// 工作经验要求
+	private String education;// 学历要求
+	private int flag; // 工作的状态标识
+	private String jobDescription;// 工作描述
+	private String workaddress;// 工作地址
+	private String jobRequest;// 工作的具体要求
+	private String releaseTime;// 发布时间
 
+	/**
+	 * @return the bossId
+	 */
+	public int getBossId() {
+		return bossId;
+	}
 
-
-
+	/**
+	 * @param bossId the bossId to set
+	 */
+	public void setBossId(int bossId) {
+		this.bossId = bossId;
+	}
+	
 	/**
 	 * @return the releaseTime
 	 */
@@ -108,10 +119,6 @@ public class Job {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
-
-
 
 	/**
 	 * @return the jobName
