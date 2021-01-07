@@ -17,7 +17,7 @@ import recruitSystem.view.Manager;
 
 
 /**
- * @author 72412
+ * @author 66666
  *
  */
 public class SuperManagerInterceptor implements HandlerInterceptor{
