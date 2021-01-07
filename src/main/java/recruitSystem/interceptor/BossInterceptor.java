@@ -16,7 +16,7 @@ import recruitSystem.view.Boss;
 
 
 /**
- * @author 72412
+ * @author 666672412
  *
  */
 public class BossInterceptor implements HandlerInterceptor{
