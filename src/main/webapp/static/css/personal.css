@@ -1,0 +1,608 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    color: #717171;
+    font-size: 12px;
+}
+a{
+    text-decoration: none;
+    color: #717171;
+}
+.container{
+    width: 980px;
+    border: 1px solid #e1e2e5;
+    box-shadow: 0 2px 4px rgba(0,0,0,.14);
+    background: #fafafa;
+    border-radius: 4px;
+    margin: 0 auto;
+  
+}
+.container::after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.person-left{
+    float: left;
+    width: 150px;
+  
+   /* height: 100%;
+    overflow: hidden;*/
+}
+.person-title{
+    display: block;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    color: #99a2aa;
+    cursor: default;
+    border-bottom: 1px solid #e1e2e5;
+}
+.person-item{
+    width: 150px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+}
+.item-name{
+    margin-left: 12px;
+    font-size: 14px;
+}
+.person-items{
+    list-style: none;
+    cursor: pointer;
+    border-bottom: 1px solid #e1e2e5;
+}
+.on{
+    background-color: #00a1d7!important;
+    color: #fff;
+}
+.person-right{
+
+    float: left;
+    width: 829px;
+    
+    border-left: 1px solid #ddd;
+    background: #f6f6f8;
+    max-height: 700px!important;
+}
+.person-right-active{
+    display: block;
+}
+.person-right-title{
+    height: 50px;
+    padding-left: 30px;
+    border-bottom: 1px solid #ddd;
+}
+.person-right-title-name{
+    float: left;
+    margin: 15px 0 0 5px;
+    color: #00a1d6;
+    font-size: 14px;
+    cursor: default;
+}
+.game-nav{
+    margin: 0 auto;
+    border-bottom: 1px solid #e5e9ef;
+    height: 32px;
+
+}
+.game-item{
+    padding: 6px 0;
+    float: left;
+    margin-right: 25px;
+    line-height: 20px;
+}
+.active{
+    padding: 6px 0 5px;
+    border-bottom: 1px solid #00a1d6;
+    position: relative;
+}
+.active::after{
+    width: 5px;
+    height: 3px;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    background-color:  #00a1d6;
+}
+.game-item a{
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+.active a{
+    color: #00a1d6;
+}
+.person-right-bottom{
+    padding: 0 20px;
+    height: auto;
+}
+.game-container{
+  
+     height: 500px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+li,ol,ul{
+    list-style: none;
+}
+
+.game-list{
+    height: 130px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: #fff;
+}
+.game-list-person{
+    height: 100px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: #fff;
+}
+.job-item{
+    height: 130px;
+    box-sizing: border-box;
+    padding: 0;
+    color: #4a4160;
+    margin: 0 30px;
+    border-bottom: 1px #f2f2f5 solid;
+    position: relative;
+}
+.job-item-person{
+    height: 100px;
+    box-sizing: border-box;
+    padding: 0;
+    color: #4a4160;
+    margin: 0 30px;
+    border-bottom: 1px #f2f2f5 solid;
+    position: relative;
+}
+.job-info{
+    width: auto;
+    height: 70px;
+    padding-top: 20px;
+    float: none;
+}
+.job-info-person{
+    width: auto;
+    height: 40px;
+    padding-top: 20px;
+    float: none; 
+}
+.job-wrapper{
+    float: left;
+    width: 350px;
+    vertical-align: top;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.job-company{
+    width: 350px;
+    float: right;
+    vertical-align: top;
+}
+.primary-box{
+    display: inline-block;
+    line-height: 26px;
+}
+.job-title{
+    font-size: 0;
+    max-width: 460px;
+    color: #00c2b3;
+    font-weight: 400;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.job-name{
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    float: left;
+    max-width: 171px;
+    margin-right: 10px;
+
+}
+a{
+    text-decoration: none;
+}
+.job-name a{
+    color: #00c2b3;
+}
+.job-area{
+    margin-right: 10px;
+    float: left;
+}
+.job-areaname{
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    float: left;
+    max-width: 214px;
+}
+.job-limit{
+    height: 26px;
+    overflow: hidden;
+}
+.red{
+    float: left;
+    margin-right: 12px;
+    height: 26px;
+   
+    line-height: 26px;
+    position: relative;
+    vertical-align: middle;
+    color: #fc703e!important;
+}
+.job-limit p{
+    float: left;
+    font-size: 14px;
+    margin-right: 13px;
+    margin-top: 0;
+    max-width: 169px;
+    color: #61687c;
+}
+.vline{
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    vertical-align: middle;
+    background: #e0e0e0;
+    margin: 0 10px;
+}
+
+
+
+.company-text{
+    width: auto;
+    float: left;
+    vertical-align: top;
+}
+.company-name{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 3px;
+    height: 26px;
+    line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.resume{
+    float: right;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 3px;
+    height: 26px;
+    line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.resume a{
+    color: #fc703e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 256px;
+    height: 26px;
+    display: inline-block;
+    line-height: 26px; 
+}
+.company-name a{
+    color: #00c2b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 256px;
+    height: 26px;
+    display: inline-block;
+    line-height: 26px;
+}
+.company-text p{
+    color: #61687c;
+    max-width: 270px;
+    margin-top: 2px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.company-text p a{
+    color: #61687c;
+}
+.company-logo{
+    float: right;
+    width: 54px;
+    height: 54px;
+    border: 1px solid #f3f5fb;
+    border-radius: 9px;
+    vertical-align: top;
+    margin-left: 23px;
+}
+.info-append{
+    height: 40px;
+    line-height: 40px;
+    margin: 0 -30px;
+    padding: 0 30px;
+    background: #f8f9fc;
+}
+.info-publish{
+    width: auto;
+    text-align: left;
+    float: left;
+    padding: 0 10px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    height: 21px;
+    line-height: 21px;
+    margin-top: 1px;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.name{
+    font-weight: 400;
+    height: 15px;
+    line-height: 15px;
+    max-width: 150px;
+    color: #6c7388;
+    font-size: 12px;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.info-publish:hover{
+    border: 1px #5dd5c8 solid;
+    background-color: #5dd5c8;
+    
+}
+.info-publish:hover .name{
+    color: #fff;
+}
+.info-left{
+    float: left;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 140px;
+    font-size:13px;
+    height: 40px;
+}
+.info-left-blue{
+    display: block;
+    height: 40px;
+    width: 50px;
+    line-height: 40px;
+    text-align: center;
+    background: #03a2ca;
+}
+.info-left-red{
+    display: block;
+    height: 40px;
+    width: 50px;
+    line-height: 40px;
+    text-align: center;
+    background: red;
+}
+.info-left-green{
+    display: block;
+    height: 40px;
+    width: 50px;
+    line-height: 40px;
+    text-align: center;
+    background: #00c2b3;
+}
+.info-right{
+    font-size: 13px;
+    float: left;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #61687c;
+}
+.game-item a{
+    text-decoration: none;
+}
+.sponsor-form{
+    display: block;
+    clear:both;
+    margin:0;
+    padding:0;
+
+}
+.sponsor-form::after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+/*伪元素撑开表单*/
+.student-form::after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+ 
+}
+.student-form{
+    display: block;
+    clear:both;
+    margin:0;padding:0;
+ 
+}
+.sponsor-info{
+    padding: 20px 20px 0;
+    position: relative;
+    display: block;
+    clear:both;
+}
+.student-info{
+    display: block;
+    padding: 20px 20px 0;
+    position: relative;
+    clear:both;
+}
+.info-box{
+    float: left;
+    width: 789px;
+    clear:both;
+    margin-bottom: 22px;
+}
+.info-text{
+    width: 95px;
+    text-align: right;
+    margin-right: 20px;
+    float: left;
+    line-height: 30px;
+    cursor: default;
+}
+.info-value{
+    width: 95px;
+    text-align: left;
+    float: left;
+    line-height: 30px;
+    cursor: default;
+    color: #000;
+}
+.info-input{
+    float: left;
+    width: 225px;
+    height: 30px;
+    margin-right: 40px;
+    appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #bfcbd9;
+    box-sizing: border-box;
+    color: #1f2d3d;
+    font-size: inherit;
+    line-height: 1;
+    outline: 0;
+    padding: 3px 10px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+
+.info-input:hover{
+    border-color: #8391a5;
+}
+.info-input:focus{
+    outline: 0;
+    border-color: #20a0ff;
+}
+.info-textarea{
+    float: left;
+    width: 618px;
+    height: 88px;
+    resize: none;
+    display: block;
+    color: #1f2d3d;
+    padding: 5px 7px;
+    line-height: 1.5;
+    font-size: 14px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #bfcbd9;
+    border-radius: 4px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+.info-textarea:hover{
+    border-color: #8391a5;
+}
+.info-textarea:focus{
+    outline: 0;
+    border-color: #20a0ff;
+}
+.info-btn-box{
+    float: left;
+    width: 789px;
+    height: 36px;
+    position: relative;
+}
+.info-line{
+    width: 789px;
+    height: 39px;
+    border-bottom: 1px solid #e5e9ef;
+    margin-bottom: 40px;
+}
+.info-btn{
+    font-size: 14px;
+    width: 110px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #00a1d6!important;
+    color: #fff;
+    border:1px solid #20a0ff;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: 0;
+    text-align: center;
+}
+.info-btn:hover{
+    background-color: #00b5e5!important;
+}
+.sex{
+    display: inline-block;
+}
+.radio{
+    color: #000;
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+}
+.radio-btn{
+
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    left: -999px;
+}
+.radio-btn:checked+.radio-text{
+    color: #fff;
+    background-color: #22a1d6!important;
+}
+.radio-text{
+    display: inline-block;
+    border: 1px solid #bfcbd9;
+    border-radius: 5px;
+    background: #f4f4f4;
+    font-size: 14px;
+    padding: 5px 8px;
+    transition: all 0.3s cubic-bezier(.645,.045,.355,1);
+    line-height: 1;
+    vertical-align: middle;
+}

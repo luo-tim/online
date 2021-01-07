@@ -1,0 +1,110 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    color: #717171;
+    font-size: 12px;
+}
+a{
+    text-decoration: none;
+}
+.userAccount-container{
+    width: 829px;
+    border: 1px solid #e1e2e5;
+    box-shadow: 0 2px 4px rgba(0,0,0,.14);
+    background: #fafafa;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 40px;
+    clear:both;
+}
+.userAccount-container::after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.student-info{
+    display: block;
+    padding: 20px 20px 0;
+    position: relative;
+    clear:both;
+}
+.student-info::after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.info-box{
+    float: left;
+   
+    width: 789px;
+    clear:both;
+    margin-bottom: 22px;
+}
+.info-text{
+    font-size: 20px;
+    width: 95px;
+    
+    margin-right: 20px;
+    
+    line-height: 30px;
+    cursor: default;
+}
+.info-value{
+    font-size: 20px;
+    width: 95px;
+
+ 
+    line-height: 30px;
+    cursor: default;
+    color: #000;
+}
+.person-right{
+    display: block;
+    float: left;
+    width: 829px;
+    
+    border-left: 1px solid #ddd;
+    background: #f6f6f8;
+    
+}
+
+.person-right-title{
+    height: 50px;
+    padding-left: 30px;
+    border-bottom: 1px solid #ddd;
+}
+.person-right-title-name{
+    float: left;
+    margin: 15px 0 0 5px;
+    color: #00a1d6;
+    font-size: 14px;
+    cursor: default;
+}
+.info-btn{
+    font-size: 14px;
+    width: 110px;
+
+    float: left;
+
+    background: #00a1d6!important;
+    color: #fff;
+    border:1px solid #20a0ff;
+   
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: 0;
+    text-align: center;
+}
+.info-btn:hover{
+    background-color: #00b5e5!important;
+}

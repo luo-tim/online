@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  
+     /*使翻转动画有立体感*/
+     perspective:1500px ;
+}
+
+.resume {
+    position: relative;
+    width: 950px;
+    height: 1070px;
+    border-radius: 50px;
+    margin: auto;
+    /*盒子的阴影*/
+    border: 1px 1px 20px rgba(0, 0, 0, 0.1);
+    /*给父元素加一个3D盒子属性*/
+    transform-style: preserve-3d;
+    transition: all 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5);
+    transform: rotateY(0deg);
+    perspective:1500px ;
+}
+
+.resume:hover {
+    transition: all 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5);
+    transform: rotateY(180deg);
+}
+
+.front-resume {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 900px;
+    height: 1020px;
+    
+    border-radius: 50px;
+    background:url(简历2.jpg) no-repeat ;
+    background-size: 100% 100%;
+    z-index: 10;
+    backface-visibility: hidden;
+}
+
+.back-resume {
+
+    /*background: url(简历背景.jpg), ;*/
+    /*background-image: url("简历背景.jpg");*/
+    background:url(简历背景.png) rgb(248, 244, 186) no-repeat; 
+    background-size: 100% 100%;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    border-radius: 50px;
+  
+    width: 900px;
+    height: 1020px;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+table{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+caption {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+td {
+    width: 160px;
+    height: 30px;
+    font-size: 20px;
+}
+.item{
+    float: left;
+    width: 900px;
+    clear:both;
+    margin-top: 20px;
+    margin-bottom: 22px;
+}
+.info-btn-box{
+    float: left;
+    width: 900px;
+    height: 36px;
+    position: relative;
+
+}
+
+.info-btn{
+    font-size: 14px;
+    width: 110px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #00a1d6!important;
+    color: #fff;
+    border:1px solid #20a0ff;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: 0;
+    text-align: center;
+}
+.info-btn:hover{
+    background-color: #00b5e5!important;
+}

@@ -1,0 +1,232 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    min-width: 1300px;
+    color: #414a60;
+    font-size: 14px;
+    background-color: #f6f6f8;
+}
+a{
+    text-decoration: none;
+    color: #414a60;
+}
+.item{
+   
+    width: 400px;
+    clear:both;
+    margin-bottom: 22px;
+}
+.sex{
+    display: inline-block;
+}
+.radio{
+    color: #000;
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+}
+.radio-btn{
+
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    left: -999px;
+}
+
+.radio-text{
+    display: inline-block;
+    border: 1px solid #bfcbd9;
+    border-radius: 5px;
+    background: #f4f4f4;
+    font-size: 14px;
+    padding: 5px 8px;
+    transition: all 0.3s cubic-bezier(.645,.045,.355,1);
+    line-height: 1;
+    vertical-align: middle;
+   
+}
+.radio-btn:checked+.radio-text{
+    color: #fff !important;
+    background-color: #22a1d6!important;
+}
+.userList-container{
+    
+    width: 900px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.game-container{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+li,ol,ul{
+    list-style: none;
+}
+.game-list-person{
+    height: 100px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: #fff;
+}
+.job-item-person{
+    height: 100px;
+    box-sizing: border-box;
+    padding: 0;
+    color: #4a4160;
+    margin: 0 30px;
+    border-bottom: 1px #f2f2f5 solid;
+    position: relative;
+}
+
+.job-info-person{
+    width: auto;
+    height: 40px;
+    padding-top: 20px;
+    float: none; 
+}
+.job-wrapper-person{
+    float: left;
+    width: 350px;
+    vertical-align: top;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.job-company-person{
+    width: 350px;
+    float: right;
+    vertical-align: top;
+}
+.primary-box-person{
+    display: inline-block;
+    line-height: 26px;
+}
+.job-title-person{
+    font-size: 0;
+    max-width: 460px;
+    color: #00c2b3;
+    font-weight: 400;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.job-name-person{
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    float: left;
+    max-width: 171px;
+    margin-right: 10px;
+
+}
+.job-name-person a{
+    color: #00c2b3;
+}
+.job-area-person{
+    margin-right: 10px;
+    float: left;
+}
+.job-areaname-person{
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    float: left;
+    max-width: 214px;
+}
+.resume{
+    float: right;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 3px;
+    height: 26px;
+    line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.resume a{
+    color: #fc703e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 256px;
+    height: 26px;
+    display: inline-block;
+    line-height: 26px; 
+}
+.info-append{
+    height: 40px;
+    line-height: 40px;
+    margin: 0 -30px;
+    padding: 0 30px;
+    background: #f8f9fc;
+}
+.info-left{
+    float: left;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 140px;
+    font-size:13px;
+    height: 40px;
+}
+.info-right{
+    font-size: 20px;
+    float: right;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #61687c;
+    text-align: center;
+}
+.info-right a{
+    margin:0 20px;
+}
+.a-green{
+color: springgreen;
+}
+.a-red{
+color: red;
+}
+.info-box-manager{
+
+   
+    width: 400px;
+   margin: 0 auto;
+    margin-bottom: 22px;
+    text-align: center;
+}
+.info-btn-manager{
+    font-size: 14px;
+    width: 110px;
+
+   
+   display: inline-block;
+    background: #00a1d6!important;
+    color: #fff;
+    border:1px solid #20a0ff;
+   
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: 0;
+    text-align: center;
+}
+.info-btn-manager:hover{
+    background-color: #00b5e5!important;
+}

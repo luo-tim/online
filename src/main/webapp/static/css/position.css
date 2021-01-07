@@ -1,0 +1,329 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background: #f6f6f8;
+    min-width: 1184px;
+    line-height: 26px;
+    color: #414a60;
+    font-size: 14px;
+}
+.position-container{
+    
+    width: 900px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+li,ol,ul{
+    list-style: none;
+}
+.search{
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    position: relative;
+    zoom: 1;
+    z-index: 1000;
+    padding-top: 20px;
+    width: 805px;
+    font-size: 13px;
+    margin: 0 auto;
+   
+}
+.info-input{
+    float: left;
+    width: 100px;
+    height: 48px;
+    margin-right: 30px;
+    appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #bfcbd9;
+    box-sizing: border-box;
+    color: #1f2d3d;
+    font-size: inherit;
+    line-height: 1;
+    outline: 0;
+    padding: 3px 10px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+
+.info-input:hover{
+    border-color: #8391a5;
+}
+.info-input:focus{
+    outline: 0;
+    border-color: #20a0ff;
+}
+.search-input{
+    width: 236px;
+    font-size: 16px;
+    padding: 9px 19px;
+    height: 28px;
+    line-height: 30px;
+    border: 1px solid #8d95a8;
+    color: #414a60;
+    float: left;
+   
+    border-right: none;
+  
+}
+.search-input:hover{
+    border-color:  #53cac3;
+    border-right: none;
+}
+.search-input:focus{
+    outline: 0;
+    border-color:  #53cac3;
+    border-right: none;
+}
+.search-btn{
+   
+    height: 48px;
+    line-height: 48px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 140px;
+    float: right;
+    text-align: center;
+    color: #fff;
+    background: #55cbc4;
+    border: 0;
+    box-sizing: content-box;
+    letter-spacing: 1px;
+}
+.search-btn:focus{
+    outline: none;
+}
+.search-btn:hover{
+    background-color: #6adbcf;
+}
+.job-lists{
+    background: 0 0;
+
+}
+.job-lists li{
+    height: 130px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    background: #fff;
+}
+.job-item{
+    height: 130px;
+    box-sizing: border-box;
+    padding: 0;
+    color: #4a4160;
+    margin: 0 30px;
+    border-bottom: 1px #f2f2f5 solid;
+    position: relative;
+}
+.job-info{
+    width: auto;
+    height: 70px;
+    padding-top: 20px;
+    float: none;
+}
+.job-wrapper{
+    float: left;
+    width: 460px;
+    vertical-align: top;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.job-company{
+    width: 350px;
+    float: right;
+    vertical-align: top;
+}
+.primary-box{
+    display: inline-block;
+    line-height: 26px;
+}
+.job-title{
+    font-size: 0;
+    max-width: 460px;
+    color: #00c2b3;
+    font-weight: 400;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.job-name{
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    float: left;
+    max-width: 171px;
+    margin-right: 10px;
+
+}
+a{
+    text-decoration: none;
+}
+.job-name a{
+    color: #00c2b3;
+}
+.job-area{
+    margin-right: 10px;
+    float: left;
+}
+.job-areaname{
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    float: left;
+    max-width: 214px;
+}
+.job-limit{
+    height: 26px;
+    overflow: hidden;
+}
+.red{
+    float: left;
+    margin-right: 12px;
+    height: 26px;
+   
+    line-height: 26px;
+    position: relative;
+    vertical-align: middle;
+    color: #fc703e!important;
+}
+.job-limit p{
+    float: left;
+    font-size: 14px;
+    margin-right: 13px;
+    margin-top: 0;
+    max-width: 169px;
+    color: #61687c;
+}
+.vline{
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    vertical-align: middle;
+    background: #e0e0e0;
+    margin: 0 10px;
+}
+.info-publish{
+    width: auto;
+    text-align: left;
+    float: left;
+    padding: 0 10px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    height: 21px;
+    line-height: 21px;
+    margin-top: 1px;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.name{
+    font-weight: 400;
+    height: 15px;
+    line-height: 15px;
+    max-width: 150px;
+    color: #6c7388;
+    font-size: 12px;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.info-publish:hover{
+    border: 1px #5dd5c8 solid;
+    background-color: #5dd5c8;
+    
+}
+.info-publish:hover .name{
+    color: #fff;
+}
+.company-text{
+    width: auto;
+    float: left;
+    vertical-align: top;
+}
+.company-name{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 3px;
+    height: 26px;
+    line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.company-name a{
+    color: #00c2b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 256px;
+    height: 26px;
+    display: inline-block;
+    line-height: 26px;
+}
+.company-text p{
+    color: #61687c;
+    max-width: 270px;
+    margin-top: 2px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.company-text p a{
+    color: #61687c;
+}
+.company-logo{
+    float: right;
+    width: 54px;
+    height: 54px;
+    border: 1px solid #f3f5fb;
+    border-radius: 9px;
+    vertical-align: top;
+    margin-left: 23px;
+}
+.info-append{
+    height: 40px;
+    line-height: 40px;
+    margin: 0 -30px;
+    padding: 0 30px;
+    background: #f8f9fc;
+}
+.info-left{
+    float: left;
+    width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 140px;
+    font-size:13px;
+    height: 40px;
+}
+
+.info-right{
+    font-size: 13px;
+    float: left;
+    width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #61687c;
+}

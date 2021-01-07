@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: #414a60;
+}
+body{
+    background:     #f6f6f8;
+    line-height: 26px;
+    color: #414a60;
+    font-size: 14px;
+}
+.hot-job{
+    clear: both;
+    margin-top: 37px;
+    overflow: hidden;
+    width: 100%;
+}
+li,ul{
+    list-style: none;
+}
+.cur{
+    display: block;
+    font-weight: 400;
+    width: 110%;
+    overflow: hidden;
+}
+.cur-company{
+    height: 238px;
+    width: 284px;
+    float: left;
+    margin: 0 16px 16px 0;
+    background: #fff;
+    position: relative;
+}
+.sub-li-company{
+    display: block;
+    height: 140px;
+    width: 100%;
+    height: 100%;
+}
+.company-info{
+    margin: 0 20px 10px;
+    padding-top: 30px;
+    color: #414a60;
+    display: block;
+}
+.img-box{
+    text-align: center;
+    margin-bottom: 14px;
+}
+.img-box img{
+    
+    height: 58px;
+    width: 58px;
+    vertical-align: middle;
+    border: 1px solid #f3f5fb;
+    border-radius: 9px;
+}
+.company-text{
+    margin-bottom: 11px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.company-text h4{
+    margin-bottom: 10px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 16px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.company-text p{
+    height: 18px;
+    line-height: 18px;
+    color: #898e9d;
+    font-size: 12px;
+    display: inline-block;
+    white-space: nowrap;
+}
+.about-info{
+    width: 180px;
+    height: 34px;
+    color: #61687c;
+    line-height: 34px;
+    font-size: 12px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #e3e7ed;
+    display: block;
+}
+.text-blue{
+    color: #00c2b3;
+}
