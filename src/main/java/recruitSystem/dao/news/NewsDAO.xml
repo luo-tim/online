@@ -4,7 +4,7 @@
  <mapper namespace="recruitSystem.dao.news.NewsDAO">
  
  <!-- 建立sql查询结果字段与实体属性的映射关系 -->
- <resultMap type="recruitSystem.view.Infomation" id="NewsMap">
+ <resultMap type="recruitSystem.view.Information" id="NewsMap">
  <result column="id" property="id" />
  <result column="context" property="context" />
  <result column="post_time" property="postTime" />

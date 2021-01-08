@@ -116,7 +116,7 @@ public class CompanyControl {
 			Model model) throws IOException {
 
 		String companyId = companyService.findCompany(name);
-		if (companyId!=null) {
+		if (companyId==null) {
 			// 下载图片
 			// 获取文件名 : file.getOriginalFilename();
 			String uploadFileName = file.getOriginalFilename();
@@ -170,6 +170,7 @@ public class CompanyControl {
 			Company company=new Company();
 			company.setCompanyName(name);
 			company.setLeaderIntroduce(leader);
+			company.setCompanyDescription(introduce);
 			company.setAddress(address);
 			company.setTreatment(treatment);
 			company.setCompanyLogo(fileName);
