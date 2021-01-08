@@ -80,4 +80,26 @@
  			</set>
  		WHERE account = #{user.account}
  	</update>
+ 	
+ 	<!-- 通过接收者查找发送者 -->
+ 	<select id="selectBySendUser" resultMap="UserInfoMap">
+ 		SELECT *
+ 		FROM user
+ 		WHERE id = (
+ 			SELECT send_id
+ 			FROM news
+ 			WHERE receive_id = #{receiveId}
+ 		)
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  </mapper>

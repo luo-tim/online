@@ -19,6 +19,39 @@
   <result  column="mid"  property="mid" />
  </resultMap>
  
+ <!-- 注册公司 -->
+ <insert id="insert">
+ 	INSERT INTO company
+ 	<trim prefix="(" suffix=")" suffixOverrides=",">
+ 		<if test="id!=null and id!=''">id,</if>
+		<if test="company_description!=null and company_description!=''">#{companyDescription},</if>
+		<if test="leader_introduce!=null and leader_introduce!=''">#{leaderIntroduce},</if>
+		<if test="company_name!=null and company_name!=''">#{companyName},</if>
+		<if test="address!=null and address!=''">#{address},</if>
+		<if test="boss_num!=null and boss_num!=''">#{bossNum},</if>
+		<if test="job_num!=null and job_num!=''">#{jobNum},</if>
+		<if test="treatment!=null and treatment!=''">#{treatment},</if>
+		<if test="company_type!=null and company_type!=''">#{companyType},</if>
+		<if test="company_logo!=null and company_logo!=''">#{companyLogo},</if>
+		<if test="flag!=null and flag!=''">#{flag},</if>
+		<if test="mid!=null and mid!=''">#{mid},</if>
+ 	</trim>
+ 	<trim prefix="values (" suffix=")" suffixOverrides=",">
+ 		<if test="id!=null and id!=''">id,</if>
+		<if test="company_description!=null and company_description!=''">company_description,</if>
+		<if test="leader_introduce!=null and leader_introduce!=''">leader_introduce,</if>
+		<if test="company_name!=null and company_name!=''">company_name,</if>
+		<if test="address!=null and address!=''">address,</if>
+		<if test="boss_num!=null and boss_num!=''">boss_num,</if>
+		<if test="job_num!=null and job_num!=''">job_num,</if>
+		<if test="treatment!=null and treatment!=''">treatment,</if>
+		<if test="company_type!=null and company_type!=''">company_type,</if>
+		<if test="company_logo!=null and company_logo!=''">company_logo,</if>
+		<if test="flag!=null and flag!=''">flag,</if>
+		<if test="mid!=null and mid!=''">mid,</if>
+ 	</trim>
+ </insert>
+ 
  <!-- 查询公司id -->
  <select id="findCompany" resultType="string">
 	 SELECT
@@ -42,4 +75,36 @@
  	</set>
  	WHERE id = #{companyId}
  </update>
+ 
+ <!-- 查找公司列表 -->
+ <select id="findCompanies" resultMap="CompanyInfoMap">
+ 	SELECT *
+ 	FROM 
+ 		company
+ 	WHERE
+ 		flag != 0
+ </select>
+ 
+ <!-- 根据公司id查找公司 -->
+ <select id="findCompanyById" resultMap="CompanyInfoMap">
+ 	SELECT *
+ 	FROM company
+ 	WHERE
+ 		id = #{companyId}
+ 		AND flag != 0
+ </select>
+ 
+ <!-- 根据老板id查找公司 -->
+ <select id="findCompanyByBossId" resultMap="CompanyInfoMap">
+ 	SELECT *
+ 	FROM company
+ 	WHERE id = (
+ 		SELECT c.id
+ 		FROM company c,companyHR hr
+ 		WHERE 
+ 			c.id = hr.company_id
+ 			AND boss_id = #{bossId}
+ 			AND flag != 0
+ 	)
+ </select>
  </mapper>

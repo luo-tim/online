@@ -28,29 +28,29 @@ public class CompanyService {
 		return id;
 	};
 	
-	
 	/**
 	 * 查找公司列表
 	 */
-	
 	public List<Company> findCompanies(){
-		return null;
+		return companyInfoDAO.findCompanies();
 	}
 	
 	/**
 	 * 根据公司id查找公司
 	 */
-	
 	public Company findCompanyById(String companyId) {
-		return null;
+		return companyInfoDAO.findCompanyById(companyId);
 	}
 	
 	public Company findCompanyByBossId(String bossId) {
-		return null;
+		return companyInfoDAO.findCompanyByBossId(bossId);
 	}
-	
+	/**
+	 * 注册公司
+	 * @param company
+	 */
 	public void insert(Company company) {
-		
+		companyInfoDAO.insert(company);
 	}
 	
 	

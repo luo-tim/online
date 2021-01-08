@@ -18,13 +18,6 @@ public class Information {
 	private String sendId;//发送者ID
 	private String receiveId;//接收者ID
 
-
-	
-	
-
-	
-
-	
 	/**
 	 * @return the sendId
 	 */
