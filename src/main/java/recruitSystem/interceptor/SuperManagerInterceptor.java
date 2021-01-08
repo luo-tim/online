@@ -44,10 +44,15 @@ public class SuperManagerInterceptor implements HandlerInterceptor{
 		User manager = (User) session.getAttribute("manager");
 		String identity =(String) session.getAttribute("identity");
 		// 判断session中是否有用户数据，如果有，则返回true，继续向下执行
-//		if (manager != null && identity.equals("manager")&&manager.getLevel()==1) {
-//			return true;
+		if (manager != null && identity.equals("manager")&&manager.getIdentityId()==3) {
+			return true;
 //		}
 		// 不符合条件的转发到登录页面
+		/*
+		 *  /deleteManagerPage
+		 *  /upManagerPage
+		 *  /addManagerPage
+		 */
 		response.sendRedirect(request.getContextPath()+"/homePage");//request.getContextPath()是为了解决相对路径的问题，可以返回站点的根路径
 		return false;
 	}

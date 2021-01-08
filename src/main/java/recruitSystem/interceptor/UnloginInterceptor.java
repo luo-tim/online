@@ -20,8 +20,8 @@ import recruitSystem.view.User;
  * @author 72412
  *
  */
-public class ManagerInterceptor implements HandlerInterceptor {
-	private final static Log log = LogFactory.getLog(ManagerInterceptor.class);
+public class UnloginInterceptor implements HandlerInterceptor {
+	private final static Log log = LogFactory.getLog(UnloginInterceptor.class);
 	@Override
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
@@ -42,30 +42,20 @@ public class ManagerInterceptor implements HandlerInterceptor {
 		log.debug("1.Called before handler method");
 		// 获取session
 		HttpSession session = request.getSession();
-		User manager = (User) session.getAttribute("manager");
+		User user = (User) session.getAttribute("user");
 		String identity =(String) session.getAttribute("identity");
 		// 判断session中是否有用户数据，如果有，则返回true，继续向下执行
-		if (manager != null && identity.equals("manager")) {
+		if (user != null && identity.equals("user")) {
 			return true;
 		}
 		// 不符合条件的转发到登录页面
 		/*页面如下：
-		 * /managerPage
-		 * /managerPage/userListPage
-		 * /managerPage/managerListPage
-		 * /managerPage/managerListPage/addManagerPage
-		 * /managerAccountInfoPage
-		 * /managerPage/checkCompanyPage
-		 * /managerPage/checkRecruitmentPage
-		 * /managerPage/checkRecruitmentPage/recruitmentDetailPage
-		 * /successCompanyPage
-		 * /failCompanyPage
-		 * /successRecruitmentPage
-		 * /failRecruitmentPage
-		 * /deleteRecruitmentPage
-		 * /alterUserScorePage
-		 * /deleteUserPage
-		 * 
+		 *   /personalPage
+		 *   /infoPage
+		 *   /accountInfoPage
+		 *   /signupWorkPage
+		 *   /newsPage
+		 *
 		 */
 		response.sendRedirect(request.getContextPath()+"/homePage");//request.getContextPath()是为了解决相对路径的问题，可以返回站点的根路径
 		return false;

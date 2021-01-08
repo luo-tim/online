@@ -1,4 +1,6 @@
 /**
+ *
+ * 
  * 
  */
 package recruitSystem.interceptor;
@@ -48,6 +50,15 @@ public class BossInterceptor implements HandlerInterceptor{
 			return true;
 		}
 		// 不符合条件的转发到登录页面
+		/*
+		 *   /companyInfoPage
+		 *   /releaseInfoPage
+		 *   /releaseRecruitmentPage
+		 *   /bossWorkDetailPage
+		 *   /finishRecruitmentPage
+		 *   /passSignupPage
+		 *   /refuseSignupPage
+		 */
 		response.sendRedirect(request.getContextPath()+"/homePage");
 		return false;
 	}

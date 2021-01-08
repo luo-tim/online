@@ -1,5 +1,7 @@
 /**
  * 
+ * 该拦截器用于已登录的用户跳转至登录界面时，自动跳转至已登录的系统首页
+ * 
  */
 package recruitSystem.interceptor;
 
@@ -20,8 +22,8 @@ import recruitSystem.view.User;
  * @author 72412
  *
  */
-public class ManagerInterceptor implements HandlerInterceptor {
-	private final static Log log = LogFactory.getLog(ManagerInterceptor.class);
+public class AutoLoginInterceptor implements HandlerInterceptor {
+	private final static Log log = LogFactory.getLog(AutoLoginInterceptor.class);
 	@Override
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
@@ -42,33 +44,26 @@ public class ManagerInterceptor implements HandlerInterceptor {
 		log.debug("1.Called before handler method");
 		// 获取session
 		HttpSession session = request.getSession();
-		User manager = (User) session.getAttribute("manager");
+		User user = (User) session.getAttribute("user");
 		String identity =(String) session.getAttribute("identity");
-		// 判断session中是否有用户数据，如果有，则返回true，继续向下执行
-		if (manager != null && identity.equals("manager")) {
-			return true;
+		// 判断session中是否有用户数据，如果有，则不进入登陆界面而是直接跳转到已经登陆的系统首页
+		if (user != null && identity.equals("boss")) {
+			response.sendRedirect(request.getContextPath()+"/homePage");
+			return false;
 		}
-		// 不符合条件的转发到登录页面
-		/*页面如下：
-		 * /managerPage
-		 * /managerPage/userListPage
-		 * /managerPage/managerListPage
-		 * /managerPage/managerListPage/addManagerPage
-		 * /managerAccountInfoPage
-		 * /managerPage/checkCompanyPage
-		 * /managerPage/checkRecruitmentPage
-		 * /managerPage/checkRecruitmentPage/recruitmentDetailPage
-		 * /successCompanyPage
-		 * /failCompanyPage
-		 * /successRecruitmentPage
-		 * /failRecruitmentPage
-		 * /deleteRecruitmentPage
-		 * /alterUserScorePage
-		 * /deleteUserPage
-		 * 
-		 */
-		response.sendRedirect(request.getContextPath()+"/homePage");//request.getContextPath()是为了解决相对路径的问题，可以返回站点的根路径
-		return false;
+		else if (user != null && identity.equals("manager")) {
+			response.sendRedirect(request.getContextPath()+"/homePage");
+			return false;
+		}
+		else if (user != null && identity.equals("worker")) {
+			response.sendRedirect(request.getContextPath()+"/homePage");
+			return false;
+		}
+		//若session中无用户数据，则继续执行下去。
+		
+		//  /loginPage
+		//   /registerPage/accountInfoPage
+		return true;
 	}
 
 }
