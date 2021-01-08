@@ -28,9 +28,11 @@ public class CompanyService {
 		return id;
 	};
 	
+	
 	/**
 	 * 查找公司列表
 	 */
+	
 	public List<Company> findCompanies(){
 		return companyInfoDAO.findCompanies();
 	}
@@ -38,6 +40,7 @@ public class CompanyService {
 	/**
 	 * 根据公司id查找公司
 	 */
+	
 	public Company findCompanyById(String companyId) {
 		return companyInfoDAO.findCompanyById(companyId);
 	}
@@ -45,21 +48,18 @@ public class CompanyService {
 	public Company findCompanyByBossId(String bossId) {
 		return companyInfoDAO.findCompanyByBossId(bossId);
 	}
-	/**
-	 * 注册公司
-	 * @param company
-	 */
+	
 	public void insert(Company company) {
 		companyInfoDAO.insert(company);
 	}
 	
 	
 	public void successCompany(String companyId,String userId) {
-		
+		companyInfoDAO.successCompany(companyId,userId);
 	}
 	
 	public void failCompany(String companyId) {
-		
+		companyInfoDAO.failCompany(companyId);
 	}
 	
 }

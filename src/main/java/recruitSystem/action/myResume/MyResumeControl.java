@@ -114,6 +114,7 @@ public class MyResumeControl {
 		resume.setSelf(self);
 		resume.setIexperience(practice);
 		resume.setSexperience(campus);
+		resume.setUserId(user.getId());
 		int row = resumeService.existResume(user.getId());
 		if (row != 0) {// 修改简历
 			resumeService.updateResume(resume);

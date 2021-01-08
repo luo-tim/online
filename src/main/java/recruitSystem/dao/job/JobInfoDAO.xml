@@ -18,7 +18,6 @@
  		<result  column="job_request"  property="jobRequest" />
  		<result  column="release_time"  property="releaseTime" />
  		<result  column="mid"  property="mid" />
- 		<result  column="boss_id"  property="bossId"/>
  		<association property="boss" javaType="recruitSystem.view.User">
  			<result  column="user_id"  property="id" />
 	 		<result  column="user_name"  property="userName" />
@@ -49,6 +48,15 @@
 			 <result  column="company_flag"  property="flag" />
 			 <result  column="company_mid"  property="mid" />
 	 	</association>
+	 	<association property="signUpJob" javaType="recruitSystem.view.SignUpJob">
+	 		 <result  column="signup_id"  property="signUpId" />
+			 <result  column="signup_t"  property="signUpTime" />
+			 <result  column="signup_flag"  property="flag" />
+	 	</association>
+	 	<association property="browseJob" javaType="recruitSystem.view.BrowseJob">
+	 		 <result  column="browse_id"  property="browseId" />
+			 <result  column="browse_t"  property="browseTime" />
+	 	</association>
  	</resultMap>
  	<select id="findReleaseJob" resultMap="JobInfoMap">
  		SELECT 
@@ -68,13 +76,15 @@
  			user u,
  			job j,
  			company c,
- 			hr h
+ 			cb h
  		WHERE
  			u.id = j.boss_id
  		AND u.id = h.user_id
  		AND h.company_id = c.id
  		AND u.id= #{id}
+ 		AND j.flag = #{tag}
  	</select>
+	
 	<select id="findSignupJob" resultMap="JobInfoMap">
  		SELECT 
  			j.id,
@@ -82,9 +92,14 @@
  			j.job_name,
  			j.salary,
  			j.city,
+ 			j.job_type
  			j.experience,
  			j.education,
  			j.job_description,
+ 			w.flag signup_flag,
+ 			w.t signup_t,
+ 			u.last_name,
+ 			u.sex,
  			c.id company_id,
  			c.company_name,
  			c.company_type,
@@ -93,12 +108,16 @@
  			user u,
  			job j,
  			company c,
- 			hr h
+ 			cb h,
+ 			workersignup w
  		WHERE
  			u.id = j.boss_id
  		AND u.id = h.user_id
+ 		AND w.employment_id = j.id
  		AND h.company_id = c.id
- 		AND u.id= #{id}
+ 		AND w.worker_id= #{id}
+ 		AND w.flag = #{tag}
+ 		AND ( j.flag=1 OR j.flag=2 )
  	</select>
  	<select id="findHistoryJob" resultMap="JobInfoMap">
  		SELECT 
@@ -110,6 +129,9 @@
  			j.experience,
  			j.education,
  			j.job_description,
+ 			w.t browse_t,
+ 			u.last_name,
+ 			u.sex,
  			c.id company_id,
  			c.company_name,
  			c.company_type,
@@ -118,34 +140,198 @@
  			user u,
  			job j,
  			company c,
- 			hr h
+ 			cb h,
+ 			workerhistory w
  		WHERE
  			u.id = j.boss_id
+ 		AND w.employment_id = j.id
  		AND u.id = h.user_id
  		AND h.company_id = c.id
- 		AND u.id= #{id}
+ 		AND w.worker_id= #{id}
  	</select>
-
-	<!-- 插入工作,返回工作id -->
+ 	<select id="findJob" resultMap="JobInfoMap">
+ 		SELECT
+ 			j.id,
+ 			j.job_name,
+ 			j.salary,
+ 			j.city,
+ 			j.job_type,
+ 			j.experience,
+ 			j.education,
+ 			j.job_description,
+ 			j.work_address,
+ 			j.job_request,
+ 			j.flag,
+ 			u.last_name,
+ 			u.sex,
+ 			c.company_name,
+ 			c.id company_id,
+ 			c.company_type,
+ 			c.company_logo,
+ 			c.treatment
+ 			
+ 			
+ 		FROM
+ 			user u,
+ 			job j,
+ 			cb h,
+ 			company c
+ 		WHERE
+ 			u.identity_id = 1
+ 		AND u.enable = true
+ 		AND u.id = j.boss_id
+ 		AND u.id = h.user_id
+ 		AND h.company_id = c.id
+ 		AND j.id = #{jobId}
+ 		AND (j.flag=0 OR j.flag=1 OR j.flag=2)
+ 	</select> 
+ 	<select id="existHistory"  resultType="int">
+ 		SELECT
+ 			COUNT(*)
+ 		FROM
+ 			workerhistory
+ 		WHERE
+ 			worker_id = #{userId}
+ 		AND employment_id = #{jobId}
+ 			
+ 	</select>
+ 	<update id="updateHistory">
+ 		UPDATE workerhistory
+ 		<set>
+ 			t = #{browseJob.browseTime}
+ 		</set>
+ 		WHERE 
+ 			worker_id = #{browseJob.userId}
+ 		AND employment_id = #{browseJob.jobId}
+ 	</update>
+ 	
+ 	<insert id="insertHistory">
+ 		INSERT INTO workerhistory(worker_id,employment_id,t)
+ 		VALUES(#{browseJob.userId},#{browseJob.jobId},#{browseJob.browseTime})
+ 	</insert>
+ 	<insert id="insertWorkerSignup">
+ 		INSERT INTO workersignup(worker_id,employment_id,t,flag)
+ 		VALUES(#{signUpJob.userId},#{signUpJob.jobId},#{signUpJob.signUpTime},0)
+ 	</insert>
+ 	<select id="getBossId" resultType="string">
+ 		SELECT
+ 			boss_id
+ 		FROM
+ 			job
+ 		WHERE
+ 		 id = #{jobId}
+ 	</select>
+ 	<update id="successJobs">
+ 		UPDATE job
+ 		<set>
+ 			mid = #{userId},
+ 			flag = 1
+ 		</set>
+ 		WHERE
+ 			id = #{jobId}
+ 	</update>
+ 	
+ 	<delete id="failJobs">
+ 		DELETE FROM
+ 			job
+ 		WHERE
+ 			id = #{jobId}
+ 		AND	flag = 0
+ 	</delete>
+ 	<update id="deleteJob">
+ 		UPDATE job
+ 		<set>
+ 			flag = 3
+ 		</set>
+ 		WHERE
+ 			id = #{jobId}
+ 			flag !=0
+ 	</update>
+ 	
+ 	<select id="findCompanyJobs">
+ 		SELECT
+ 			j.id,
+ 			j.job_name,
+ 			j.salary,
+ 			j.city,
+ 			j.job_type,
+ 			j.experience,
+ 			j.education,
+ 			j.job_description,
+ 			j.work_address,
+ 			j.job_request,
+ 			j.flag,
+ 			u.last_name,
+ 			u.sex,
+ 			c.company_name,
+ 			c.id company_id,
+ 			c.company_type,
+ 			c.company_logo,
+ 			c.treatment
+ 			
+ 			
+ 		FROM
+ 			user u,
+ 			job j,
+ 			cb h,
+ 			company c
+ 		WHERE
+ 			u.identity_id = 1
+ 		AND u.enable = true
+ 		AND u.id = j.boss_id
+ 		AND u.id = h.user_id
+ 		AND h.company_id = c.id
+ 		AND c.id = #{companyId}
+ 		AND (j.flag=0 OR j.flag=1 OR j.flag=2)
+ 	</select>
+ 		<!-- 插入工作,返回工作id -->
 	<insert id="insert">
-		<selectKey keyProperty='id' order="AFTER" resultType="java.lang.String">
-		SELECT LAST_INSERT_ID()
-		</selectKey>
+		
 		INSERT INTO job(boss_id,release_time,job_name,job_description,work_address,
 						salary,city,job_type,experience,education,job_request,flag)
 		VALUES(#{bossId},#{releaseTime},#{jobName},#{jobDescription},#{workAddress},
 				#{salary},#{city},#{jobType},#{experience},#{education},#{job_request},0)
+		<selectKey keyProperty='id' order="AFTER" resultType="java.lang.String">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
-
-	<select id="findBossJob" resultMap="JobInfoMap">
-		SELECT *
-		FROM job
-		WHERE
-			id = #{jobId}
-		AND
-			flag != 3
+ 	<select id="findBossJob" resultMap="JobInfoMap">
+		SELECT
+ 			j.id,
+ 			j.job_name,
+ 			j.salary,
+ 			j.city,
+ 			j.job_type,
+ 			j.experience,
+ 			j.education,
+ 			j.job_description,
+ 			j.work_address,
+ 			j.job_request,
+ 			j.flag,
+ 			u.last_name,
+ 			u.sex,
+ 			c.company_name,
+ 			c.id company_id,
+ 			c.company_type,
+ 			c.company_logo,
+ 			c.treatment
+ 			
+ 			
+ 		FROM
+ 			user u,
+ 			job j,
+ 			cb h,
+ 			company c
+ 		WHERE
+ 			u.identity_id = 1
+ 		AND u.enable = true
+ 		AND u.id = j.boss_id
+ 		AND u.id = h.user_id
+ 		AND h.company_id = c.id
+ 		AND j.id = #{jobId}
+ 		AND (j.flag=0 OR j.flag=1 OR j.flag=2)
 	</select>
-
+	
 	<update id="updateJobFinshed">
 		UPDATE job
 		<set>
@@ -154,12 +340,4 @@
 		WHERE
 			id = #{jobId}
 	</update>
-
-
-
-
-
-
-
-
 </mapper>

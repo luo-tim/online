@@ -22,7 +22,7 @@
             <form method="POST" class="info-form" name="companyForm" enctype="multipart/form-data">
                <div class="item">
                     <label class="info-text"> 公司名称：</label>
-                    <input name="name" type="text" autocomplete="off" placeholder="公司类型" maxlength="20" class="info-input">
+                    <input name="name" type="text" autocomplete="off" placeholder="公司名称" maxlength="20" class="info-input">
                 </div>
                 <div class="item">
                     <label class="info-text"> 高管介绍：</label>

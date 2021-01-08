@@ -3,9 +3,11 @@
  */
 package recruitSystem.service.job;
 
-import java.util.Date;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import recruitSystem.dao.job.JobInfoDAO;
+import recruitSystem.view.SignUpJob;
 
 /**
  * @author 72412
@@ -14,7 +16,9 @@ import org.springframework.stereotype.Service;
 @Service("JobSignupService")
 public class JobSignupService {
 
-	public void insertWorkerSignup(String userId,String jobId,Date date) {
-		
+	@Autowired
+	private JobInfoDAO jobInfoDAO;
+	public void insertWorkerSignup(SignUpJob signUpJob) {
+		jobInfoDAO.insertWorkerSignup(signUpJob);
 	}
 }

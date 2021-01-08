@@ -22,10 +22,24 @@ public class User {
 	private String phoneNumber;//用户的手机号
 	private String email;//用户的邮箱
 	private String sex;//用户的性别
-	
+	private SignUpJob signUpJob;//申请的工作
 	
 	
 
+
+	/**
+	 * @return the signUpJob
+	 */
+	public SignUpJob getSignUpJob() {
+		return signUpJob;
+	}
+
+	/**
+	 * @param signUpJob the signUpJob to set
+	 */
+	public void setSignUpJob(SignUpJob signUpJob) {
+		this.signUpJob = signUpJob;
+	}
 
 	/**
 	 * @return the dateOfBirth

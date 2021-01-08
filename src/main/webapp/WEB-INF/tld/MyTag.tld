@@ -8,30 +8,30 @@
 	<jsp-version>1.2</jsp-version>
 	<tag>
 		<name>works</name>
-		<tag-class>onlineRecruitmentSystem.tag.WorkListTag</tag-class>
+		<tag-class>recruitSystem.tag.WorkListTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
 
 	<tag>
 		<name>users</name>
-		<tag-class>onlineRecruitmentSystem.tag.UserListTag</tag-class>
+		<tag-class>recruitSystem.tag.UserListTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
 
 	<tag>
 		<name>managers</name>
-		<tag-class>onlineRecruitmentSystem.tag.ManagerListTag</tag-class>
+		<tag-class>recruitSystem.tag.ManagerListTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
 
 	<tag>
 		<name>jobs</name>
-		<tag-class>onlineRecruitmentSystem.tag.JobListTag</tag-class>
+		<tag-class>recruitSystem.tag.JobListTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
 	<tag>
 		<name>companys</name>
-		<tag-class>onlineRecruitmentSystem.tag.CompanyListTag</tag-class>
+		<tag-class>recruitSystem.tag.CompanyListTag</tag-class>
 		<body-content>empty</body-content>
 	</tag>
 

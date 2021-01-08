@@ -33,8 +33,10 @@ public interface UserInfoDAO {
 	void insert(@Param("user")User user);
 	
 	void updateUserName(@Param("userName") String userName,@Param("account")String account);
-	
 	void updateBasicInfo(@Param("user")User user);
+	User findUser(@Param("userId")String userId);
+	void deleteUser(@Param("userId")String userId);
+	void updateManager(@Param("userId")String userId);
 	
 	/**
 	 * 通过接收者查找发送者
@@ -43,5 +45,7 @@ public interface UserInfoDAO {
 	 * @return
 	 */
 	List<User> selectBySendUser(@Param("receiveId")String receiveId);
-	
+
+	List<User> findSignupUsers(@Param("jobId")String jobId);
+	void alterSignUpFlag(@Param("flag")int flag,@Param("userId") String userId, @Param("jobId")String jobId,@Param("date") String date);
 }

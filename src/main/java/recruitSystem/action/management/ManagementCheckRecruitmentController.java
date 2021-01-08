@@ -51,8 +51,10 @@ public class ManagementCheckRecruitmentController {
 	@RequestMapping(value = "/successRecruitmentPage", method = RequestMethod.GET)
 	public String successRecruitment(@RequestParam(value = "workId", defaultValue = "0") String workId,
 			HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		 jobService.successJobs(user.getId(), workId);
+		
+		//工作数量加一
+			User user = (User) session.getAttribute("user");
+		 	jobService.successJobs(user.getId(), workId);
 	
 			
 			String bossId=jobService.getBossId(workId);
@@ -94,7 +96,7 @@ public class ManagementCheckRecruitmentController {
 	 */
 	@RequestMapping(value = "/deleteRecruitmentPage", method = RequestMethod.GET)
 	public String deleteRecruitment(@RequestParam(value = "workId", defaultValue = "0") String workId) {
-		 jobService.deleteJob(workId);
+		 	jobService.deleteJob(workId);
 	
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage";
 		

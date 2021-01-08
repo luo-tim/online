@@ -111,11 +111,19 @@ public class ReleaseRecruitmentController {
 				model.addAttribute("workers", workers);
 				return "bossWorkDetail";
 			} else {
-				return "redirect:/newsPage/notNewsPage";
+				return "redirect:/releaseRecruitmentPage/jobNotPage";
 			}
 		} else {
-			return "redirect:/newsPage/notNewsPage";
+			return "redirect:/homePage";
 		}
+	}
+	/**
+	 * 工作不存在页面
+	 */
+	@RequestMapping(value = "/jobNotPage", method = RequestMethod.GET)
+	public String UserExist(Model model) {
+		model.addAttribute("error", "该工作不存在");
+		return "error/error";
 	}
 
 	/**
@@ -125,8 +133,9 @@ public class ReleaseRecruitmentController {
 	 */
 	@RequestMapping(value = "/finishRecruitmentPage", method = RequestMethod.GET)
 	public String finishRecruitmentPage(@RequestParam(value = "workId", defaultValue = "0") String workId) {
-		jobService.finishJob(workId);
-		return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + workId;
+		jobService.finishJob(workId);		
+			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + workId;
+		
 	}
 
 	/**
@@ -138,10 +147,8 @@ public class ReleaseRecruitmentController {
 	public String passSignup(@RequestParam(value = "workerId", defaultValue = "0") String workerId,
 			@RequestParam(value = "employId", defaultValue = "0") String employId, HttpSession session) {
 		// 向打工人发送通过消息
-		int row = userService.successWorker(2, workerId, employId,sdf.format(new Date()));
-		if (row == 0) {
-			return "redirect:/newsPage/notNewsPage";
-		} else {
+		 	userService.alterSignUpFlag(1,workerId, employId,sdf.format(new Date()));
+	
 			User user = (User) session.getAttribute("user");// 获取老板的用户id
 //			int workerUser = userService.getWorkerId(workerId);
 //			Information information = new Information(user.getId(), workerUser, new Date(), "我通过了你的申请，请及时联系我");// 发送消息
@@ -150,10 +157,10 @@ public class ReleaseRecruitmentController {
 			information.setReceiveId(workerId);
 			information.setPostTime(sdf.format(new Date()));
 			information.setContext("我通过了你的申请，请及时联系我");
-			newsService.sendMessage(information);
+			newsService.save(information);
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + employId;
 		}
-	}
+	
 
 	/**
 	 * 拒绝申请人
@@ -165,10 +172,8 @@ public class ReleaseRecruitmentController {
 	public String refuseSignup(@RequestParam(value = "workerId", defaultValue = "0") String workerId,
 			@RequestParam(value = "employId", defaultValue = "0") String employId, HttpSession session) {
 		// 向打工人发送拒绝消息
-		int row = userService.successWorker(3, workerId, employId, sdf.format(new Date()));
-		if (row == 0) {
-			return "redirect:/newsPage/notNewsPage";
-		} else {
+		 userService.alterSignUpFlag(2, workerId, employId, sdf.format(new Date()));
+		
 			User user = (User) session.getAttribute("user");// 获取老板的用户id
 //			int workerUser = userService.getWorkerId(workerId);
 //			Information information = new Information(user.getId(), workerUser, new Date(), "不好意思，你不符合我们所需标准");// 发送消息
@@ -177,8 +182,8 @@ public class ReleaseRecruitmentController {
 			information.setReceiveId(workerId);
 			information.setPostTime(sdf.format(new Date()));
 			information.setContext("不好意思，你不符合我们所需标准");
-			newsService.sendMessage(information);
+			newsService.save(information);
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + employId;
-		}
+		
 	}
 }

@@ -40,7 +40,7 @@ public class ManagementCheckCompanyController {
 	public String CompanyList(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "3") int tag, Model model) {
 //		PaginationSupport<Company> companies = companyRepository.fingCompanies(pageNo,tag);
 //		model.addAttribute("pages", companies);
-		return "checkCompany";
+		return "manager/checkCompany";
 	}
 	
 

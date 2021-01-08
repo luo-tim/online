@@ -1,0 +1,67 @@
+.head {
+	background-color: #0FB8AD;
+}
+
+.bottom {
+	background-color: #0FB8AD;
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
+.feature {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.block1 {
+	width: 200px;
+	height: 100px;
+	background-color: #0fb8ad;
+}
+
+
+.block2 {
+	width: 200px;
+	height: 100px;
+	background-color: #0fb8ad;
+}
+
+
+.block3 {
+	width: 200px;
+	height: 100px;
+	background-color: #0fb8ad;
+}
+
+.block4 {
+	width: 200px;
+	height: 100px;
+	background-color: #0fb8ad;
+}
+
+.block-headline {
+	font-family: 'TSSunOld2584f205b822dda';;
+	font-weight: bold;
+	color: #5e5e5e;
+}
+
+.logoPic {
+	width: 1000px;
+	position: absolute;
+	left:28%;
+}
+
+.divison {
+	background-color: #0FB8AD;
+	height: 20px;
+}
+
+.bottom {
+	background-color: #0FB8AD;
+	height: 303px;
+}
+
+.text {
+	font-family: "微软雅黑";
+	color: aliceblue;
+}

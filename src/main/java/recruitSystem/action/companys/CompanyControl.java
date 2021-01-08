@@ -71,8 +71,6 @@ public class CompanyControl {
 	 */
 	@RequestMapping(value = "/companyWorksPage", method = RequestMethod.GET)
 	public String companyWorks(@RequestParam(value = "companyId", defaultValue = "") String companyId, Model model) {
-
-	
 			Company company = companyService.findCompanyById(companyId);
 			if (company != null) {
 			List<Job> jobs = jobService.findCompanyJobs(companyId);
@@ -126,11 +124,11 @@ public class CompanyControl {
 			// 后缀
 			String fileSuffixName = uploadFileName.substring(uploadFileName.lastIndexOf(".") + 1);
 
-			if (!(fileSuffixName.equals("png") || fileSuffixName.equals("jpg") || fileSuffixName.equals("bmp")
-					|| fileSuffixName.equals("gif"))) {
-				model.addAttribute("companyTip", "图片格式不符合，注册失败");
-				return "companyTip";// 返回错误页面
-			}
+//			if (!(fileSuffixName.equals("png") || fileSuffixName.equals("jpg") || fileSuffixName.equals("bmp")
+//					|| fileSuffixName.equals("gif"))) {
+//				model.addAttribute("companyTip", "图片格式不符合，注册失败");
+//				return "redirect:/companyPage/notCompanyPage";// 返回错误页面
+//			}
 			System.out.println("上传文件名 : " + uploadFileName);
 			// 上传路径保存设置
 			String uploadPath = request.getServletContext().getRealPath("/resource");
@@ -180,13 +178,21 @@ public class CompanyControl {
 			// 提交成功后，返回成功信息
 			return "company/companyTip"; // 返回成功页面
 		} else {
-			model.addAttribute("companyTip", "公司注册失败，请重新注册");
-			// 提交成功后，返回成功信息
-			return "company/companyTip"; // 返回失败页面
+			// 提交失败后，返回成功信息
+			return "redirect:/companyPage/companyErrorPage"; // 返回失败页面
 		}
 
 	}
 
+
+	/*
+	 * 公司注册失败页面
+	 */
+	@RequestMapping(value = "/companyErrorPage", method = RequestMethod.GET)
+	public String CompanyExist(Model model) {
+		model.addAttribute("error", "公司注册失败，请重新注册");
+		return "error/error";
+	}
 
 
 }

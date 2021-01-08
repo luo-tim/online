@@ -24,10 +24,39 @@ public class Job {
 	private User boss;//发布工作的HR
 	private Company company;//所属公司
 	private String mid;//审核的管理员id
-
 	private String bossId;
+	private SignUpJob signUpJob;//申请的工作
+	private BrowseJob browseJob;//浏览的工作
 	
 
+
+	/**
+	 * @return the sinUpJob
+	 */
+	public SignUpJob getSinUpJob() {
+		return signUpJob;
+	}
+
+	/**
+	 * @param sinUpJob the sinUpJob to set
+	 */
+	public void setSinUpJob(SignUpJob sinUpJob) {
+		this.signUpJob = sinUpJob;
+	}
+
+	/**
+	 * @return the browseJob
+	 */
+	public BrowseJob getBrowseJob() {
+		return browseJob;
+	}
+
+	/**
+	 * @param browseJob the browseJob to set
+	 */
+	public void setBrowseJob(BrowseJob browseJob) {
+		this.browseJob = browseJob;
+	}
 
 	/**
 	 * @return the bossId

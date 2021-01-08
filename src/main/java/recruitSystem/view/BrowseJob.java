@@ -7,10 +7,36 @@ package recruitSystem.view;
  * @author 72412
  *工人的浏览记录
  */
-public class BrowseJob extends Job{
+public class BrowseJob {
 	private String browseId;//主键
 	private String browseTime;//浏览时间
+	private String userId;//工人id
+	private String jobId;//工作id
 	
+	/**
+	 * @return the userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	/**
+	 * @return the jobId
+	 */
+	public String getJobId() {
+		return jobId;
+	}
+	/**
+	 * @param jobId the jobId to set
+	 */
+	public void setJobId(String jobId) {
+		this.jobId = jobId;
+	}
 	/**
 	 * @return the browseId
 	 */

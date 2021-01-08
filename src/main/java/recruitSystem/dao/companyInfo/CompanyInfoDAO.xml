@@ -10,20 +10,14 @@
  <result  column="leader_introduce"  property="leaderIntroduce" />
  <result  column="company_name"  property="companyName" />
  <result  column="address"  property="address" />
+ <result  column="boss_num"  property="bossNum" />
+ <result  column="job_num"  property="job_num" />
  <result  column="treatment"  property="treatment" />
  <result  column="company_type"  property="companyType" /> 
  <result  column="company_logo"  property="companyLogo" />
  <result  column="flag"  property="flag" />
- <result  column="boss_num"  property="bossNum" />
- <result  column="job_num"  property="jobNum" />
- <result  column="mid"  property="mid" />
+  <result  column="mid"  property="mid" />
  </resultMap>
- 
- <!-- 注册公司 -->
- <insert id="insert">
- 	INSERT INTO company(company_name,leader_introduce,company_description,address,treatment,company_type,company_logo,flag,boss_num,job_num)
- 	VALUES(#{companyName},#{leaderIntroduce},#{companyDescription},#{address},#{treatment},#{companyType},#{companyLogo},0,0,0)
- </insert>
  
  <!-- 查询公司id -->
  <select id="findCompany" resultType="string">
@@ -34,6 +28,11 @@
 	 WHERE
 	 	company_name = #{companyName}
  </select>
+  <!-- 注册公司 -->
+ <insert id="insert">
+ 	INSERT INTO company(company_name,leader_introduce,company_description,address,treatment,company_type,company_logo,flag,boss_num,job_num)
+ 	VALUES(#{companyName},#{leaderIntroduce},#{companyDescription},#{address},#{treatment},#{companyType},#{companyLogo},0,0,0)
+ </insert>
  <!-- 插入公司和HR的关系 -->
  <insert id="insertHR">
  	INSERT INTO companyHR(company_id,user_id)
@@ -66,7 +65,6 @@
  		id = #{companyId}
  		AND flag != 0
  </select>
- 
  <!-- 根据老板id查找公司 -->
  <select id="findCompanyByBossId" resultMap="CompanyInfoMap">
  	SELECT *
@@ -80,4 +78,20 @@
  			AND flag != 0
  	)
  </select>
+ <update id="successCompany">
+ 	UPDATE company
+ 	<set>
+ 		flag = 1,
+ 		mid = #{userId}
+ 	</set>
+ 	WHERE
+ 		id = #{companyId}
+ </update>
+ <delete id="failCompany">
+ 	DELETE FROM
+ 			company
+ 	WHERE
+ 			id = #{companyId}
+ 	AND	flag = 0
+ </delete>
  </mapper>

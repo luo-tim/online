@@ -17,14 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import net.sf.json.util.NewBeanInstanceStrategy;
 import recruitSystem.service.job.JobHistoryService;
 import recruitSystem.service.job.JobService;
 import recruitSystem.service.job.JobSignupService;
 import recruitSystem.service.news.NewsService;
 import recruitSystem.util.PaginationSupport;
+import recruitSystem.view.BrowseJob;
 import recruitSystem.view.Information;
 import recruitSystem.view.Job;
+import recruitSystem.view.SignUpJob;
 import recruitSystem.view.User;
 
 /**
@@ -58,7 +59,7 @@ public class jobControl {
 //分页
 //		PaginationSupport<Job> jobs = jobService.findJobs(pageNo, query, city, type);
 //		model.addAttribute("pages", jobs);
-		return "workList";
+		return "job/workList";
 	}
 	
 	/*
@@ -95,16 +96,21 @@ public class jobControl {
 			model.addAttribute("job", job);
 			// 如果是打工人登录，就创建一个新的model存储相关信息
 			User user = (User) session.getAttribute("user");
-			int flag = 0;
+			String flag=null;
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
 			if (user.getIdentityId() == 0) {// 如果是打工人登录，查询用户是否已经报名，将浏览记录添加
 				//
 				int row = jobHistoryService.existHistory(user.getId(), id);
+				BrowseJob browseJob=new BrowseJob();
+				browseJob.setUserId(user.getId());
+				browseJob.setJobId(id);
+				browseJob.setBrowseTime(dateFormat.format(new Date()));
 				if (row == 1) {// 之前浏览过
 					flag = jobService.findSignUpFlag(user.getId(), id);// 查询用户是否已经报名
-					jobHistoryService.updateHistory(user.getId(), id, new Date());// 更新浏览时间
+					jobHistoryService.updateHistory(browseJob );// 更新浏览时间
 				} else {// 第一次浏览
 						// 向历史中插入数据
-					jobHistoryService.insertHistory(user.getId(), id, new Date());// 插入浏览记录
+					jobHistoryService.insertHistory(browseJob);// 插入浏览记录
 				}
 			}
 			model.addAttribute("flag", flag);// 用来判断用户是否已经报名，1是审核中，2是审核通过，3是审核失败
@@ -125,8 +131,12 @@ public class jobControl {
 		if (f == 0) {// 招聘中
 			User user = (User) session.getAttribute("user");
 			if ( user.getIdentityId()==0) {// 是打工人则报名
-				
-				jobSignupService.insertWorkerSignup(user.getId(), id, new Date());
+				SignUpJob signUpJob=new SignUpJob();
+				signUpJob.setUserId(user.getId());
+				signUpJob.setJobId(id);
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+				signUpJob.setSignUpTime(dateFormat.format(new Date()));
+				jobSignupService.insertWorkerSignup(signUpJob);
 				
 				String bossId = jobService.getBossId(id);// 获取老板的id
 				Information information = new Information();// 发送消息
@@ -134,7 +144,7 @@ public class jobControl {
 				information.setSendId(user.getId());
 				information.setReceiveId(bossId);
 				information.setContext("我申请了你的工作，请查看我的简历");
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+				
 				information.setPostTime(dateFormat.format(new Date()));
 				newsService.sendMessage(information);
 				return "redirect:/employmentPage/workDetailPage?id=" + id;// 重新进入到页面中

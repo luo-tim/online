@@ -24,7 +24,6 @@ public class NewsService {
 	private NewsDAO newsDAO;
 	@Autowired
 	private UserInfoDAO userInfoDAO;
-	
 	public void sendMessage(Information information) {
 		newsDAO.insert(information);
 	}
@@ -37,4 +36,19 @@ public class NewsService {
 		return newsDAO.selectBySendnReceive(sendId,receiveId);
 	}
 	
+	public void save(Information information) {
+		List<Information> informations = newsDAO.selectBySendnReceive(
+				information.getSendId(), information.getReceiveId());
+		Boolean exist = false;
+		for (Information information2 : informations) {
+			if (information.getId().equals(information2.getId())) {//已存在，更新
+				newsDAO.update(information);
+				exist=true;
+				break;
+			}
+		}
+		if (!exist) {//不存在，插入
+			newsDAO.insert(information);
+		}
+	}
 }

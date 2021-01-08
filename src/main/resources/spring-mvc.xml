@@ -27,31 +27,7 @@
     <!--文件后缀-->
     <property name="suffix" value=".jsp"></property>
     </bean>
-    <!--拦截器-->
-    <mvc:interceptors>
-     <!--多个拦截器，顺序执行-->
-
-    <mvc:interceptor>
-    <mvc:mapping path="/managerPage"/>
-     <mvc:mapping path="/managerPage/**"/>
-       <!-- 配置不需要拦截作用的路径 -->
-        <mvc:exclude-mapping path="/managerPage/managerListPage" />
-            <mvc:exclude-mapping path="/managerPage/managerListPage/**" />
-    <bean class="recruitSystem.interceptor.ManagerInterceptor"></bean>
-    </mvc:interceptor>
-      <mvc:interceptor>
-    <mvc:mapping path="/managerPage/managerListPage"/>
-      <mvc:mapping path="/managerPage/managerListPage/**"/>
-    <bean class="recruitSystem.interceptor.SuperManagerInterceptor"></bean>
-    </mvc:interceptor>
-      <mvc:interceptor>
-    <mvc:mapping path="/releaseRecruitmentPage"/>
-    <mvc:mapping path="/releaseRecruitmentPage/**"/>
-       <!-- 配置不需要拦截作用的路径 -->
-        <mvc:exclude-mapping path="/releaseRecruitmentPage/bossWorkDetailPage" />
-    <bean class="recruitSystem.interceptor.BossInterceptor"></bean>
-    </mvc:interceptor>
-    </mvc:interceptors>
+  
 <!--文件上传-->
 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 <!--设置默认编码-->

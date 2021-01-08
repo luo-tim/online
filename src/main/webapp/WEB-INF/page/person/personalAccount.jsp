@@ -86,8 +86,8 @@
 															 ${history.experience } <span class="vline"></span> ${history.education }
 														</p>
 														<div class="info-publish">
-															<h3 class="name">${history.lastName}
-<c:if test="${history.sex eq '男' }">先生</c:if><c:if test="${history.sex eq '女' }">女士</c:if></h3>
+															<h3 class="name">${history.boss.lastName}
+<c:if test="${history.boss.sex eq '男' }">先生</c:if><c:if test="${history.boss.sex eq '女' }">女士</c:if></h3>
 														</div>
 													</div>
 												</div>
@@ -95,20 +95,20 @@
 											<div class="job-company">
 												<div class="company-text">
 													<h3 class="company-name">
-														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${history.companyId}"/>">${history.companyName}</a>
+														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${history.company.id}"/>">${history.company.companyName}</a>
 													</h3>
 													<p>
-														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${history.companyId}"/>">${history.companyType}</a>
+														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${history.company.id}"/>">${history.company.companyType}</a>
 													</p>
 												</div>
-												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${history.companyId}"/>"> <img class="company-logo"
-													src="<c:url value="/resource/${history.companyLogo}"/>" alt="">
+												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${history.company.id}"/>"> <img class="company-logo"
+													src="<c:url value="/resource/${history.company.companyLogo}"/>" alt="">
 												</a>
 											</div>
 										</div>
 										<div class="info-append">
 											<div class="info-left">${history.jobDescription }</div>
-											<div class="info-right">${history.historyTime }</div>
+											<div class="info-right">${history.browseJob.browseTime }</div>
 										</div>
 									</div>
 								</li>
@@ -119,50 +119,7 @@
 					</div>
 				</div>
 			</c:when>
-			<c:when test="${message eq 'bossHistory'}">
-				<!--老板浏览记录-->
-				<div class="person-right">
-					<!--小标题-->
-					<div class="person-right-title">
-						<span class="person-right-title-name">浏览记录</span>
-					</div>
-					<div class="person-right-bottom">
-
-						<div class="game-container">
-							<ul>
-							<c:forEach items="${bossHistory}" var="history">
-								<li class="game-list-person">
-									<div class="job-item-person">
-										<div class="job-info-person">
-											<div class="job-wrapper">
-												<div class="primary-box">
-													<div class="job-title">
-														<span class="job-name"> <a href="<c:url value="/personalPage/workerAccountPage?userId=${history.userId}" />">${history.userName}</a>
-														</span> <span class="job-area"><span class="job-name"> <a href="<c:url value="/personalPage/userbasicInfoPage?workId=${history.id}" />">
-														${history.lastName}${history.firstName}</a></span>
-														</span>
-													</div>
-												</div>
-											</div>
-											<div class="job-company">
-												<h3 class="resume">
-													<a href="<c:url value="/myResumePage?workerId=${history.id}" />">简历</a>
-												</h3>
-											</div>
-										</div>
-										<div class="info-append">
-											<div class="info-left">${history.historyTime}</div>
-
-										</div>
-									</div>
-								</li>
-								</c:forEach>
-							</ul>
-						</div>
-
-					</div>
-				</div>
-			</c:when>
+			
 			<c:when test="${message eq 'workerSignup'}">
 				<!--打工人申请记录  person-right-active-->
 				<div class="person-right  ">
@@ -205,8 +162,8 @@
 															${signup.experience} <span class="vline"></span> ${signup.education}
 														</p>
 														<div class="info-publish">
-															<h3 class="name">${signup.lastName}
-<c:if test="${signup.sex eq '男' }">先生</c:if><c:if test="${signup.sex eq '女' }">女士</c:if></h3>
+															<h3 class="name">${signup.boss.lastName}
+<c:if test="${signup.boss.sex eq '男' }">先生</c:if><c:if test="${signup.boss.sex eq '女' }">女士</c:if></h3>
 														</div>
 													</div>
 												</div>
@@ -214,22 +171,22 @@
 											<div class="job-company">
 												<div class="company-text">
 													<h3 class="company-name">
-														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${signup.companyId}"/>">${signup.companyName }</a>
+														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${signup.company.id}"/>">${signup.company.companyName }</a>
 													</h3>
 													<p>
-														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${signup.companyId}"/>">${signup.companyType}</a>
+														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${signup.company.id}"/>">${signup.company.companyType}</a>
 													</p>
 												</div>
-												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${signup.companyId}"/>"> <img class="company-logo"
-													src="<c:url value="/resource/${signup.companyLogo}"/>" alt="">
+												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${signup.company.id}"/>"> <img class="company-logo"
+													src="<c:url value="/resource/${signup.company.companyLogo}"/>" alt="">
 												</a>
 											</div>
 										</div>
 										<div class="info-append">
 											<div class="info-left">
-												<c:if test="${signup.flag eq 1}"><span class="info-left-blue">申请中</span></c:if>
-												<c:if test="${signup.flag eq 2}"><span class="info-left-green">申请通过</span></c:if>
-												<c:if test="${signup.flag eq 3}"><span class="info-left-red">申请失败</span></c:if>
+												<c:if test="${signup.signUpJob.flag eq 1}"><span class="info-left-blue">申请中</span></c:if>
+												<c:if test="${signup.signUpJob.flag eq 2}"><span class="info-left-green">申请通过</span></c:if>
+												<c:if test="${signup.signUpJob.flag eq 3}"><span class="info-left-red">申请失败</span></c:if>
 											</div>
 											<div class="info-right">${signup.jobDescription}</div>
 										</div>
@@ -290,14 +247,14 @@
 											<div class="job-company">
 												<div class="company-text">
 													<h3 class="company-name">
-														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${release.companyId}"/>">${release.companyName }</a>
+														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${release.company.id}"/>">${release.company.companyName }</a>
 													</h3>
 													<p>
-														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${release.companyId}"/>">${release.companyType }</a>
+														<a href="<c:url value="/companyPage/companyDetailPage?companyId=${release.company.id}"/>">${release.company.companyType }</a>
 													</p>
 												</div>
-												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${release.companyId}"/>"> <img class="company-logo"
-													src="<c:url value="/resource/${release.companyLogo}"/>" alt="">
+												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${release.company.id}"/>"> <img class="company-logo"
+													src="<c:url value="/resource/${release.company.companyLogo}"/>" alt="">
 												</a>
 											</div>
 										</div>
@@ -386,8 +343,9 @@
 				</div>
 
 			</c:when>
-			<!-- 所属公司 -->
+			<%-- 所属公司 --%>
 			<c:when test="${message eq 'bossComapny'}">
+			<p>公司</p>
 			</c:when>
 			<c:otherwise>
 				<!--账户信息-->

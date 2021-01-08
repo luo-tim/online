@@ -41,10 +41,10 @@ public class ManagementManagerController {
 		// 管理员列表
 //		PaginationSupport<Manager> managers = managerRepository.findManagers(pageNo);
 //		model.addAttribute("pages", managers);
-		return "managerList";
+		return "manager/managerList";
 	}
 	
-	/*
+	/**
 	 * 查看管理者的账户详情信息
 	 */
 	@RequestMapping(value = "/managerAccountInfoPage", method = RequestMethod.GET)
@@ -54,7 +54,7 @@ public class ManagementManagerController {
 		return "userAccount";
 	}
 	
-	/*
+	/**
 	 * 删除管理员
 	 */
 	@RequestMapping(value = "/deleteManagerPage", method = RequestMethod.GET)
@@ -111,6 +111,7 @@ public class ManagementManagerController {
 		user.setPhoneNumber(phone);
 		user.setEmail(email);
 		user.setSex(sex);
+		user.setIdentityId(2);
 		session.setAttribute("newManager", user);
 		return "redirect:/registerPage/accountInfoPage";// 返回账号密码注册页面
 	}

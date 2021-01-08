@@ -35,23 +35,23 @@ public class NewsController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String news(@RequestParam(value = "index", defaultValue = "0")int index, Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		System.out.println("1111");
+		//System.out.println("1111");
 		if (user == null) {
 			return "redirect:/newsPage/notNewsPage";// 重定向到没有信息的页面
 		} else {
 			List<User> users = newsService.findSendUser(user.getId());
-			System.out.println("sss");
+			//System.out.println("sss");
 			if (users == null) {// 如果没有消息
 				return "redirect:/newsPage/notNewsPage";// 重定向到没有信息的页面
 			}else {// 如果有消息
-				System.out.println("222");
+				//System.out.println("222");
 				User user2 = users.get(index);
 				List<Information> informations = newsService.findInformations(user.getId(), user2.getId());// 获取信息列表
 				model.addAttribute("users", users);// 发送者列表
 				model.addAttribute("news", informations);// 显示的消息
 
 				model.addAttribute("userName", user2.getUserName());
-				return "news";
+				return "news/news";
 			}
 		}
 	}
@@ -60,7 +60,8 @@ public class NewsController {
 	 * 提示没有消息
 	 */
 	@RequestMapping(value = "/notNewsPage", method = RequestMethod.GET)
-	public String notNews() {
-		return "notNews";
+	public String notNews(Model model) {
+		model.addAttribute("error", "当前没有消息");
+		return "error/error";
 	}
 }

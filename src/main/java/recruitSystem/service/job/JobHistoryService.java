@@ -3,9 +3,11 @@
  */
 package recruitSystem.service.job;
 
-import java.util.Date;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import recruitSystem.dao.job.JobInfoDAO;
+import recruitSystem.view.BrowseJob;
 
 /**
  * @author 72412
@@ -13,16 +15,19 @@ import org.springframework.stereotype.Service;
  */
 @Service("JobHistoryService")
 public class JobHistoryService {
-
+	
+	@Autowired
+	private JobInfoDAO jobInfoDAO;
+	
 	public int existHistory(String userId,String jobId) {
-	return 0;
+	return jobInfoDAO.existHistory(userId,jobId);
 	}
 	
-	public void updateHistory(String userId,String jobId,Date date) {
-		
+	public void updateHistory(BrowseJob browseJob) {
+		jobInfoDAO.updateHistory(browseJob);
 	}
 	
-	public void insertHistory(String userId,String jobId,Date date) {
-		
+	public void insertHistory(BrowseJob browseJob) {
+		jobInfoDAO.insertHistory(browseJob);
 	}
 }

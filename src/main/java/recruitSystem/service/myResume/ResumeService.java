@@ -3,8 +3,10 @@
  */
 package recruitSystem.service.myResume;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import recruitSystem.dao.resume.ResumeDAO;
 import recruitSystem.view.Resume;
 
 /**
@@ -13,22 +15,24 @@ import recruitSystem.view.Resume;
  */
 @Service("ResumeService")
 public class ResumeService {
-
+	
+	@Autowired
+	private ResumeDAO resumeDAO;
 	
 	public Resume findResume(String userId) {
-		return null;
+		return resumeDAO.findResume(userId);
 	}
 	
 	public int existResume(String userId) {
-		return 0;
+		return resumeDAO.existResume(userId);
 	}
 	
-	public int updateResume(Resume resume) {
+	public void updateResume(Resume resume) {
 		
-		return 0;
+		resumeDAO.updateResume(resume);
 	}
 	public void insert(Resume resume) {
-		
+		resumeDAO.insert(resume);
 	}
 	
 }

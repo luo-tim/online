@@ -21,103 +21,57 @@ public class JobService {
 	@Autowired
 	private JobInfoDAO jobInfoDAO;
 	
-	/**
-	 * 
-	 * @param id
-	 * @param tag
-	 * @return
-	 */
+	
 	public List<Job> findReleaseJob(String id, int tag){
 		return jobInfoDAO.findReleaseJob(id, tag);
 	}
-	/**
-	 * 
-	 * @param id
-	 * @param tag
-	 * @return
-	 */
+	
 	public List<Job> findSignupJob(String id, int tag){
 		return jobInfoDAO.findSignupJob(id, tag);
 	}
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
+	
 	public List<Job> findHistoryJob(String id){
 		return jobInfoDAO.findHistoryJob(id);
 	}
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public Job findJob(String id){
+	
+	public Job findJob(String jobId){
 		
-		return null;
+		return jobInfoDAO.findJob(jobId);
 	}
+	
+	public String findSignUpFlag(String userId,String jobId){
+		
+		return jobInfoDAO.findSignUpFlag(userId,jobId);
+	}
+	public String getBossId(String jobId) {
+		return jobInfoDAO.getBossId(jobId);
+	}
+	
+	public List<Job> findCompanyJobs(String companyId){
+		return jobInfoDAO.findCompanyJobs(companyId);
+	}
+	
+	public void successJobs(String userId,String jobId) {
+		jobInfoDAO.successJobs(userId,jobId);
+	}
+	
+	public void failJobs(String jobId) {
+		jobInfoDAO.failJobs(jobId);
+	}
+	
+	public void deleteJob(String jobId) {
+		jobInfoDAO.deleteJob(jobId);
+	}
+	public String save(Job job) {
+		return jobInfoDAO.insert(job);
+	}
+	
+
 	
 	public Job findBossJob(String id) {
 		return jobInfoDAO.findBossJob(id);
 	}
 	
-	/**
-	 * 
-	 * @param userId
-	 * @param jobId
-	 * @return
-	 */
-	public int findSignUpFlag(String userId,String jobId){
-		
-		return 0;
-	}
-	/**
-	 * 
-	 * @param jobId
-	 * @return
-	 */
-	public String getBossId(String jobId) {
-		return "";
-	}
-	/**
-	 * 
-	 * @param companyId
-	 * @return
-	 */
-	public List<Job> findCompanyJobs(String companyId){
-		return null;
-	}
-	/**
-	 * 
-	 * @param userId
-	 * @param jobId
-	 */
-	public void successJobs(String userId,String jobId) {
-		
-	}
-	/**
-	 * 
-	 * @param jobId
-	 */
-	public void failJobs(String jobId) {
-		
-	}
-	/**
-	 * 
-	 * @param jobId
-	 */
-	public void deleteJob(String jobId) {
-		
-	}
-	/**
-	 * 插入工作
-	 * @param job
-	 * @return 工作id
-	 */
-	public String save(Job job) {
-		return jobInfoDAO.insert(job);
-	}
-		
 	public void finishJob(String workId) {
 		jobInfoDAO.updateJobFinshed(workId);
 	}

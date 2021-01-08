@@ -95,7 +95,7 @@ public class PersonalInfoController {
 	
 
 	/*
-	 * 发布的工作
+	 * 发布的工作,拦截器
 	 */
 	@RequestMapping(value = "/releaseInfoPage", method = RequestMethod.GET)
 	public String releaseInfo(@RequestParam(value = "tag", defaultValue = "3") int tag, Model model,
@@ -103,13 +103,13 @@ public class PersonalInfoController {
 		model.addAttribute("message", "bossRelease");
 		User user =(User) session.getAttribute("user");
 
-		List<Job> jobs = jobService.findReleaseJob(user.getId(), tag);// 工作的标志0代表招聘中，1代表招聘结束，2代表删除，5代表审核中
+		List<Job> jobs = jobService.findReleaseJob(user.getId(), tag);//
 		model.addAttribute("bossRelease", jobs);
 		return "person/personalAccount";
 	}
 	
 	/*
-	 * 申请的工作
+	 * 申请的工作，拦截器
 	 */
 	@RequestMapping(value = "/requestInfoPage", method = RequestMethod.GET)
 	public String requestInfo(@RequestParam(value = "tag", defaultValue = "0") int tag, Model model,

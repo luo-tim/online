@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
  <mapper namespace="recruitSystem.dao.news.NewsDAO">
- 
- <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+  <!-- 建立sql查询结果字段与实体属性的映射关系 -->
  <resultMap type="recruitSystem.view.Information" id="NewsMap">
  <result column="id" property="id" />
  <result column="context" property="context" />
@@ -11,8 +10,11 @@
  <result column="send_id" property="sendId" />
  <result column="receive_id" property="receiveId" />
  </resultMap>
-  
- <!-- 通过发送、接收者查找消息 -->
+	 <insert id="insert">
+	 	INSERT INTO news(send_id,receive_id,context,post_time)
+	 	VALUES(#{information.sendId},#{information.receiveId},#{information.context},#{information.postTime})
+	 </insert>
+	  <!-- 通过发送、接收者查找消息 -->
  <select id="selectBySendnReceive" resultMap="NewsMap">
  	SELECT *
  	FROM news
@@ -20,11 +22,14 @@
  		send_id = #{sendId}
  	AND	receive_id = #{receiveId}
  </select>
- 
- <!-- 插入消息 -->
- <insert id="insert">
- 	INSERT INTO news(context,post_time,send_id,receive_id)
- 	VALUES(#{context},#{postTime},#{sendId},#{receiveId})
- </insert>
- 
+  <!-- 更新消息 -->
+ <update id="update">
+ 	UPDATE news
+ 	<set>
+ 		<if test="context != null">context=#{context}</if>
+ 		<if test="postTime != null">postTime=#{postTime}</if>
+ 		<if test="sendId != null">send_id=#{sendId}</if>
+ 		<if test="receiveId != null">receive_id=#{receiveId}</if>
+ 	</set>
+ </update>
  </mapper>

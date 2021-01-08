@@ -8,15 +8,23 @@ import recruitSystem.view.Information;
 import recruitSystem.view.User;
 
 public interface NewsDAO {
+
+	/**
+	 * 
+	 * @param sendId
+	 * @return
+	 */
+	public List<User> selectBySendUser(@Param("receiveId")String receiveId);
 	
 	/**
-	 * 通过发送、接收者查找消息
+	 * 
 	 * @param sendId
 	 * @param receiveId
 	 * @return
 	 */
 	public List<Information> selectBySendnReceive(@Param("sendId")String sendId,@Param("receiveId")String receiveId);
 	
+
 	/**
 	 * 插入消息
 	 * @param information
@@ -24,4 +32,10 @@ public interface NewsDAO {
 	 */
 	public int insert(Information information);
 	
+	/**
+	 * 更新消息
+	 * @param information
+	 * @return
+	 */
+	public int update(Information information);
 }

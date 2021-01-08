@@ -4,7 +4,6 @@
 package recruitSystem.service.user;
 
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,22 +75,22 @@ public class UserService {
 	}
 	
 	public User findUser(String userId) {
-		return null;
+		return userInfoDAO.findUser(userId);
 	}
 	
 	
-	public int deleteUser(String userId) {
-		return 0;
+	public void deleteUser(String userId) {
+		userInfoDAO.deleteUser(userId);
 	}
 	
 	public void updateManager(String userId) {
-		
+		userInfoDAO.updateManager(userId);
 	}
 	public List<User> findSignupUsers(String id) {
-		return null;
+		return userInfoDAO.findSignupUsers(id);
 	}
 	
-	public int successWorker(int flag, String workerId, String employmentId, String date) {
-		return 0;
+	public void alterSignUpFlag( int flag,String userId, String jobId, String date) {
+		userInfoDAO.alterSignUpFlag(flag,userId,jobId, date);
 	}
 }

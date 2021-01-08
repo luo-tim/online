@@ -15,38 +15,27 @@ import recruitSystem.view.Company;
  */
 public interface CompanyInfoDAO {
 
+
+	/**
+	 * 查找公司
+	 */
+	String findCompany(@Param("companyName")String companyName);
+	
+	void insertHR(@Param("userId")String userId,@Param("companyId")String companyId);
+	void updateBossNum(@Param("companyId")String companyId);
+	
 	/**
 	 * 注册公司
 	 * @param company
 	 * @return
 	 */
 	int insert(Company company);
-	
-	/**
-	 * 查找公司id
-	 * @param companyName
-	 * @return
-	 */
-	String findCompany(@Param("companyName")String companyName);
-	
-	/**
-	 * 插入HR
-	 * @param userId
-	 * @param companyId
-	 */
-	void insertHR(@Param("userId")String userId,@Param("companyId")String companyId);
-	
-	/**
-	 * 更新老板数量
-	 * @param companyId
-	 */
-	void updateBossNum(@Param("companyId")String companyId);
-	
 	/**
 	 * 查找公司列表
 	 * @return
 	 */
 	List<Company> findCompanies();
+	
 	
 	/**
 	 * 根据公司id查找公司
@@ -61,12 +50,7 @@ public interface CompanyInfoDAO {
 	 */
 	Company findCompanyByBossId(@Param("bossId")String bossId);
 	
-	
-	
-	
-	
-	
-	
-	
+	void successCompany(@Param("companyId")String companyId,@Param("userId")String userId);
+	void failCompany(@Param("companyId")String companyId);
 	
 }

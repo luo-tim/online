@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import recruitSystem.view.BrowseJob;
 import recruitSystem.view.Job;
+import recruitSystem.view.SignUpJob;
 
 /**
  * @author 72412
@@ -15,21 +17,21 @@ import recruitSystem.view.Job;
  */
 public interface JobInfoDAO {
 
-	List<Job> findReleaseJob(@Param("jobId") String jobId,@Param("tag") int tag);
-	List<Job> findSignupJob(@Param("jobId") String jobId,@Param("tag") int tag);
-	List<Job> findHistoryJob(@Param("jobId") String jobId);
-	/**
-	 * 插入工作
-	 * @param job
-	 * @return 工作id
-	 */
+	List<Job> findReleaseJob(@Param("id") String id,@Param("tag") int tag);
+	List<Job> findSignupJob(@Param("id") String id,@Param("tag") int tag);
+	List<Job> findHistoryJob(@Param("id") String id);
+	Job findJob(@Param("jobId") String jobId);
+	int existHistory(@Param("usrId") String userId,@Param("jobId")String jobId);
+	String findSignUpFlag(@Param("usrId") String userId,@Param("jobId")String jobId);
+	void updateHistory(@Param("browseJob") BrowseJob browseJob);
+	void insertHistory(@Param("browseJob") BrowseJob browseJob);
+	void insertWorkerSignup(@Param("signUpJob")SignUpJob signUpJob);
+	String getBossId(@Param("jobId")String jobId);
+	void successJobs(@Param("userId")String userId,@Param("jobId")String jobId);
+	void failJobs(@Param("jobId")String jobId);
+	void deleteJob(@Param("jobId")String jobId);
+	List<Job> findCompanyJobs(@Param("companyId")String companyId);
 	String insert(Job job);
-	/**
-	 * 老板查找工作（除了已删除）
-	 * @param id
-	 * @return
-	 */
 	Job findBossJob(@Param("jobId")String jobId);
-	
 	void updateJobFinshed(@Param("jobId")String jobId);
 }

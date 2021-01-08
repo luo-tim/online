@@ -49,24 +49,6 @@ public class ManagerInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		// 不符合条件的转发到登录页面
-		/*页面如下：
-		 * /managerPage
-		 * /managerPage/userListPage
-		 * /managerPage/managerListPage
-		 * /managerPage/managerListPage/addManagerPage
-		 * /managerAccountInfoPage
-		 * /managerPage/checkCompanyPage
-		 * /managerPage/checkRecruitmentPage
-		 * /managerPage/checkRecruitmentPage/recruitmentDetailPage
-		 * /successCompanyPage
-		 * /failCompanyPage
-		 * /successRecruitmentPage
-		 * /failRecruitmentPage
-		 * /deleteRecruitmentPage
-		 * /alterUserScorePage
-		 * /deleteUserPage
-		 * 
-		 */
 		response.sendRedirect(request.getContextPath()+"/homePage");//request.getContextPath()是为了解决相对路径的问题，可以返回站点的根路径
 		return false;
 	}
