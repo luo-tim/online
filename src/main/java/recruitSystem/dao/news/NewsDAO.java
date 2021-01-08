@@ -24,11 +24,4 @@ public interface NewsDAO {
 	 */
 	public int insert(Information information);
 	
-	/**
-	 * 更新消息
-	 * @param information
-	 * @return
-	 */
-	public int update(Information information);
-
 }

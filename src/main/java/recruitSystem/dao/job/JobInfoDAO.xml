@@ -18,6 +18,7 @@
  		<result  column="job_request"  property="jobRequest" />
  		<result  column="release_time"  property="releaseTime" />
  		<result  column="mid"  property="mid" />
+ 		<result  column="boss_id"  property="bossId"/>
  		<association property="boss" javaType="recruitSystem.view.User">
  			<result  column="user_id"  property="id" />
 	 		<result  column="user_name"  property="userName" />
@@ -74,7 +75,6 @@
  		AND h.company_id = c.id
  		AND u.id= #{id}
  	</select>
-	
 	<select id="findSignupJob" resultMap="JobInfoMap">
  		SELECT 
  			j.id,
@@ -100,7 +100,7 @@
  		AND h.company_id = c.id
  		AND u.id= #{id}
  	</select>
- 		<select id="findHistoryJob" resultMap="JobInfoMap">
+ 	<select id="findHistoryJob" resultMap="JobInfoMap">
  		SELECT 
  			j.id,
  			j.flag,
@@ -125,4 +125,41 @@
  		AND h.company_id = c.id
  		AND u.id= #{id}
  	</select>
+
+	<!-- 插入工作,返回工作id -->
+	<insert id="insert">
+		<selectKey keyProperty='id' order="AFTER" resultType="java.lang.String">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO job(boss_id,release_time,job_name,job_description,work_address,
+						salary,city,job_type,experience,education,job_request,flag)
+		VALUES(#{bossId},#{releaseTime},#{jobName},#{jobDescription},#{workAddress},
+				#{salary},#{city},#{jobType},#{experience},#{education},#{job_request},0)
+	</insert>
+
+	<select id="findBossJob" resultMap="JobInfoMap">
+		SELECT *
+		FROM job
+		WHERE
+			id = #{jobId}
+		AND
+			flag != 3
+	</select>
+
+	<update id="updateJobFinshed">
+		UPDATE job
+		<set>
+			flag = 2
+		</set>
+		WHERE
+			id = #{jobId}
+	</update>
+
+
+
+
+
+
+
+
 </mapper>

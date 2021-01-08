@@ -89,7 +89,7 @@ public class ReleaseRecruitmentController {
 		job.setExperience(experience);
 		job.setEducation(education);
 		job.setJobRequest(jobRequest);
-		int id = jobService.save(job);
+		String id = jobService.save(job);
 		return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + id;// 重定向到老板查看工作的页面
 	}
 
@@ -125,12 +125,8 @@ public class ReleaseRecruitmentController {
 	 */
 	@RequestMapping(value = "/finishRecruitmentPage", method = RequestMethod.GET)
 	public String finishRecruitmentPage(@RequestParam(value = "workId", defaultValue = "0") String workId) {
-		int row = jobService.finishJob(workId);
-		if (row == 0) {
-			return "redirect:/newsPage/notNewsPage";
-		} else {
-			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + workId;
-		}
+		jobService.finishJob(workId);
+		return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + workId;
 	}
 
 	/**
@@ -154,7 +150,7 @@ public class ReleaseRecruitmentController {
 			information.setReceiveId(workerId);
 			information.setPostTime(sdf.format(new Date()));
 			information.setContext("我通过了你的申请，请及时联系我");
-			newsService.save(information);
+			newsService.sendMessage(information);
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + employId;
 		}
 	}
@@ -181,7 +177,7 @@ public class ReleaseRecruitmentController {
 			information.setReceiveId(workerId);
 			information.setPostTime(sdf.format(new Date()));
 			information.setContext("不好意思，你不符合我们所需标准");
-			newsService.save(information);
+			newsService.sendMessage(information);
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + employId;
 		}
 	}

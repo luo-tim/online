@@ -15,7 +15,21 @@ import recruitSystem.view.Job;
  */
 public interface JobInfoDAO {
 
-	List<Job> findReleaseJob(@Param("id") String id,@Param("tag") int tag);
-	List<Job> findSignupJob(@Param("id") String id,@Param("tag") int tag);
-	List<Job> findHistoryJob(@Param("id") String id);
+	List<Job> findReleaseJob(@Param("jobId") String jobId,@Param("tag") int tag);
+	List<Job> findSignupJob(@Param("jobId") String jobId,@Param("tag") int tag);
+	List<Job> findHistoryJob(@Param("jobId") String jobId);
+	/**
+	 * 插入工作
+	 * @param job
+	 * @return 工作id
+	 */
+	String insert(Job job);
+	/**
+	 * 老板查找工作（除了已删除）
+	 * @param id
+	 * @return
+	 */
+	Job findBossJob(@Param("jobId")String jobId);
+	
+	void updateJobFinshed(@Param("jobId")String jobId);
 }

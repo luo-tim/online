@@ -56,6 +56,11 @@ public class JobService {
 		
 		return null;
 	}
+	
+	public Job findBossJob(String id) {
+		return jobInfoDAO.findBossJob(id);
+	}
+	
 	/**
 	 * 
 	 * @param userId
@@ -105,21 +110,15 @@ public class JobService {
 		
 	}
 	/**
-	 * 
+	 * 插入工作
 	 * @param job
-	 * @return
+	 * @return 工作id
 	 */
-	public int save(Job job) {
-		return 0;
+	public String save(Job job) {
+		return jobInfoDAO.insert(job);
 	}
-	
-
-	
-	public Job findBossJob(String id) {
-		return null;
-	}
-	
-	public int finishJob(String workId) {
-		return 0;
+		
+	public void finishJob(String workId) {
+		jobInfoDAO.updateJobFinshed(workId);
 	}
 }

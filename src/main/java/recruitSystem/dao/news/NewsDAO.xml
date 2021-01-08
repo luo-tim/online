@@ -27,15 +27,4 @@
  	VALUES(#{context},#{postTime},#{sendId},#{receiveId})
  </insert>
  
- <!-- 更新消息 -->
- <update id="update">
- 	UPDATE news
- 	<set>
- 		<if test="context != null">context=#{context}</if>
- 		<if test="postTime != null">postTime=#{postTime}</if>
- 		<if test="sendId != null">send_id=#{sendId}</if>
- 		<if test="receiveId != null">receive_id=#{receiveId}</if>
- 	</set>
- </update>
-
  </mapper>
