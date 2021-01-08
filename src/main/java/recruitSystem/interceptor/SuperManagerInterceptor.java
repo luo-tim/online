@@ -12,12 +12,12 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import recruitSystem.view.Manager;
+import recruitSystem.view.User;
 
 
 
 /**
- * @author 66666
+ * @author 72412
  *
  */
 public class SuperManagerInterceptor implements HandlerInterceptor{
@@ -41,7 +41,7 @@ public class SuperManagerInterceptor implements HandlerInterceptor{
 		// TODO Auto-generated method stub
 		log.debug("1.Called before handler method");
 		HttpSession session = request.getSession();
-		Manager manager = (Manager) session.getAttribute("manager");
+		User manager = (User) session.getAttribute("manager");
 		String identity =(String) session.getAttribute("identity");
 		// 判断session中是否有用户数据，如果有，则返回true，继续向下执行
 //		if (manager != null && identity.equals("manager")&&manager.getLevel()==1) {

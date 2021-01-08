@@ -59,4 +59,5 @@
 <!--上传文件总的大小最大为5M-->
 <property name="maxUploadSize" value="5242440"></property>
 </bean>
-</beans>
+
+    </beans>

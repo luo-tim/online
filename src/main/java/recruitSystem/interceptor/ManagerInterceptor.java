@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import recruitSystem.view.Manager;
+import recruitSystem.view.User;
 
 
 
@@ -42,7 +42,7 @@ public class ManagerInterceptor implements HandlerInterceptor {
 		log.debug("1.Called before handler method");
 		// 获取session
 		HttpSession session = request.getSession();
-		Manager manager = (Manager) session.getAttribute("manager");
+		User manager = (User) session.getAttribute("manager");
 		String identity =(String) session.getAttribute("identity");
 		// 判断session中是否有用户数据，如果有，则返回true，继续向下执行
 		if (manager != null && identity.equals("manager")) {

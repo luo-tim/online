@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ <mapper namespace="recruitSystem.dao.userInfo.UserInfoDAO">
+ 	<!-- 建立sql查询结果字段与实体属性的映射关系 -->
+ 	<resultMap id="UserInfoMap" type="recruitSystem.view.User">
+ 		<result  column="id"  property="id" />
+ 		<result  column="user_name"  property="userName" />
+ 		<result  column="account"  property="account" />
+ 		<result  column="password"  property="password" />
+ 		<result  column="identity_id"  property="identityId" />
+ 		<result  column="credit"  property="credit" />
+ 		<result  column="enable"  property="enable" />
+ 		<result  column="last_name"  property="lastName" />
+ 		<result  column="first_name"  property="firstName" />
+ 		<result  column="date_of_birth"  property="dateOfBirth" />
+ 		<result  column="id_number"  property="IDNumber" />
+ 		<result  column="phone_number"  property="phoneNumber" />
+ 		<result  column="email"  property="email" />
+ 		<result  column="sex"  property="sex" />
+ 	</resultMap>
+ 	<!-- 查询用户 -->
+ 	<select id="selectUser" resultMap="UserInfoMap">
+	 	SELECT
+	 		id,
+	 		user_name,
+	 		account,
+	 		password,
+	 		identity_id,
+	 		credit,
+	 		enable,
+	 		last_name,
+	 		first_name,
+	 		date_of_birth,
+	 		id_number,
+	 		phone_number,
+	 		email,
+	 		sex
+	 	FROM
+	 		user
+	 	WHERE
+	 		account = #{account}
+	 	AND password = #{password}
+ 	</select>
+	<!-- 判断用户是否存在 -->
+ 	<select id="countUser" resultType="int">
+	 	SELECT
+	 		COUNT(*)
+	 	FROM
+	 		user
+	 	WHERE
+	 		account = #{account}
+ 	</select>
+ 	
+ 	<!-- 注册新用户 -->
+ 	<insert id="insert">
+ 		INSERT INTO user(user_name,account,password,identity_id,credit,enable,last_name,first_name,date_of_birth,id_number,phone_number,email,sex)
+ 		VALUES(#{user.userName},#{user.account},#{user.password},#{user.identityId},100,true,#{user.lastName},#{user.firstName},#{user.dateOfBirth},#{user.IDNumber},#{user.phoneNumber},#{user.email},#{user.sex})
+ 	</insert>
+ 	
+ 	<!-- 修改用户名 -->
+ 	<update id="updateUserName">
+ 		UPDATE user
+	 		<set>
+	 			user_name = #{userName}
+	 		</set>
+ 		WHERE account = #{account}
+ 	</update>
+ 	<!--修改用户基本信息 -->
+ 	<update id="updateBasicInfo">
+ 		UPDATE user
+ 			<set>
+ 				last_name = #{user.lastName},
+ 				first_name = #{user.first_name},
+ 				date_of_birth = #{user.dateOfBirth},
+ 				id_number = #{user.iDNumber},
+ 				phone_number = #{user.phoneNumber},
+ 				email = #{user.email},
+ 				sex = #{user.sex}
+ 			</set>
+ 		WHERE account = #{user.account}
+ 	</update>
+ </mapper>

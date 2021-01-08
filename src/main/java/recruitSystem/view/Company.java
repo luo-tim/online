@@ -3,68 +3,59 @@
  */
 package recruitSystem.view;
 
+import java.util.List;
+
 /**
  * @author 72412
- *
+ *公司实体类
  */
 public class Company {
 
-	private int id;
+	private String id;  //主键
 
-	private String companyDescription;
-	private String leaderIntroduce;
-	private String companyName;
-	private String address;
-	private int bossNum;
-	private int jobNum;
+	private String companyDescription;//公司描述
+	private String leaderIntroduce;//公司老总介绍
+	private String companyName; //公司名称
+	private String address;  //公司地址
+	private int bossNum;  //HR数量
+	private int jobNum;  //工作数量
 
-	private String treatment;
+	private String treatment;  //公司待遇
 
-	private String companyType;
+	private String companyType;  //公司类型
 
-	private String companyLogo;
-	private int flag;
+	private String companyLogo;   //公司图标
+	private int flag;   //公司的状态
+	private String mid;  //审核的管理员id
+	private List<User> bosses;//公司的HR列表
 
-	public Company() {
 
+	/**
+	 * @return the mid
+	 */
+	public String getMid() {
+		return mid;
 	}
 
-	public Company(int id, String companyName, String companyType, String companyLogo, int flag) {
-		this.id = id;
-		this.companyName = companyName;
-		this.flag = flag;
-		this.companyLogo = companyLogo;
-		this.companyType = companyType;
+	/**
+	 * @param mid the mid to set
+	 */
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
-	public Company(int id, String companyDescription) {
-		this.id = id;
-		this.companyDescription = companyDescription;
+	/**
+	 * @return the bosses
+	 */
+	public List<User> getBosses() {
+		return bosses;
 	}
 
-	public Company(int id, String companyName, String description, String address, String treatment, String companyType,
-			String companyLogo, String leaderIntroduce, int flag) {
-		this.id = id;
-		this.companyDescription = description;
-		this.companyName = companyName;
-		this.treatment = treatment;
-		this.address = address;
-		this.companyLogo = companyLogo;
-		this.companyType = companyType;
-		this.leaderIntroduce = leaderIntroduce;
-		this.flag = flag;
-	}
-
-	public Company(String companyName, String description, String address, String treatment, String companyType,
-			String companyLogo, String leaderIntroduce) {
-		this.companyDescription = description;
-		this.companyName = companyName;
-		this.treatment = treatment;
-		this.address = address;
-		this.companyLogo = companyLogo;
-		this.companyType = companyType;
-		this.leaderIntroduce = leaderIntroduce;
-
+	/**
+	 * @param bosses the bosses to set
+	 */
+	public void setBosses(List<User> bosses) {
+		this.bosses = bosses;
 	}
 
 	/**
@@ -179,17 +170,19 @@ public class Company {
 		this.companyLogo = companyLogo;
 	}
 
+	
+
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

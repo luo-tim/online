@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>登录页面</title>
-<link rel="stylesheet" href="<c:url value="/resource/login.css" />">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login.css" >
 </head>
 <body>
 <jsp:include page="navigationBar.jsp"></jsp:include>

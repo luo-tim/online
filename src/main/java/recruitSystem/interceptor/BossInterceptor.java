@@ -12,11 +12,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import recruitSystem.view.Boss;
+import recruitSystem.view.User;
 
 
 /**
- * @author 666672412
+ * @author 72412
  *
  */
 public class BossInterceptor implements HandlerInterceptor{
@@ -41,7 +41,7 @@ public class BossInterceptor implements HandlerInterceptor{
 		log.debug("1.Called before handler method");
 	
 		HttpSession session = request.getSession();
-		Boss boss = (Boss) session.getAttribute("boss");
+		User boss = (User) session.getAttribute("boss");
 		String identity =(String) session.getAttribute("identity");
 		// 判断session中是否有用户数据，如果有，则返回true，继续向下执行
 		if (boss != null && identity.equals("boss")) {

@@ -9,7 +9,7 @@ package recruitSystem.view;
  */
 public class Resume {
 
-	private int id;//主键
+	private String id;//主键
 	private String name;
 
 	private String dateOfBirth;
@@ -57,21 +57,22 @@ public class Resume {
 		this.sex = sex;
 	}
 
+
+
+
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-
-
 
 	/**
 	 * @return the name

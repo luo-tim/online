@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package recruitSystem.action.releaseRecruitment;
 
 import java.text.SimpleDateFormat;
@@ -21,8 +24,7 @@ import recruitSystem.view.Job;
 import recruitSystem.view.User;
 
 /**
- * 发布工作控制器
- * @author LJTTT
+ * @author 72412
  *
  */
 @Controller
@@ -35,9 +37,9 @@ public class ReleaseRecruitmentController {
 	private NewsService newsService;
 	@Autowired
 	private JobService jobService;
-
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
+	
+	
 	/**
 	 * 进入发布工作页面
 	 * 
@@ -72,7 +74,7 @@ public class ReleaseRecruitmentController {
 			@RequestParam(value = "jobRequest", defaultValue = "") String jobRequest,
 			@RequestParam(value = "experience", defaultValue = "") String experience,
 			@RequestParam(value = "education", defaultValue = "") String education, HttpSession session) {
-		User boss = (User) session.getAttribute("boss");
+		User boss = (User) session.getAttribute("user");
 //		Job job = new Job(boss.getId(), new Date(), jobName, jobIntroduce, jobAddress, jobSalary, city, jobType,
 //				experience, education, jobRequest);
 		Job job = new Job();
@@ -80,7 +82,7 @@ public class ReleaseRecruitmentController {
 		job.setReleaseTime(sdf.format(new Date()));
 		job.setJobName(jobName);
 		job.setJobDescription(jobIntroduce);
-		job.setWorkaddress(jobAddress);
+		job.setWorkAddress(jobAddress);
 		job.setSalary(jobSalary);
 		job.setCity(city);
 		job.setJobType(jobType);
@@ -97,13 +99,13 @@ public class ReleaseRecruitmentController {
 	 * @param id
 	 */
 	@RequestMapping(value = "/bossWorkDetailPage", method = RequestMethod.GET)
-	public String bossWorkDetail(@RequestParam(value = "id", defaultValue = "0") int id, Model model,
+	public String bossWorkDetail(@RequestParam(value = "id", defaultValue = "0") String id, Model model,
 			HttpSession session) {
-		User boss = (User) session.getAttribute("boss");
+		User boss = (User) session.getAttribute("user");
 		if (boss != null) {
-			int row = jobService.existJob(id);
-			if (row != 0) {
-				Job job = jobService.findBossJob(id);
+			Job job = jobService.findBossJob(id);
+			if (job != null) {
+				
 				model.addAttribute("job", job);
 				List<User> workers = userService.findSignupUsers(id);
 				model.addAttribute("workers", workers);
@@ -122,7 +124,7 @@ public class ReleaseRecruitmentController {
 	 * @param workId
 	 */
 	@RequestMapping(value = "/finishRecruitmentPage", method = RequestMethod.GET)
-	public String finishRecruitmentPage(@RequestParam(value = "workId", defaultValue = "0") int workId) {
+	public String finishRecruitmentPage(@RequestParam(value = "workId", defaultValue = "0") String workId) {
 		int row = jobService.finishJob(workId);
 		if (row == 0) {
 			return "redirect:/newsPage/notNewsPage";
@@ -137,10 +139,10 @@ public class ReleaseRecruitmentController {
 	 * @param workerId
 	 */
 	@RequestMapping(value = "/passSignupPage", method = RequestMethod.GET)
-	public String passSignup(@RequestParam(value = "workerId", defaultValue = "0") int workerId,
-			@RequestParam(value = "employId", defaultValue = "0") int employId, HttpSession session) {
+	public String passSignup(@RequestParam(value = "workerId", defaultValue = "0") String workerId,
+			@RequestParam(value = "employId", defaultValue = "0") String employId, HttpSession session) {
 		// 向打工人发送通过消息
-		int row = userService.successWorker(2, workerId, employId, new Date());
+		int row = userService.successWorker(2, workerId, employId,sdf.format(new Date()));
 		if (row == 0) {
 			return "redirect:/newsPage/notNewsPage";
 		} else {
@@ -164,10 +166,10 @@ public class ReleaseRecruitmentController {
 	 * @param employId
 	 */
 	@RequestMapping(value = "/refuseSignupPage", method = RequestMethod.GET)
-	public String refuseSignup(@RequestParam(value = "workerId", defaultValue = "0") int workerId,
-			@RequestParam(value = "employId", defaultValue = "0") int employId, HttpSession session) {
+	public String refuseSignup(@RequestParam(value = "workerId", defaultValue = "0") String workerId,
+			@RequestParam(value = "employId", defaultValue = "0") String employId, HttpSession session) {
 		// 向打工人发送拒绝消息
-		int row = userService.successWorker(3, workerId, employId, new Date());
+		int row = userService.successWorker(3, workerId, employId, sdf.format(new Date()));
 		if (row == 0) {
 			return "redirect:/newsPage/notNewsPage";
 		} else {

@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import recruitSystem.service.user.UserService;
+import recruitSystem.util.MD5;
+import recruitSystem.view.User;
 
 /**
  * 系统的主页控制类
@@ -28,7 +30,7 @@ public class HomeController {
 
 	@Autowired
 	private UserService userService;
-	/*
+	/**
 	 * 欢迎页面
 	 */
 	@RequestMapping(method = RequestMethod.GET) // get请求
@@ -36,7 +38,7 @@ public class HomeController {
 		return "index";
 	}
 
-	/*
+	/**
 	 * 首页
 	 */
 	@RequestMapping(value = "/homePage", method = RequestMethod.GET)
@@ -45,7 +47,7 @@ public class HomeController {
 		return "home";
 	}
 
-	/*
+	/**
 	 * 搜索职业
 	 */
 	@RequestMapping(value = "/homePage", method = RequestMethod.POST)
@@ -58,7 +60,7 @@ public class HomeController {
 		return "redirect:/employmentPage";
 	}
 
-	/*
+	/**
 	 * 登录页面
 	 */
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
@@ -66,55 +68,31 @@ public class HomeController {
 		return "login";
 	}
 
-	/*
+	/**
 	 * 登录请求
 	 */
-//	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
-//	public String processLogin(@RequestParam(value = "account", defaultValue = "") String account,
-//			@RequestParam(value = "password", defaultValue = "") String password, HttpSession session, Model model) {
-//		int row=userRepository.finUser(account, password);
-//		
-//		if (row != 0) {
-//			User user = userRepository.findUser(account, password);// 查找用户
-//			String identity = user.getIdentity();
-//			if (identity.equals("manager")) {
-//
-//				Manager manager = managerRepository.findManager(user.getIdentityId());
-//
-//				// 向session添加属性
-//				session.setAttribute("user", user);
-//				session.setAttribute("manager", manager);
-//				session.setAttribute("identity", "manager");
-//
-//			} else if (identity.equals("boss")) {
-//				Boss boss = bossRepository.findBoss(user.getIdentityId());
-//
-//				// 向session添加属性
-//				session.setAttribute("user", user);
-//				session.setAttribute("boss", boss);
-//				session.setAttribute("identity", "boss");
-//			} else if (identity.equals("worker")) {
-//				// System.out.println(user.getIdentityId());
-//				Worker worker = workerRepository.findWorker(user.getIdentityId());
-//
-//				// 向session添加属性
-//				session.setAttribute("user", user);
-//				session.setAttribute("worker", worker);
-//				session.setAttribute("identity", "worker");
-//			} else {
-//				model.addAttribute("loginError", "登录失败，请重新登录");
-//				return "login";// 登录失败返回登录失败提醒页面
-//			}
-//
-//			return "redirect:/homePage";// 登录成功返回首页
-//		} else {
-//			model.addAttribute("loginError", "用户不存在，请重新登录");
-//			return "login";// 登录失败返回登录失败提醒页面
-//		}
-//
-//	}
+	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
+	public String processLogin(@RequestParam(value = "account", defaultValue = "") String account,
+			@RequestParam(value = "password", defaultValue = "") String password, HttpSession session, Model model) {
+		User user=userService.selectUser(account, MD5.md5(password));
+		//校验用户名，密码是否正确
+		if (user==null) {
+			model.addAttribute("loginError", "用户不存在，请重新登录");
+			return "login";// 登录失败返回登录失败提醒页面
+		}
+		//校验用户是否被封禁
+		if (!user.isEnable()) {
+			model.addAttribute("loginError", "该账号已被封禁");
+			return "login";// 登录失败返回登录失败提醒页面
+		}
+		//将用户信息保存到session
+		session.setAttribute("user", user);
+		//
+		return "redirect:/homePage";//返回首页
 
-	/*
+	}
+
+	/**
 	 * 退出登录
 	 */
 	@RequestMapping(value = "/logoutPage", method = RequestMethod.GET)

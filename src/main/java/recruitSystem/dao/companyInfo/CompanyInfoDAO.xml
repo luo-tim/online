@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ <mapper namespace="recruitSystem.dao.companyInfo.CompanyInfoDAO">
+ 
+ <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+ <resultMap id="CompanyInfoMap" type="recruitSystem.view.Company">
+ <result  column="id"  property="id" />
+ <result  column="company_description"  property="companyDescription" />
+ <result  column="leader_introduce"  property="leaderIntroduce" />
+ <result  column="company_name"  property="companyName" />
+ <result  column="address"  property="address" />
+ <result  column="boss_num"  property="bossNum" />
+ <result  column="job_num"  property="job_num" />
+ <result  column="treatment"  property="treatment" />
+ <result  column="company_type"  property="companyType" /> 
+ <result  column="company_logo"  property="companyLogo" />
+ <result  column="flag"  property="flag" />
+  <result  column="mid"  property="mid" />
+ </resultMap>
+ 
+ <!-- 查询公司id -->
+ <select id="findCompany" resultType="string">
+	 SELECT
+	 	id
+	 FROM
+	 	company
+	 WHERE
+	 	company_name = #{companyName}
+ </select>
+ <!-- 插入公司和HR的关系 -->
+ <insert id="insertHR">
+ 	INSERT INTO companyHR(company_id,user_id)
+ 	VALUES(#{companyId},#{userId})
+ 		
+ </insert>
+ <!-- 更新公司HR的数量 -->
+ <update id="updateBossNum">
+ 	UPDATE company
+ 	<set>
+ 		boss_num = boss_num + 1
+ 	</set>
+ 	WHERE id = #{companyId}
+ </update>
+ </mapper>

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package recruitSystem.action.news;
 
 import java.util.List;
@@ -11,19 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import recruitSystem.view.*;
-import recruitSystem.service.news.*;
-import recruitSystem.service.user.UserService;
+import recruitSystem.service.news.NewsService;
+import recruitSystem.view.Information;
+import recruitSystem.view.User;
 
 /**
- * 
- * @author LJTTT
+ * @author 72412
  *
  */
 @Controller
 @RequestMapping("/newsPage")
 public class NewsController {
-	
+
 	@Autowired
 	private NewsService newsService;
 	
@@ -61,5 +63,4 @@ public class NewsController {
 	public String notNews() {
 		return "notNews";
 	}
-	
 }

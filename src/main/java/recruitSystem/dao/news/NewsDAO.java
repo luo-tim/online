@@ -7,19 +7,14 @@ import org.apache.ibatis.annotations.Param;
 import recruitSystem.view.Information;
 import recruitSystem.view.User;
 
-/**
- * 
- * @author LJTTT
- *
- */
-public interface INewsDAO {
-	
+public interface NewsDAO {
+
 	/**
 	 * 
 	 * @param sendId
 	 * @return
 	 */
-	public List<User> selectBySendUser(@Param("sendId")int sendId);
+	public List<User> selectBySendUser(@Param("receiveId")String receiveId);
 	
 	/**
 	 * 
@@ -27,6 +22,5 @@ public interface INewsDAO {
 	 * @param receiveId
 	 * @return
 	 */
-	public List<Information> selectBySendnReceive(@Param("sendId")int sendId,@Param("receiveId")int receiveId);
-	
+	public List<Information> selectBySendnReceive(@Param("sendId")String sendId,@Param("receiveId")String receiveId);
 }

@@ -162,6 +162,30 @@ a{
     vertical-align: middle;
     color: #fc703e!important;
 }
+.info-left-red{
+    display: block;
+    height: 40px;
+    width: 50px;
+    line-height: 40px;
+    text-align: center;
+    background: red;
+}
+.info-left-blue{
+    display: block;
+    height: 40px;
+    width: 50px;
+    line-height: 40px;
+    text-align: center;
+    background: #03a2ca;
+}
+.info-left-green{
+    display: block;
+    height: 40px;
+    width: 50px;
+    line-height: 40px;
+    text-align: center;
+    background: #00c2b3;
+}
 .job-limit p{
     float: left;
     font-size: 14px;

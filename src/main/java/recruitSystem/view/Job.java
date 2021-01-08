@@ -4,38 +4,76 @@
 package recruitSystem.view;
 
 /**
- * @author 72412 工作实体类
+ * @author 72412
+ *工作实体类
  */
 public class Job {
 
-	private int id;// 主键
-	private String jobName;// 工作的名字
-	private int bossId;// 老板ID
-	private String salary;// 薪水
-	private String city;// 城市
-	private String jobType;// 工作类型
-	private String experience;// 工作经验要求
-	private String education;// 学历要求
-	private int flag; // 工作的状态标识
-	private String jobDescription;// 工作描述
-	private String workaddress;// 工作地址
-	private String jobRequest;// 工作的具体要求
-	private String releaseTime;// 发布时间
+	private String id;//主键
+	private String jobName;//工作的名字
+	private String salary;//薪水
+	private String city;//城市
+	private String jobType;//工作类型
+	private String experience;//工作经验要求
+	private String education;//学历要求
+	private int flag;  //工作的状态标识
+	private String jobDescription;//工作描述
+	private String workAddress;//工作地址
+	private String jobRequest;//工作的具体要求
+	private String releaseTime;//发布时间
+	private User boss;//发布工作的HR
+	private Company company;//所属公司
+	private String mid;//审核的管理员id
+
+	private String bossId;
+	
+
 
 	/**
 	 * @return the bossId
 	 */
-	public int getBossId() {
+	public String getBossId() {
 		return bossId;
 	}
 
 	/**
 	 * @param bossId the bossId to set
 	 */
-	public void setBossId(int bossId) {
+	public void setBossId(String bossId) {
 		this.bossId = bossId;
 	}
-	
+
+	/**
+	 * @return the company
+	 */
+	public Company getCompany() {
+		return company;
+	}
+
+	/**
+	 * @param company the company to set
+	 */
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	/**
+	 * @return the boss
+	 */
+	public User getBoss() {
+		return boss;
+	}
+
+	/**
+	 * @param boss the boss to set
+	 */
+	public void setBoss(User boss) {
+		this.boss = boss;
+	}
+
+
+
+
 	/**
 	 * @return the releaseTime
 	 */
@@ -67,15 +105,29 @@ public class Job {
 	/**
 	 * @return the workaddress
 	 */
-	public String getWorkaddress() {
-		return workaddress;
+	public String getWorkAddress() {
+		return workAddress;
+	}
+
+	/**
+	 * @return the mid
+	 */
+	public String getMid() {
+		return mid;
+	}
+
+	/**
+	 * @param mid the mid to set
+	 */
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
 	/**
 	 * @param workaddress the workaddress to set
 	 */
-	public void setWorkaddress(String workaddress) {
-		this.workaddress = workaddress;
+	public void setWorkAddress(String workAddress) {
+		this.workAddress = workAddress;
 	}
 
 	/**
@@ -106,17 +158,22 @@ public class Job {
 		this.flag = flag;
 	}
 
+
+	
+
+
+
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package recruitSystem.service.news;
 
 import java.util.List;
@@ -5,27 +8,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import recruitSystem.dao.news.INewsDAO;
+import recruitSystem.dao.news.NewsDAO;
 import recruitSystem.view.Information;
 import recruitSystem.view.User;
 
 /**
- * 
- * @author LJTTT
+ * @author 72412
  *
  */
 @Service("NewsService")
 public class NewsService {
-	
+
 	@Autowired
-	private INewsDAO iNewsDAO;
+	private NewsDAO newsDAO;
 	
-	public List<User> findSendUser(int userID) {
-		return iNewsDAO.selectBySendUser(userID);
+	public void sendMessage(Information information) {
+		
 	}
 	
-	public List<Information> findInformations(int userID, int user2ID) {
-		return iNewsDAO.selectBySendnReceive(userID,user2ID);
+	public List<User> findSendUser(String receiveId ) {
+		return newsDAO.selectBySendUser(receiveId);
+	}
+	
+	public List<Information> findInformations(String sendId, String receiveId) {
+		return newsDAO.selectBySendnReceive(sendId,receiveId);
 	}
 	
 	public void save(Information information) {

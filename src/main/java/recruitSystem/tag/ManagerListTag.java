@@ -12,7 +12,7 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import recruitSystem.util.PaginationSupport;
-import recruitSystem.view.Manager;
+import recruitSystem.view.User;
 
 
 
@@ -31,7 +31,7 @@ public class ManagerListTag extends SimpleTagSupport {
 		super.doTag();
 		JspWriter out = getJspContext().getOut();
 		HttpServletRequest request = (HttpServletRequest) ((PageContext) getJspContext()).getRequest();
-		PaginationSupport<Manager> jobPages = (PaginationSupport<Manager>) request.getAttribute("pages");// 获取传过来的分页参数
+		PaginationSupport<User> jobPages = (PaginationSupport<User>) request.getAttribute("pages");// 获取传过来的分页参数
 		// 最多展示五个页码
 		int pageNo = jobPages.getPageNo();// 页码
 		int totalCount = jobPages.getTotalCount();// 总个数

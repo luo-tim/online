@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper  namespace="recruitSystem.dao.job.JobInfoDAO">
+
+	<!-- 建立sql查询结果字段与实体属性的映射关系 -->
+	<resultMap id="JobInfoMap" type="recruitSystem.view.Job">
+ 		<result  column="id"  property="id" />
+ 		<result  column="job_name"  property="jobName" />
+ 		<result  column="salary"  property="salary" />
+ 		<result  column="city"  property="city" />
+ 		<result  column="job_type"  property="jobType" />
+ 		<result  column="experience"  property="experience" />
+ 		<result  column="education"  property="education" />
+ 		<result  column="flag"  property="flag" />
+ 		<result  column="job_description"  property="jobDescription" />
+ 		<result  column="work_address"  property="workAddress" />
+ 		<result  column="job_request"  property="jobRequest" />
+ 		<result  column="release_time"  property="releaseTime" />
+ 		<result  column="mid"  property="mid" />
+ 		<association property="boss" javaType="recruitSystem.view.User">
+ 			<result  column="user_id"  property="id" />
+	 		<result  column="user_name"  property="userName" />
+	 		<result  column="account"  property="account" />
+	 		<result  column="password"  property="password" />
+	 		<result  column="identity_id"  property="identityId" />
+	 		<result  column="credit"  property="credit" />
+	 		<result  column="enable"  property="enable" />
+	 		<result  column="last_name"  property="lastName" />
+	 		<result  column="first_name"  property="firstName" />
+	 		<result  column="date_of_birth"  property="dateOfBirth" />
+	 		<result  column="id_number"  property="IDNumber" />
+	 		<result  column="phone_number"  property="phoneNumber" />
+	 		<result  column="email"  property="email" />
+	 		<result  column="sex"  property="sex" />
+ 		</association>
+ 		<association property="company" javaType="recruitSystem.view.Company">
+	 		 <result  column="company_id"  property="id" />
+			 <result  column="company_description"  property="companyDescription" />
+			 <result  column="leader_introduce"  property="leaderIntroduce" />
+			 <result  column="company_name"  property="companyName" />
+			 <result  column="address"  property="address" />
+			 <result  column="boss_num"  property="bossNum" />
+			 <result  column="job_num"  property="job_num" />
+			 <result  column="treatment"  property="treatment" />
+			 <result  column="company_type"  property="companyType" /> 
+			 <result  column="company_logo"  property="companyLogo" />
+			 <result  column="company_flag"  property="flag" />
+			 <result  column="company_mid"  property="mid" />
+	 	</association>
+ 	</resultMap>
+ 	<select id="findReleaseJob" resultMap="JobInfoMap">
+ 		SELECT 
+ 			j.id,
+ 			j.flag,
+ 			j.job_name,
+ 			j.salary,
+ 			j.city,
+ 			j.experience,
+ 			j.education,
+ 			j.job_description,
+ 			c.id company_id,
+ 			c.company_name,
+ 			c.company_type,
+ 			c.company_logo
+ 		FROM
+ 			user u,
+ 			job j,
+ 			company c,
+ 			hr h
+ 		WHERE
+ 			u.id = j.boss_id
+ 		AND u.id = h.user_id
+ 		AND h.company_id = c.id
+ 		AND u.id= #{id}
+ 	</select>
+	
+	<select id="findSignupJob" resultMap="JobInfoMap">
+ 		SELECT 
+ 			j.id,
+ 			j.flag,
+ 			j.job_name,
+ 			j.salary,
+ 			j.city,
+ 			j.experience,
+ 			j.education,
+ 			j.job_description,
+ 			c.id company_id,
+ 			c.company_name,
+ 			c.company_type,
+ 			c.company_logo
+ 		FROM
+ 			user u,
+ 			job j,
+ 			company c,
+ 			hr h
+ 		WHERE
+ 			u.id = j.boss_id
+ 		AND u.id = h.user_id
+ 		AND h.company_id = c.id
+ 		AND u.id= #{id}
+ 	</select>
+ 		<select id="findHistoryJob" resultMap="JobInfoMap">
+ 		SELECT 
+ 			j.id,
+ 			j.flag,
+ 			j.job_name,
+ 			j.salary,
+ 			j.city,
+ 			j.experience,
+ 			j.education,
+ 			j.job_description,
+ 			c.id company_id,
+ 			c.company_name,
+ 			c.company_type,
+ 			c.company_logo
+ 		FROM
+ 			user u,
+ 			job j,
+ 			company c,
+ 			hr h
+ 		WHERE
+ 			u.id = j.boss_id
+ 		AND u.id = h.user_id
+ 		AND h.company_id = c.id
+ 		AND u.id= #{id}
+ 	</select>
+</mapper>
