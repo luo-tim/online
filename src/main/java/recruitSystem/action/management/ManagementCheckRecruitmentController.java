@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import recruitSystem.service.job.JobService;
 import recruitSystem.service.news.NewsService;
+import recruitSystem.util.PaginationSupport;
 import recruitSystem.view.Information;
 import recruitSystem.view.Job;
 import recruitSystem.view.User;
@@ -38,9 +39,9 @@ public class ManagementCheckRecruitmentController {
 	 * 工作列表
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public String checkRecruitment(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "3") int tag, Model model) {
-//		PaginationSupport<Job> jobs = jobRepository.findJobs(pageNo,tag);
-//		model.addAttribute("pages", jobs);
+	public String checkRecruitment(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "3") String tag, Model model) {
+		PaginationSupport<Job> jobs = jobService.findJobs(pageNo,tag);
+		model.addAttribute("pages", jobs);
 		return "checkRecruitment";
 	}
 	

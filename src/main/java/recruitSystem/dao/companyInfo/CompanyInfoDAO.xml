@@ -6,7 +6,7 @@
  <!-- 建立sql查询结果字段与实体属性的映射关系 -->
  <resultMap id="CompanyInfoMap" type="recruitSystem.view.Company">
  <result  column="id"  property="id" />
- <result  column="company_description"  property="companyDescription" />
+ <result  column="description"  property="companyDescription" />
  <result  column="leader_introduce"  property="leaderIntroduce" />
  <result  column="company_name"  property="companyName" />
  <result  column="address"  property="address" />
@@ -27,15 +27,16 @@
 	 	company
 	 WHERE
 	 	company_name = #{companyName}
+	 AND flag = 1
  </select>
   <!-- 注册公司 -->
  <insert id="insert">
- 	INSERT INTO company(company_name,leader_introduce,company_description,address,treatment,company_type,company_logo,flag,boss_num,job_num)
+ 	INSERT INTO company(company_name,leader_introduce,description,address,treatment,company_type,company_logo,flag,boss_num,job_num)
  	VALUES(#{companyName},#{leaderIntroduce},#{companyDescription},#{address},#{treatment},#{companyType},#{companyLogo},0,0,0)
  </insert>
  <!-- 插入公司和HR的关系 -->
  <insert id="insertHR">
- 	INSERT INTO companyHR(company_id,user_id)
+ 	INSERT INTO cb(company_id,boss_id)
  	VALUES(#{companyId},#{userId})
  		
  </insert>
@@ -71,11 +72,11 @@
  	FROM company
  	WHERE id = (
  		SELECT c.id
- 		FROM company c,companyHR hr
+ 		FROM company c,cb h
  		WHERE 
- 			c.id = hr.company_id
- 			AND boss_id = #{bossId}
- 			AND flag != 0
+ 			c.id = h.company_id
+ 			AND h.boss_id = #{bossId}
+ 			AND c.flag != 0
  	)
  </select>
  <update id="successCompany">
@@ -94,4 +95,33 @@
  			id = #{companyId}
  	AND	flag = 0
  </delete>
+ 
+ <select id="CompanyCount" resultType="int">
+ 	SELECT
+ 		COUNT(*)
+ 	FROM
+ 		company
+ 	WHERE
+ 		1 = 1
+ 	<if test="tag!=null and tag!='all'">
+ 		AND flag = #{tag}
+ 	</if>
+ </select>
+ <select id="findManagerCompanies" resultMap="CompanyInfoMap">
+ 	SELECT
+ 		id,
+ 		company_name,
+ 		company_type,
+ 		company_logo,
+ 		flag
+ 	FROM
+ 		company
+ 	WHERE
+ 		1 = 1
+ 	<if test="tag!=null and tag!='all'">
+ 		AND flag = #{tag}
+ 	</if>
+ 	LIMIT 6
+ 	OFFSET  #{startIndex}
+ </select>
  </mapper>

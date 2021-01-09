@@ -52,5 +52,7 @@ public interface CompanyInfoDAO {
 	
 	void successCompany(@Param("companyId")String companyId,@Param("userId")String userId);
 	void failCompany(@Param("companyId")String companyId);
+	int CompanyCount(@Param("tag")String tag);
+	List<Company> findManagerCompanies(@Param("startIndex")int startIndex,@Param("tag")String tag);
 	
 }

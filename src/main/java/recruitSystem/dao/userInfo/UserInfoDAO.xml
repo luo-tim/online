@@ -76,9 +76,9 @@
  		UPDATE user
  			<set>
  				last_name = #{user.lastName},
- 				first_name = #{user.first_name},
+ 				first_name = #{user.firstName},
  				date_of_birth = #{user.dateOfBirth},
- 				id_number = #{user.iDNumber},
+ 				id_number = #{user.IDNumber},
  				phone_number = #{user.phoneNumber},
  				email = #{user.email},
  				sex = #{user.sex}
@@ -139,7 +139,7 @@
  			w.flag signup_flag,
  			u.last_name,
  			u.first_name,
- 			u.userName,
+ 			u.user_name,
  			u.id
  		FROM
  			user u,
@@ -159,4 +159,59 @@
  		 	worker_id = #{userId} 
  		AND employment_id= #{jobId}
  	</update>
+ 	<select id="userCount"  resultType="int">
+ 		SELECT 
+ 			COUNT(*) 
+ 		FROM 
+ 			user 
+ 		WHERE  
+ 			enable=1
+ 		<choose>
+ 			<when test="tag!=null and tag!='0' and tag!='1'">
+				AND (identity_id = 0 OR identity_id = 1)
+			</when>
+			<otherwise>
+				AND identity_id = #{tag}
+			</otherwise>
+ 		</choose>
+ 		
+ 	</select>
+ 	<select id="findUsers">
+ 		SELECT
+ 			id,
+ 			user_name,
+ 			identity_id
+ 		<choose>
+ 			<when test="tag!=null and tag!='0' and tag!='1'">
+				AND (identity_id = 0 OR identity_id = 1)
+			</when>
+			<otherwise>
+				AND identity_id = #{tag}
+			</otherwise>
+ 		</choose>
+ 		LIMIT 5
+ 		OFFSET  #{startIndex}
+ 	</select>
+ 	<select id="ManagerCount">
+	 	SELECT
+	 	 	COUNT(*) 
+	 	FROM 
+	 		user
+	 	WHERE identity_id = 2 
+		AND enable = 1
+ 	</select>
+ 	<select id="findManagers" resultMap="UserInfoMap">
+ 		SELECT 
+ 			last_name,
+ 			first_name,
+ 			id ,
+ 			userName  
+ 		FROM 
+ 			user 
+ 		WHERE 
+ 			identity_id = 2 
+ 		AND enable = 1
+ 		LIMIT 5 
+ 		OFFSET  #{startIndex}
+ 	</select>
  </mapper>

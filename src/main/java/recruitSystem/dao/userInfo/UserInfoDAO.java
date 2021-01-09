@@ -48,4 +48,9 @@ public interface UserInfoDAO {
 
 	List<User> findSignupUsers(@Param("jobId")String jobId);
 	void alterSignUpFlag(@Param("flag")int flag,@Param("userId") String userId, @Param("jobId")String jobId,@Param("date") String date);
+	
+	int userCount(@Param("tag")String tag);
+	List<User> findUsers(@Param("startIndex")int startIndex,@Param("tag")String tag);
+	int ManagerCount();
+	List<User> findManagers(@Param("startIndex") int startIndex);
 }

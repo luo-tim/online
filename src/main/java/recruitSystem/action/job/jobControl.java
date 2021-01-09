@@ -57,8 +57,8 @@ public class jobControl {
 		// System.out.println(query+"ss");
 		// System.out.println(city);
 //分页
-//		PaginationSupport<Job> jobs = jobService.findJobs(pageNo, query, city, type);
-//		model.addAttribute("pages", jobs);
+		PaginationSupport<Job> jobs = jobService.findJobs(pageNo, query, city, type);
+		model.addAttribute("pages", jobs);
 		return "job/workList";
 	}
 	

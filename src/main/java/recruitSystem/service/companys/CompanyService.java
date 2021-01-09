@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import recruitSystem.dao.companyInfo.CompanyInfoDAO;
+import recruitSystem.util.PaginationSupport;
 import recruitSystem.view.Company;
 
 /**
@@ -62,4 +63,16 @@ public class CompanyService {
 		companyInfoDAO.failCompany(companyId);
 	}
 	
+	public PaginationSupport<Company> fingCompanies(int pageNo,String tag){
+		int totalCount=companyInfoDAO.CompanyCount(tag);
+		int startIndex=PaginationSupport.convertFromPageToStartIndex(pageNo, 6);
+		if (startIndex >= totalCount) {
+			startIndex = 0;
+			pageNo = 1;
+		}
+		List<Company> companies = null;
+		companies = companyInfoDAO.findManagerCompanies(startIndex,tag);
+		PaginationSupport<Company> pc=new PaginationSupport<Company>(companies, totalCount, startIndex, pageNo, 6);
+		return pc;
+	}
 }

@@ -79,7 +79,7 @@
  			cb h
  		WHERE
  			u.id = j.boss_id
- 		AND u.id = h.user_id
+ 		AND u.id = h.boss_id
  		AND h.company_id = c.id
  		AND u.id= #{id}
  		AND j.flag = #{tag}
@@ -112,7 +112,7 @@
  			workersignup w
  		WHERE
  			u.id = j.boss_id
- 		AND u.id = h.user_id
+ 		AND u.id = h.boss_id
  		AND w.employment_id = j.id
  		AND h.company_id = c.id
  		AND w.worker_id= #{id}
@@ -145,7 +145,7 @@
  		WHERE
  			u.id = j.boss_id
  		AND w.employment_id = j.id
- 		AND u.id = h.user_id
+ 		AND u.id = h.boss_id
  		AND h.company_id = c.id
  		AND w.worker_id= #{id}
  	</select>
@@ -180,7 +180,7 @@
  			u.identity_id = 1
  		AND u.enable = true
  		AND u.id = j.boss_id
- 		AND u.id = h.user_id
+ 		AND u.id = h.boss_id
  		AND h.company_id = c.id
  		AND j.id = #{jobId}
  		AND (j.flag=0 OR j.flag=1 OR j.flag=2)
@@ -279,21 +279,19 @@
  			u.identity_id = 1
  		AND u.enable = true
  		AND u.id = j.boss_id
- 		AND u.id = h.user_id
+ 		AND u.id = h.boss_id
  		AND h.company_id = c.id
  		AND c.id = #{companyId}
  		AND (j.flag=0 OR j.flag=1 OR j.flag=2)
  	</select>
  		<!-- 插入工作,返回工作id -->
-	<insert id="insert">
-		
+	<insert id="insert" parameterType="recruitSystem.view.Job" useGeneratedKeys="true" keyProperty="id">
+	
 		INSERT INTO job(boss_id,release_time,job_name,job_description,work_address,
 						salary,city,job_type,experience,education,job_request,flag)
 		VALUES(#{bossId},#{releaseTime},#{jobName},#{jobDescription},#{workAddress},
-				#{salary},#{city},#{jobType},#{experience},#{education},#{job_request},0)
-		<selectKey keyProperty='id' order="AFTER" resultType="java.lang.String">
-		SELECT LAST_INSERT_ID()
-		</selectKey>
+				#{salary},#{city},#{jobType},#{experience},#{education},#{jobRequest},0)
+		
 	</insert>
  	<select id="findBossJob" resultMap="JobInfoMap">
 		SELECT
@@ -326,7 +324,7 @@
  			u.identity_id = 1
  		AND u.enable = true
  		AND u.id = j.boss_id
- 		AND u.id = h.user_id
+ 		AND u.id = h.boss_id
  		AND h.company_id = c.id
  		AND j.id = #{jobId}
  		AND (j.flag=0 OR j.flag=1 OR j.flag=2)
@@ -340,4 +338,73 @@
 		WHERE
 			id = #{jobId}
 	</update>
+	<select id="jobCount">
+		SELECT COUNT(*)
+		FROM
+			user u,
+			job j,
+			company c,
+			cb h
+		WHERE
+			u.enable=true
+		AND u.id = j.boss_id
+		AND h.company_id = c.id
+		AND u.id = h.boss_id
+		AND j.flag= #{flag} 
+		<if test="query!=null and query!=''">
+ 			AND (j.job_name LIKE #{query} OR c.company_name LIKE #{query} OR j.city LIKE #{query}) 
+ 		</if>
+		<if test="city!=null and city!='城市'">
+			AND j.city = #{city}
+		</if>
+			<if test="type!=null and type!='工作类型'">
+			AND j.job_type = #{type}
+		</if>
+	</select>
+	<select id="findJobs" resultMap="JobInfoMap">
+		SELECT
+ 			j.id,
+ 			j.job_name,
+ 			j.salary,
+ 			j.city,
+ 			j.job_type,
+ 			j.experience,
+ 			j.education,
+ 			j.job_description,
+ 			j.work_address,
+ 			j.job_request,
+ 			j.flag,
+ 			u.last_name,
+ 			u.sex,
+ 			c.company_name,
+ 			c.id company_id,
+ 			c.company_type,
+ 			c.company_logo,
+ 			c.treatment
+ 			
+ 			
+ 		FROM
+ 			user u,
+ 			job j,
+ 			cb h,
+ 			company c
+ 		WHERE
+ 			u.identity_id = 1
+ 		AND u.enable = true
+ 		AND u.id = j.boss_id
+ 		AND u.id = h.boss_id
+ 		AND h.company_id = c.id
+ 		AND j.flag=1
+ 		<if test="query!=null and query!=''">
+ 			AND (j.job_name LIKE #{query} OR c.company_name LIKE #{query} OR j.city LIKE #{query}) 
+ 		</if>
+		<if test="city!=null and city!='城市'">
+			AND j.city = #{city}
+		</if>
+		<if test="type!=null and type!='工作类型'">
+			AND j.job_type = #{type}
+		</if>
+		LIMIT 5
+		OFFSET  #{startIndex}
+	</select>
 </mapper>

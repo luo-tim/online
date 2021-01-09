@@ -97,6 +97,9 @@ public class CompanyControl {
 	 */
 	@RequestMapping(value = "/companyRegisterPage", method = RequestMethod.GET)
 	public String companyRegister() {
+//		System.out.println("contextPath:  "+request.getContextPath());
+//		System.out.println("ServletContext:  "+request.getServletContext());
+//		System.out.println(request.getServletContext().getRealPath("/static/companyLogo"));
 		return "company/companyRegister";
 	}
 	
@@ -131,8 +134,10 @@ public class CompanyControl {
 //			}
 			System.out.println("上传文件名 : " + uploadFileName);
 			// 上传路径保存设置
-			String uploadPath = request.getServletContext().getRealPath("/resource");
-			// System.out.println("上传文件保存地址："+uploadPath);
+			//String uploadPath = request.getContextPath()+"/static/companyLogo";
+			String uploadPath = request.getServletContext().getRealPath("/static/companyLogo");
+			//System.out.println("上传文件保存地址："+uploadPath);
+			//System.out.println(request.getContextPath());
 			// 如果路径不存在，创建一个
 			File realPath = new File(uploadPath);
 			if (!realPath.exists()) {

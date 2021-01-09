@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>错误提醒</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/image/notFound.css" >
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/notFound.css" >
 </head>
 <body>
 <jsp:include page="../navigationBar.jsp"></jsp:include>

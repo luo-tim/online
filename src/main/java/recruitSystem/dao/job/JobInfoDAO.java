@@ -31,7 +31,10 @@ public interface JobInfoDAO {
 	void failJobs(@Param("jobId")String jobId);
 	void deleteJob(@Param("jobId")String jobId);
 	List<Job> findCompanyJobs(@Param("companyId")String companyId);
-	String insert(Job job);
+	int insert(Job job);
 	Job findBossJob(@Param("jobId")String jobId);
 	void updateJobFinshed(@Param("jobId")String jobId);
+	
+	int jobCount(@Param("flag")String flag,@Param("query") String query, @Param("city")String city, @Param("type")String type);
+	List<Job> findJobs(@Param("startIndex")int startIndex,@Param("query") String query, @Param("city")String city, @Param("type")String type);
 }

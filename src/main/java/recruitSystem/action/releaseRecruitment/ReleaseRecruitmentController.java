@@ -47,7 +47,7 @@ public class ReleaseRecruitmentController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String releaseRecruitment() {
-		return "releaseRecruitment";
+		return "job/releaseRecruitment";
 	}
 
 	/**
@@ -90,6 +90,7 @@ public class ReleaseRecruitmentController {
 		job.setEducation(education);
 		job.setJobRequest(jobRequest);
 		String id = jobService.save(job);
+		System.out.println("工作id： "+id);
 		return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + id;// 重定向到老板查看工作的页面
 	}
 
@@ -109,7 +110,7 @@ public class ReleaseRecruitmentController {
 				model.addAttribute("job", job);
 				List<User> workers = userService.findSignupUsers(id);
 				model.addAttribute("workers", workers);
-				return "bossWorkDetail";
+				return "job/bossWorkDetail";
 			} else {
 				return "redirect:/releaseRecruitmentPage/jobNotPage";
 			}

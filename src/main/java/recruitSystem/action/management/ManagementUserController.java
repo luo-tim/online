@@ -9,9 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import recruitSystem.service.management.ManagerService;
 import recruitSystem.service.user.UserService;
+import recruitSystem.util.PaginationSupport;
 import recruitSystem.view.User;
 
 /**
@@ -29,8 +28,8 @@ public class ManagementUserController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String userList(@RequestParam(value = "pageNo", defaultValue = "1") int pageNo,@RequestParam(value = "tag", defaultValue = "all") String tag, Model model) {
-		//PaginationSupport<User> users = userRepository.findUsers(pageNo,tag);
-		//model.addAttribute("pages", users);
+		PaginationSupport<User> users = userService.findUsers(pageNo,tag);
+		model.addAttribute("pages", users);
 		return "manager/userList";
 	}
 	

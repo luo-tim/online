@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import recruitSystem.dao.companyInfo.CompanyInfoDAO;
 import recruitSystem.dao.userInfo.UserInfoDAO;
+import recruitSystem.util.PaginationSupport;
 import recruitSystem.view.User;
 
 /**
@@ -92,5 +93,30 @@ public class UserService {
 	
 	public void alterSignUpFlag( int flag,String userId, String jobId, String date) {
 		userInfoDAO.alterSignUpFlag(flag,userId,jobId, date);
+	}
+	
+	public PaginationSupport<User> findUsers(int pageNo,String tag){
+		int totalCount=userInfoDAO.userCount(tag);
+		int startIndex=PaginationSupport.convertFromPageToStartIndex(pageNo);
+		if (startIndex >= totalCount) {
+			startIndex = 0;
+			pageNo = 1;
+		}
+		List<User> users =userInfoDAO.findUsers(startIndex,tag);
+		PaginationSupport<User> pu = new PaginationSupport<User>(users, totalCount, startIndex, pageNo);
+
+		return pu;
+	}
+	public PaginationSupport<User> findManagers(int pageNo){
+		int totalCount=userInfoDAO.ManagerCount();
+		int startIndex=PaginationSupport.convertFromPageToStartIndex(pageNo);
+		if (startIndex >= totalCount) {
+			startIndex = 0;
+			pageNo = 1;
+		}
+		List<User> managers = userInfoDAO.findManagers(startIndex);
+	
+		PaginationSupport<User> pm=new PaginationSupport<User>(managers, totalCount,startIndex,pageNo);
+		return pm;
 	}
 }

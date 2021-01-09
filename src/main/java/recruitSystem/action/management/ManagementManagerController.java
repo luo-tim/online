@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import recruitSystem.service.news.NewsService;
 import recruitSystem.service.user.UserService;
+import recruitSystem.util.PaginationSupport;
 import recruitSystem.view.Information;
 import recruitSystem.view.User;
 
@@ -39,8 +40,8 @@ public class ManagementManagerController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String ManagementManager(@RequestParam(value="pageNo",defaultValue="1")int pageNo,Model model) {
 		// 管理员列表
-//		PaginationSupport<Manager> managers = managerRepository.findManagers(pageNo);
-//		model.addAttribute("pages", managers);
+		PaginationSupport<User> managers = userService.findManagers(pageNo);
+		model.addAttribute("pages", managers);
 		return "manager/managerList";
 	}
 	
