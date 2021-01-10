@@ -124,4 +124,21 @@
  	LIMIT 6
  	OFFSET  #{startIndex}
  </select>
+ <select id="findCompanyId" resultType="String">
+ 	SELECT 
+ 		company_id
+ 	FROM
+ 		cb
+ 	WHERE
+ 		boss_id = #{bossId}
+ </select>
+ <update id="updateJobNum">
+ 	UPDATE
+ 		company
+ 	<set>
+ 		job_num = job_num +1
+ 	</set>
+ 	WHERE
+ 		id = #{companyId}
+ </update>
  </mapper>

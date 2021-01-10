@@ -248,7 +248,7 @@
  			flag !=0
  	</update>
  	
- 	<select id="findCompanyJobs">
+ 	<select id="findCompanyJobs" resultMap="JobInfoMap">
  		SELECT
  			j.id,
  			j.job_name,
@@ -406,5 +406,13 @@
 		</if>
 		LIMIT 5
 		OFFSET  #{startIndex}
+	</select>
+	<select id="findFlag" resultType="string">
+		SELECT
+		 	flag
+		FROM
+			job
+		WHERE
+			id = #{jobId}
 	</select>
 </mapper>

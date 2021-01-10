@@ -109,4 +109,8 @@ public class JobService {
 		return pj;
 	
 	}
+	
+	public String findFlag(String jobId) {
+		return jobInfoDAO.findFlag(jobId);
+	}
 }

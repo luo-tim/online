@@ -28,7 +28,7 @@
                    </a> 
                    <a href="<c:url value="/companyPage/companyWorksPage?companyId=${company.id }" />" class="about-info">
                        <p>
-                           <span class="text-blue">1</span>
+                           <span class="text-blue">${company.jobNum }</span>
                            个热招职位
                        </p>
                    </a>

@@ -28,10 +28,10 @@
                                 <div class="primary-box-person">
                                     <div class="job-title-person">
                                         <span class="job-name-person">
-                                            <a href="<c:url value="/managerPage/managerListPage/managerAccountInfoPage?userId=${manager. userId }" />">${manager. userName}</a>
+                                            <a href="<c:url value="/managerPage/managerListPage/managerAccountInfoPage?userId=${manager.id }" />">${manager. userName}</a>
                                         </span>
                                         <span class="job-area-person">
-                                           <span class="job-name-person">  <a href="<c:url value="/managerPage/managerListPage/managerBasicInfoPage?id=${ manager.id}" />">${manager. lastName}${manager. firstName}</a></span>
+                                           <span class="job-name-person">  <a href="<c:url value="/managerPage/managerListPage/managerAccountInfoPage?userId=${manager.id }" /> ">${manager. lastName}${manager. firstName}</a></span>
                                         </span>
                                     </div>
                                 </div>
@@ -45,12 +45,12 @@
                         <div class="info-append">
                       
                             <div class="info-left"> <a href="<c:url value="/managerPage/managerListPage/upManagerPage?userId=${manager. id }" />" class="a-red">升级为超级管理员</a></div>
-                            <div class="info-right"> <a href="<c:url value="/managerPage/managerListPage/deleteManagerPage?userId=${manager. userId }" />" class="a-red">删除</a></div>
+                            <div class="info-right"> <a href="<c:url value="/managerPage/managerListPage/deleteManagerPage?userId=${manager. id }" />" class="a-red">删除</a></div>
                            
                         </div>
                     </div>
                 </li>
-                </c:forEach>
+               </c:forEach>
             </ul>
         </div>
         <mytag:managers/>

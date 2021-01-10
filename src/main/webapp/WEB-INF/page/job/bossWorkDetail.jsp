@@ -19,13 +19,13 @@
                 <div class="job-primary">
                     <div class="info-primary">
                         <div class="job-status">
-                        <c:if test="${job.flag eq 0}">
+                        <c:if test="${job.flag eq 1}">
                             <span>招聘中</span>
                             </c:if>
-                            <c:if test="${job.flag eq 1}">
+                            <c:if test="${job.flag eq 2}">
                             <span class="redspan">招聘结束</span>
                             </c:if>
-                            <c:if test="${job.flag eq 5}">
+                            <c:if test="${job.flag eq 0}">
                             <span class="redspan">审核中</span>
                             </c:if>
                         </div>

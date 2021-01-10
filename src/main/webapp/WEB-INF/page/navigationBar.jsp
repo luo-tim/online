@@ -21,7 +21,9 @@
                 <li> <a href="<c:url value="/employmentPage?pro=省份&city=城市&type=工作类型&query=" />" class="nav-item">职位</a></li>
                 <li> <a href="<c:url value="/companyPage" />" class="nav-item">公司</a></li>
                  <li> <a href="<c:url value="/companyPage/companyRegisterPage" />" class="nav-item">公司注册</a></li>
+                   <c:if test="${ not empty sessionScope.user.account&& not empty sessionScope.user}">
                 <li> <a href="<c:url value="/newsPage?index=0" />" class="nav-item">消息</a></li>
+                </c:if>
                 <c:if test="${sessionScope.user.identityId eq 1 && not empty sessionScope.user.account&& not empty sessionScope.user}">
                 <li> <a href="<c:url value="/releaseRecruitmentPage" />" class="nav-item">招聘</a></li>
                 </c:if>

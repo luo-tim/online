@@ -28,7 +28,7 @@
                                     <div class="item1-img"></div>
                                     <div class="item1-name">
                                         <div class="name">${user.userName }</div>
-                                        <div class="last-word">${user.identity }</div>
+                                        <div class="last-word"><c:choose><c:when test="${user.identityId eq 0}">工人</c:when><c:when test="${user.identityId eq 1}">HR</c:when><c:when test="${user.identityId eq 2}">管理员</c:when><c:when test="${user.identityId eq 3}">超级管理员</c:when></c:choose></div>
                                     </div>
                                 </div>
                                 </a>

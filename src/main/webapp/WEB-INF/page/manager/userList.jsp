@@ -22,13 +22,13 @@
                     <a href="<c:url value="/managerPage/userListPage?tag=all" />" class="radio-text">全部</a>
                 </label>
                 <label class="radio">
-                    <input class="radio-btn" type="radio" name="identity" <c:if test="${param.tag eq 'worker' }"> checked</c:if> value="worker">
-                     <a href="<c:url value="/managerPage/userListPage?tag=worker" />" class="radio-text">打工人</a>
+                    <input class="radio-btn" type="radio" name="identity" <c:if test="${param.tag eq '0' }"> checked</c:if> value="worker">
+                     <a href="<c:url value="/managerPage/userListPage?tag=0" />" class="radio-text">打工人</a>
                 </label>
                 <label class="radio">
-                    <input class="radio-btn" type="radio" name="identity" <c:if test="${param.tag eq 'boss' }"> checked</c:if> value="boss">
+                    <input class="radio-btn" type="radio" name="identity" <c:if test="${param.tag eq '1' }"> checked</c:if> value="boss">
                   
-                    <a href="<c:url value="/managerPage/userListPage?tag=boss" />" class="radio-text">老板</a>
+                    <a href="<c:url value="/managerPage/userListPage?tag=1" />" class="radio-text">老板</a>
                 </label>
               
             </div>
@@ -47,14 +47,14 @@
                                                             </span>
                                                             <span class="job-area-person">
                                                                 <span class="job-name-person">
-                                                                <a href="<c:url value="/managerPage/userListPage/userbasicInfoPage?id=${user.id}&userIdentity=${user.identity }" />">详情信息</a></span>
+                                                                <a href="<c:url value="/managerPage/userListPage/userAccountPage?userId=${user.id}" />">详情信息</a></span>
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="job-company-person">
                                                     <h3 class="resume">
-                                                        <a href="#" >${user.identity}</a>
+                                                        <a href="#" ><c:choose><c:when test="${user.identityId eq 0}">工人</c:when><c:when test="${user.identityId eq 1}">HR</c:when><c:when test="${user.identityId eq 2}">管理员</c:when><c:when test="${user.identityId eq 3}">超级管理员</c:when></c:choose></a>
                                                     </h3>
                                                 </div>
                                             </div>

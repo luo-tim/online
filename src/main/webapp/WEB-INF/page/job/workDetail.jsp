@@ -18,10 +18,10 @@
                 <div class="job-primary">
                     <div class="info-primary">
                         <div class="job-status">
-                        <c:if test="${job.flag eq 0}">
+                        <c:if test="${job.flag eq 1}">
                             <span>招聘中</span>
                             </c:if>
-                            <c:if test="${job.flag eq 1}">
+                            <c:if test="${job.flag eq 2}">
                             <span class="redspan">招聘结束</span>
                             </c:if>
                         </div>
@@ -40,18 +40,18 @@
                     <div class="job-op">
                         <div class="communicate-btn">
                         <c:choose>
-                      		<c:when test="${not empty sessionScope.worker&& flag eq 1 }">
+                      		<c:when test="${not empty sessionScope.user &&  sessionScope.user.identityId eq 0 && flag eq 0 }">
                              <a href="#" class="job-btn">审核中</a>
                              </c:when>
-                             <c:when test="${not empty sessionScope.worker&& flag eq 2 }">
+                             <c:when test="${not empty sessionScope.user  &&  sessionScope.user.identityId eq 0 && flag eq 1 }">
                               <a href="#" class="job-btn">审核通过</a>
                               </c:when>
-                              <c:when test="${not empty sessionScope.worker&& flag eq 3 }">
+                              <c:when test="${not empty sessionScope.user &&  sessionScope.user.identityId eq 0 &&  flag eq 2 }">
                                <a href="#" class="red">审核失败</a>
                                </c:when>
                                <c:otherwise>
-                           <a href="<c:url value="/employmentPage/signupWorkPage?id=${job.id}&f=${job.flag}" />" class="job-btn">立即申请</a>
-                           </c:otherwise>
+                           		<a href="<c:url value="/employmentPage/signupWorkPage?id=${job.id}" />" class="job-btn">立即申请</a>
+                           		</c:otherwise>
                              </c:choose>
                         </div>
                     </div>
@@ -66,24 +66,24 @@
                     <div class="right-company">
                         <p class="company-title">公司基本信息</p>
                         <div class="company-info">
-                            <a href="<c:url value="/companyPage/companyDetailPage?companyId=${job.companyId}"/>" class="company-logo">
-                                <img src="<c:url value="/resource/${job.companyLogo }"/>" alt="华为">
+                            <a href="<c:url value="/companyPage/companyDetailPage?companyId=${job.company.id}"/>" class="company-logo">
+                                <img src="<c:url value="/resource/${job.company.companyLogo }"/>" alt="华为">
                             </a>
-                            <a href="<c:url value="/companyPage/companyDetailPage?companyId=${job.companyId}" />" class="company-name">
-                                ${job.companyName }
+                            <a href="<c:url value="/companyPage/companyDetailPage?companyId=${job.company.id}" />" class="company-name">
+                                ${job.company.companyName }
                             </a>
                         </div>
-                        <p>${job.companyType }</p>
+                        <p>${job.company.companyType }</p>
                     </div>
                 </div>
 
                 <div class="job-detail">
                     <div class="detail-op">
                         <div class="detail-figure">
-                            <img src="<c:url value="/resource/${job.companyLogo }"/>" alt="">
+                            <img src="<c:url value="/resource/${job.company.companyLogo }"/>" alt="">
                         </div>
-                        <h2 class="detail-personname">${job.lastName}
-<c:if test="${job.sex eq '男' }">先生</c:if><c:if test="${job.sex eq '女' }">女士</c:if></h2>
+                        <h2 class="detail-personname">${job.boss.lastName}
+<c:if test="${job.boss.sex eq '男' }">先生</c:if><c:if test="${job.boss.sex eq '女' }">女士</c:if></h2>
                         <p class="grey">
                             资深HR
                         </p>
@@ -108,7 +108,7 @@
                             <h3>工作地址</h3>
                             <div class="line"></div>
                             <div class="job-sec-text">
-                                 ${job.workaddress }
+                                 ${job.workAddress }
                             </div>
                         </div>
                     </div>

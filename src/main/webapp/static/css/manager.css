@@ -1,57 +1,93 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-body{
-    color: #000;
-    line-height: 1.5;
-    font-size: 14px;
+.box img{
+    object-fit: contain;
 }
-a{
-    text-decoration: none;
-}
-.function{
-    width: 100%;
+.box1 {
     float: left;
-    min-height: 1px;
-    box-sizing: border-box;
-    zoom: 1;
-}
-.function-one{
-    width: 25%;
-    padding-left: 12px;
-    padding-right: 12px;
-    float: left;
-    min-height: 1px;
-    box-sizing: border-box;
-    zoom: 1;
-    margin-bottom: 40px;
-    position: relative;
-    margin-top: 48px;
-    cursor: pointer;
+    width: 20%;
+    height: 410px;
+
+    transition: width 0.25s;
 
 }
-.function-one img{
+.box2 {
+    float: left;
+    width: 20%;
+    height: 410px;
+
+    transition: width 0.25s;
+
+}
+.box3 {
+    float: left;
+    width: 20%;
+    height: 410px;
+
+    transition: width 0.25s;
+
+
+}
+.box4 {
+    float: left;
+    width: 20%;
+    height: 410px;
+
+    transition: width 0.25s;
+
+}
+.box {
     width: 100%;
-    z-index: -1;
-    display: block;
-    position: relative;
+    height: 410px;
+    margin-top: 170px ;
+
+    border: 1px solid #ddd;
     overflow: hidden;
-    padding-bottom: 10px;
 }
-.function-text{
-    text-align: center;
-    box-sizing: inherit;
+.function-text1{
+    top: 14%;
+    left: 43%;
+    font-family:"楷体";
+    font-size:36px;
+    position: absolute;
+    text-align:center;
 }
-.function-text h3{
-    height: 51px;
-    padding-right: 12px;
-    font-size: 20px;
-    line-height: 51px;
-    opacity: .95;
-    padding-top: 1px;
-    padding-bottom: 2px;
-    font-weight: 600!important;
-    box-sizing: inherit;
-    display: block;
+.function-text2{
+    top: 19%;
+    left: 45%;
+    font-family:"楷体";
+    color:#808A87;
+    font-size:25px;
+    position: absolute;
+    text-align:center;
 }
+
+
+.box1:hover {
+    width: 40%;
+
+}
+.box1:not(:hover) {
+    width: 20%;
+}
+.box2:hover {
+    width: 40%;
+}
+.box2:not(:hover) {
+    width: 20%;
+}
+.box3:hover {
+    width: 40%;
+}
+.box3:not(:hover) {
+    width: 20%;
+}
+.box4:hover {
+    width: 40%;
+}
+.box4:not(:hover) {
+    width: 20%;
+}
+

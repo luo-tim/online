@@ -91,8 +91,8 @@
 											${job.experience} <span class="vline"></span> ${job.education }
 										</p>
 										<div class="info-publish">
-											<h3 class="name">${job.lastName}
-<c:if test="${job.sex eq '男' }">先生</c:if><c:if test="${job.sex eq '女' }">女士</c:if>
+											<h3 class="name">${job.boss.lastName}
+<c:if test="${job.boss.sex eq '男' }">先生</c:if><c:if test="${job.boss.sex eq '女' }">女士</c:if>
 </h3>
 										</div>
 									</div>
@@ -101,20 +101,20 @@
 							<div class="job-company">
 								<div class="company-text">
 									<h3 class="company-name">
-										<a href="#">${job.companyName }</a>
+										<a href="#">${job.company.companyName }</a>
 									</h3>
 									<p>
-										<a href="#">${job.companyType }</a>
+										<a href="#">${job.company.companyType }</a>
 									</p>
 								</div>
 								<a href="#"> <img class="company-logo"
-									src="<c:url value="/resource/${job.companyLogo}"/>" alt="">
+									src="<c:url value="/resource/${job.company.companyLogo}"/>" alt="">
 								</a>
 							</div>
 						</div>
 						<div class="info-append">
 							<div class="info-left">${job.jobType }</div>
-							<div class="info-right">${job.treatment }</div>
+							<div class="info-right">${job.company.treatment }</div>
 						</div>
 					</div>
 				</li>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import recruitSystem.service.companys.CompanyService;
 import recruitSystem.service.job.JobService;
 import recruitSystem.service.news.NewsService;
 import recruitSystem.util.PaginationSupport;
@@ -34,12 +35,14 @@ public class ManagementCheckRecruitmentController {
 	private JobService jobService;
 	@Autowired
 	private NewsService newsService;
+	@Autowired
+	private CompanyService companyService;
 	
 	/*
 	 * 工作列表
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public String checkRecruitment(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "3") String tag, Model model) {
+	public String checkRecruitment(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "all") String tag, Model model) {
 		PaginationSupport<Job> jobs = jobService.findJobs(pageNo,tag);
 		model.addAttribute("pages", jobs);
 		return "checkRecruitment";
@@ -54,12 +57,13 @@ public class ManagementCheckRecruitmentController {
 			HttpSession session) {
 		
 		//工作数量加一
+			
 			User user = (User) session.getAttribute("user");
 		 	jobService.successJobs(user.getId(), workId);
-	
+		 	
 			
 			String bossId=jobService.getBossId(workId);
-			
+			companyService.updateJobNum(bossId);
 			Information information = new Information();// 发送消息
 			information.setContext("你的工作发布已通过，请查看");
 			information.setSendId(user.getId());
@@ -111,7 +115,7 @@ public class ManagementCheckRecruitmentController {
 		Job job = jobService.findJob(id);
 		if (job != null) {
 			model.addAttribute("job", job);
-			return "bossWorkDetail";
+			return "job/bossWorkDetail";
 		} else {
 			return "redirect:/managerPage/checkRecruitmentPage/notJobPage";
 		}

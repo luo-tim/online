@@ -32,13 +32,13 @@
                     <c:if test="${company.flag eq 1}">
                         <span>
                             <a href="#">
-                                <b>4233</b>
+                                <b>company.jobNum</b>
                                 在招职位
                             </a>
                         </span>
                         <span class="span">
                             <a href="#">
-                                <b>4233</b>
+                                <b>company.bossNum</b>
                                 位boss
                             </a>
                         </span>
@@ -81,7 +81,7 @@ ${company. companyDescription}
                             <h3>工作地址</h3>
                             <div class="line"></div>
                             <div class="job-sec-text">
-${company. address}
+${company.address}
                             </div>
                         </div>
                     </div>
@@ -114,8 +114,8 @@ ${company. address}
                                 <div class="work-publish">
                                     <h3 class="bossname">
                                         <img src="<c:url value="/resource/勾.png"/>" alt="">
-                                        ${job.lastName}
-<c:if test="${job.sex eq '男' }">先生</c:if><c:if test="${job.sex eq '女' }">女士</c:if>
+                                        ${job.boss.lastName}
+<c:if test="${job.boss.sex eq '男' }">先生</c:if><c:if test="${job.boss.sex eq '女' }">女士</c:if>
                                         <em class="vline"></em>
                                         高级HR
                                     </h3>

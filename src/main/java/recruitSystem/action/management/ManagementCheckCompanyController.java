@@ -38,7 +38,7 @@ public class ManagementCheckCompanyController {
 	 * 查看公司列表
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public String CompanyList(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "3") String tag, Model model) {
+	public String CompanyList(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "all") String tag, Model model) {
 		PaginationSupport<Company> companies = companyService.fingCompanies(pageNo,tag);
 		model.addAttribute("pages", companies);
 		return "manager/checkCompany";

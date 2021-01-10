@@ -37,4 +37,5 @@ public interface JobInfoDAO {
 	
 	int jobCount(@Param("flag")String flag,@Param("query") String query, @Param("city")String city, @Param("type")String type);
 	List<Job> findJobs(@Param("startIndex")int startIndex,@Param("query") String query, @Param("city")String city, @Param("type")String type);
+	String findFlag(@Param("jobId")String jobId);
 }

@@ -75,4 +75,9 @@ public class CompanyService {
 		PaginationSupport<Company> pc=new PaginationSupport<Company>(companies, totalCount, startIndex, pageNo, 6);
 		return pc;
 	}
+	
+	public void updateJobNum(String bossId) {
+		String  companyId = companyInfoDAO.findCompanyId(bossId);
+		companyInfoDAO.updateJobNum(companyId);
+	}
 }

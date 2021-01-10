@@ -18,8 +18,8 @@
    
         <img src="<c:url value="/resource/404.png"/>" class="bg" alt="">
         <div class="notFound-btn">
-		<c:if test="${sessionScope.identity eq 'worker' && not empty sessionScope.worker && not empty sessionScope.user}">
-            <a href="<c:url value="/myResumePage/alterPage?workerId=${ sessionScope.worker.id}" />" class="go">立即填写</a>
+		<c:if test="${sessionScope.user.identityId eq 0 && not empty sessionScope.user.account && not empty sessionScope.user}">
+            <a href="<c:url value="/myResumePage/alterPage?workerId=${ sessionScope.user.id}" />" class="go">立即填写</a>
             </c:if>
             <a href="<c:url value="/homePage" />" class="back">返回首页</a>
        

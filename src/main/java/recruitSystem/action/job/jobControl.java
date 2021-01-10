@@ -113,7 +113,7 @@ public class jobControl {
 					jobHistoryService.insertHistory(browseJob);// 插入浏览记录
 				}
 			}
-			model.addAttribute("flag", flag);// 用来判断用户是否已经报名，1是审核中，2是审核通过，3是审核失败
+			model.addAttribute("flag", flag);// 用来判断用户是否已经报名，0是审核中，1是审核通过，2是审核失败
 			return "job/workDetail";
 		} else {// 工作为空，则重定向到列表
 			return "redirect:/employmentPage";
@@ -126,9 +126,10 @@ public class jobControl {
 	 * 报名竞选工作 id是工作的id，f是是否在招聘的id
 	 */
 	@RequestMapping(value = "signupWorkPage", method = RequestMethod.GET)
-	public String signupWork(@RequestParam(value = "id", defaultValue = "0") String id,
-			@RequestParam(value = "f", defaultValue = "2") int f, Model model, HttpSession session) {
-		if (f == 0) {// 招聘中
+	public String signupWork(@RequestParam(value = "id", defaultValue = "0") String id, Model model, HttpSession session) {
+	
+		String flag=jobService.findFlag(id);
+		if (flag.equals("1")) {
 			User user = (User) session.getAttribute("user");
 			if ( user.getIdentityId()==0) {// 是打工人则报名
 				SignUpJob signUpJob=new SignUpJob();
@@ -149,12 +150,12 @@ public class jobControl {
 				newsService.sendMessage(information);
 				return "redirect:/employmentPage/workDetailPage?id=" + id;// 重新进入到页面中
 			} else {// 不是打工人禁止报名
-				model.addAttribute("signupError", "身份错误，无法申请");
-				return "notFound";// 进入到错误提醒页面
+				model.addAttribute("error", "身份错误，无法申请");
+				return "error/error";// 进入到错误提醒页面
 			}
-		} else {// 招聘结束
-			model.addAttribute("signupError", "工招聘已经结束，无法报名");
-			return "notFound";// 进入到错误提醒页面
+		} else {// 无法应聘
+			model.addAttribute("error", "报名出现异常，请重新尝试");
+			return "error/error";// 进入到错误提醒页面
 		}
 
 	}

@@ -31,7 +31,7 @@
                     </div>
                     <div class="info-box">
                         <span class="info-text">身份: </span>
-                        <span class="info-value">${userAccount.identity}</span>
+                        <span class="info-value"><c:choose><c:when test="${userAccount.identityId eq 0}">工人</c:when><c:when test="${userAccount.identityId eq 1}">HR</c:when><c:when test="${userAccount.identityId eq 2}">管理员</c:when><c:when test="${userAccount.identityId eq 3}">超级管理员</c:when></c:choose></span>
                     </div>
                     <div class="info-box">
                         <span class="info-text">信誉度: </span>

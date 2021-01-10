@@ -19,15 +19,15 @@
         <div class="item">
             <div class="sex">
                 <label class="radio">
-                    <input type="radio" checked class="radio-btn" name="identity" <c:if test="${param.tag eq 3 }">checked</c:if> value="全部">
-                    <a href="<c:url value="/managerPage/checkCompanyPage?tag=3" />" class="radio-text">全部</a>
+                    <input type="radio" checked class="radio-btn" name="identity" <c:if test="${param.tag eq 'all' }">checked</c:if> value="全部">
+                    <a href="<c:url value="/managerPage/checkCompanyPage?tag=all" />" class="radio-text">全部</a>
                 </label>
                 <label class="radio">
-                    <input class="radio-btn"  type="radio" name="identity" <c:if test="${param.tag eq 1 }">checked</c:if> value="审核通过">
+                    <input class="radio-btn"  type="radio" name="identity" <c:if test="${param.tag eq '1' }">checked</c:if> value="审核通过">
                     <a href="<c:url value="/managerPage/checkCompanyPage?tag=1" />" class="radio-text">审核通过</a>
                 </label>
                 <label class="radio">
-                    <input class="radio-btn" type="radio" name="identity" <c:if test="${param.tag eq 0 }">checked</c:if> value="审核中">
+                    <input class="radio-btn" type="radio" name="identity" <c:if test="${param.tag eq '0' }">checked</c:if> value="审核中">
                     
                     <a href="<c:url value="/managerPage/checkCompanyPage?tag=0" />" class="radio-text">审核中</a>
                 </label>
