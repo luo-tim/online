@@ -32,6 +32,8 @@
                 </div>
             </form>
         </div>
+        <div class="alter-pw"><a  href="<c:url value="/passwordPage/alterPasswordPage" />" class="a-pw">修改密码</a></div>
+        <div class="find-pw"><a  href="<c:url value="/passwordPage/findPwAccountPage" />" class="a-pw">找回密码</a></div>
     </div>
 </body>
 </html>

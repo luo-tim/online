@@ -2,6 +2,9 @@
     padding: 0;
     margin: 0;
 }
+a{
+    text-decoration: none;
+}
 body{
     background:     #f6f6f8;
     line-height: 26px;
@@ -17,17 +20,17 @@ body{
     border-radius: 10px;
     margin: auto;
     margin-top: 100px;
-
+    position: relative;
+}
+.loginError{
+    color: red;
+    text-align: center;
 }
 .login-box{
     position: relative;
     width: 344px;
     padding-top: 68px;
     margin: 0 auto;
-}
-.loginError{
-    color: red;
-    text-align: center;
 }
 .box-title{
     padding-top: 100px;
@@ -92,4 +95,25 @@ background: #6fe0d5;
 }
 .login-submit:focus{
     outline: none;
+}
+.alter-pw{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+   height: 20px;
+   line-height: 20px;
+}
+.find-pw{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    height: 20px;
+    line-height: 20px;
+}
+.a-pw{
+    color:#666 ;
+    font-size: 13px;
+}
+.a-pw:hover{
+    text-decoration: underline;
 }
