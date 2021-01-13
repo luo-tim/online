@@ -8,12 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>公司注册提醒页面</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/companyFB.css">
 </head>
 <body>
 	<jsp:include page="../navigationBar.jsp"></jsp:include>
-<h1>${companyTip }</h1>
-<c:if test="${not empty id }">
-<a href="<c:url value="/releaseRecruitmentPage/bossWorkDetailPage?id=${id }" />">查看详情</a>
-</c:if>
+ <div class="FB-container">
+    <h1 class="submitSuccess">申请提交成功，等待管理员审核...</h1>
+  </div>
+
 </body>
 </html>

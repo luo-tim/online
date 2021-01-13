@@ -44,11 +44,11 @@
               <form method="POST" class="info-form" name="workerForm">
                 <div class="item">
                     <label class="info-text">姓：</label>
-                    <input name="lastName" type="text" autocomplete="off" placeholder="你的姓" maxlength="20" class="info-input">
+                    <input name="lastName" type="text" autocomplete="off" placeholder="你的姓，不超过10位字符" maxlength="20" class="info-input">
                 </div>
                 <div class="item">
                     <label class="info-text"> 名：</label>
-                    <input name="firstName" type="text" autocomplete="off" placeholder="你的名" maxlength="20" class="info-input">
+                    <input name="firstName" type="text" autocomplete="off" placeholder="你的名，不超过10位字符" maxlength="20" class="info-input">
                 </div>
                 
                 <div class="item">
@@ -96,11 +96,11 @@
             <form method="POST" class="info-form" name="bossForm">
                 <div class="item">
                     <label class="info-text">姓：</label>
-                    <input name="lastName" type="text" autocomplete="off" placeholder="你的姓" maxlength="20" class="info-input">
+                    <input name="lastName" type="text" autocomplete="off" placeholder="你的姓，不超过10位字符" maxlength="20" class="info-input">
                 </div>
                 <div class="item">
                     <label class="info-text"> 名：</label>
-                    <input name="firstName" type="text" autocomplete="off" placeholder="你的名" maxlength="20" class="info-input">
+                    <input name="firstName" type="text" autocomplete="off" placeholder=你的名，不超过10位字符 maxlength="20" class="info-input">
                 </div>
                 <div class="item">
                     <label class="info-text"> 出生日期：</label>
@@ -145,17 +145,17 @@
             </form>
         </div>
         </c:if>
-           <c:if test="${sessionScope.newUser.identityId eq 2 }">
+        <c:if test="${sessionScope.newUser.identityId eq 2 }">
         <div class="info-container">
-            <!--打工人的基本信息-->
+            <!--管理员的基本信息-->
               <form method="POST" class="info-form" name="workerForm">
                 <div class="item">
                     <label class="info-text">姓：</label>
-                    <input name="lastName" type="text" autocomplete="off" placeholder="你的姓" maxlength="20" class="info-input">
+                    <input name="lastName" type="text" autocomplete="off" placeholder="你的姓，不超过10位字符" maxlength="20" class="info-input">
                 </div>
                 <div class="item">
                     <label class="info-text"> 名：</label>
-                    <input name="firstName" type="text" autocomplete="off" placeholder="你的名" maxlength="20" class="info-input">
+                    <input name="firstName" type="text" autocomplete="off" placeholder="你的名，不超过10位字符" maxlength="20" class="info-input">
                 </div>
                 
                 <div class="item">
@@ -198,6 +198,6 @@
      </div>
         </c:if>
     </div>
-      <script src="<c:url value="/resource/basicInfo.js"/>"></script>
+      <script src="${pageContext.request.contextPath}/static/js/basicInfo.js"></script>
 </body>
 </html>

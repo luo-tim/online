@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/managerPage")
 public class ManagementControl {
 
-	/*
+	/**
 	 * 进入管理员页面,显示管理员的各个功能
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String manager() {

@@ -5,19 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import recruitSystem.view.Information;
-import recruitSystem.view.User;
 
 public interface NewsDAO {
 
 	/**
-	 * 
-	 * @param sendId
-	 * @return
-	 */
-	public List<User> selectBySendUser(@Param("receiveId")String receiveId);
-	
-	/**
-	 * 
+	 * 通过发送、接收者查找消息
 	 * @param sendId
 	 * @param receiveId
 	 * @return
@@ -30,7 +22,7 @@ public interface NewsDAO {
 	 * @param information
 	 * @return
 	 */
-	public int insert(Information information);
+	public int insert(@Param("information")Information information);
 	
 	/**
 	 * 更新消息

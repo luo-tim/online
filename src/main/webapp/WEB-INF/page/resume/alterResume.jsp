@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>修改简历</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/write_resume.css"/>">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/write_resume.css"/>
 </head>
 <body>
 <jsp:include page="../navigationBar.jsp"></jsp:include>

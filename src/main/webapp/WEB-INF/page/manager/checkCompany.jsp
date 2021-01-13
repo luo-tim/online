@@ -34,7 +34,9 @@
                
             </div>
         </div>
-       
+        <div class="result_num">
+            饭碗为您找到相关结果约${pages.totalCount}个
+        </div>
         <div class="hot-job">
             <ul class="cur">
             <c:forEach items="${pages.items }" var="company">
@@ -42,7 +44,7 @@
                     <div class="sub-li-company">
                        <a href="<c:url value="/managerPage/checkCompanyPage/companyDetailPage?companyId=${company.id }" />" class="company-info">
                            <div class="img-box">
-                               <img src="<c:url value="/resource/${company.companyLogo }" />" alt="${company.companyName }">
+                               <img src="${pageContext.request.contextPath}/static/companyLogo/${company.companyLogo }" />" alt="${company.companyName }">
                            </div>
                            <div class="company-text">
                                <h4>${company.companyName }</h4>
@@ -66,7 +68,7 @@
              </c:forEach>
             </ul>
         </div>
-        <mytag:companys/>
+        <mytag:companys pages="${pages }" tag="${param.tag }" />
     </div>
 </body>
 </html>

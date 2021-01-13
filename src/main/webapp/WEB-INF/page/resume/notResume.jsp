@@ -16,7 +16,7 @@
    
         <h1 style="text-align: center;">${notResume }</h1>
    
-        <img src="<c:url value="/resource/404.png"/>" class="bg" alt="">
+        <img src="<${pageContext.request.contextPath}/static/image/404.png" class="bg" alt="">
         <div class="notFound-btn">
 		<c:if test="${sessionScope.user.identityId eq 0 && not empty sessionScope.user.account && not empty sessionScope.user}">
             <a href="<c:url value="/myResumePage/alterPage?workerId=${ sessionScope.user.id}" />" class="go">立即填写</a>

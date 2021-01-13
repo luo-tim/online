@@ -1,144 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
- <mapper namespace="recruitSystem.dao.companyInfo.CompanyInfoDAO">
- 
- <!-- 建立sql查询结果字段与实体属性的映射关系 -->
- <resultMap id="CompanyInfoMap" type="recruitSystem.view.Company">
- <result  column="id"  property="id" />
- <result  column="description"  property="companyDescription" />
- <result  column="leader_introduce"  property="leaderIntroduce" />
- <result  column="company_name"  property="companyName" />
- <result  column="address"  property="address" />
- <result  column="boss_num"  property="bossNum" />
- <result  column="job_num"  property="job_num" />
- <result  column="treatment"  property="treatment" />
- <result  column="company_type"  property="companyType" /> 
- <result  column="company_logo"  property="companyLogo" />
- <result  column="flag"  property="flag" />
-  <result  column="mid"  property="mid" />
- </resultMap>
- 
- <!-- 查询公司id -->
- <select id="findCompany" resultType="string">
-	 SELECT
-	 	id
-	 FROM
-	 	company
-	 WHERE
-	 	company_name = #{companyName}
-	 AND flag = 1
- </select>
-  <!-- 注册公司 -->
- <insert id="insert">
- 	INSERT INTO company(company_name,leader_introduce,description,address,treatment,company_type,company_logo,flag,boss_num,job_num)
- 	VALUES(#{companyName},#{leaderIntroduce},#{companyDescription},#{address},#{treatment},#{companyType},#{companyLogo},0,0,0)
- </insert>
- <!-- 插入公司和HR的关系 -->
- <insert id="insertHR">
- 	INSERT INTO cb(company_id,boss_id)
- 	VALUES(#{companyId},#{userId})
- 		
- </insert>
- <!-- 更新公司HR的数量 -->
- <update id="updateBossNum">
- 	UPDATE company
- 	<set>
- 		boss_num = boss_num + 1
- 	</set>
- 	WHERE id = #{companyId}
- </update>
- 
- <!-- 查找公司列表 -->
- <select id="findCompanies" resultMap="CompanyInfoMap">
- 	SELECT *
- 	FROM 
- 		company
- 	WHERE
- 		flag != 0
- </select>
- 
- <!-- 根据公司id查找公司 -->
- <select id="findCompanyById" resultMap="CompanyInfoMap">
- 	SELECT *
- 	FROM company
- 	WHERE
- 		id = #{companyId}
- 		AND flag != 0
- </select>
- <!-- 根据老板id查找公司 -->
- <select id="findCompanyByBossId" resultMap="CompanyInfoMap">
- 	SELECT *
- 	FROM company
- 	WHERE id = (
- 		SELECT c.id
- 		FROM company c,cb h
- 		WHERE 
- 			c.id = h.company_id
- 			AND h.boss_id = #{bossId}
- 			AND c.flag != 0
- 	)
- </select>
- <update id="successCompany">
- 	UPDATE company
- 	<set>
- 		flag = 1,
- 		mid = #{userId}
- 	</set>
- 	WHERE
- 		id = #{companyId}
- </update>
- <delete id="failCompany">
- 	DELETE FROM
- 			company
- 	WHERE
- 			id = #{companyId}
- 	AND	flag = 0
- </delete>
- 
- <select id="CompanyCount" resultType="int">
- 	SELECT
- 		COUNT(*)
- 	FROM
- 		company
- 	WHERE
- 		1 = 1
- 	<if test="tag!=null and tag!='all'">
- 		AND flag = #{tag}
- 	</if>
- </select>
- <select id="findManagerCompanies" resultMap="CompanyInfoMap">
- 	SELECT
- 		id,
- 		company_name,
- 		company_type,
- 		company_logo,
- 		flag
- 	FROM
- 		company
- 	WHERE
- 		1 = 1
- 	<if test="tag!=null and tag!='all'">
- 		AND flag = #{tag}
- 	</if>
- 	LIMIT 6
- 	OFFSET  #{startIndex}
- </select>
- <select id="findCompanyId" resultType="String">
- 	SELECT 
- 		company_id
- 	FROM
- 		cb
- 	WHERE
- 		boss_id = #{bossId}
- </select>
- <update id="updateJobNum">
- 	UPDATE
- 		company
- 	<set>
- 		job_num = job_num +1
- 	</set>
- 	WHERE
- 		id = #{companyId}
- </update>
- </mapper>
+<mapper namespace="recruitSystem.dao.companyInfo.CompanyInfoDAO">
+
+	<!-- 建立sql查询结果字段与实体属性的映射关系 -->
+	<resultMap id="CompanyInfoMap"
+		type="recruitSystem.view.Company">
+		<result column="id" property="id" />
+		<result column="description" property="companyDescription" />
+		<result column="leader_introduce" property="leaderIntroduce" />
+		<result column="company_name" property="companyName" />
+		<result column="address" property="address" />
+		<result column="boss_num" property="bossNum" />
+		<result column="job_num" property="jobNum" />
+		<result column="treatment" property="treatment" />
+		<result column="company_type" property="companyType" />
+		<result column="company_logo" property="companyLogo" />
+		<result column="flag" property="flag" />
+		<result column="mid" property="mid" />
+	</resultMap>
+
+	<!-- 查询公司id -->
+	<select id="findCompany" resultType="string">
+		SELECT
+		id
+		FROM
+		company
+		WHERE
+		company_name = #{companyName}
+		AND flag = 1
+	</select>
+	<!-- 注册公司 -->
+	<insert id="insert">
+		INSERT INTO
+		company(company_name,leader_introduce,description,address,treatment,company_type,company_logo,flag,boss_num,job_num)
+		VALUES(#{companyName},#{leaderIntroduce},#{companyDescription},#{address},#{treatment},#{companyType},#{companyLogo},0,0,0)
+	</insert>
+	<!-- 插入公司和HR的关联 -->
+	<insert id="insertHR">
+		INSERT INTO cb(company_id,boss_id)
+		VALUES(#{companyId},#{userId})
+
+	</insert>
+	<!-- 更新公司HR的数量 -->
+	<update id="updateBossNum">
+		UPDATE company
+		<set>
+			boss_num = boss_num + #{num}
+		</set>
+		WHERE id = #{companyId}
+	</update>
+
+	<!-- 查找公司列表 -->
+	<select id="findCompanies" resultMap="CompanyInfoMap">
+		SELECT *
+		FROM
+		company
+		WHERE
+		flag != 0
+	</select>
+
+	<!-- 根据公司id查找公司 -->
+	<select id="findCompanyById" resultMap="CompanyInfoMap">
+		SELECT *
+		FROM company
+		WHERE
+		id = #{companyId}
+		<if test="flag!=null and flag!=''">
+			AND flag = 1
+		</if>
+	</select>
+	<!-- 根据老板id查找公司 -->
+	<select id="findCompanyByBossId" resultMap="CompanyInfoMap">
+		SELECT *
+		FROM company
+		WHERE id = (
+		SELECT c.id
+		FROM company c,cb h
+		WHERE
+		c.id = h.company_id
+		AND h.boss_id = #{bossId}
+		AND c.flag != 0
+		)
+	</select>
+	<!-- 公司审核通过 -->
+	<update id="successCompany">
+		UPDATE company
+		<set>
+			flag = 1,
+			mid = #{userId}
+		</set>
+		WHERE
+		id = #{companyId}
+	</update>
+	<!-- 公司审核不通过 -->
+	<delete id="failCompany">
+		DELETE FROM
+		company
+		WHERE
+		id = #{companyId}
+		AND flag = 0
+	</delete>
+	<!-- 获取公司的数量 -->
+	<select id="CompanyCount" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM
+		company
+		WHERE
+		1 = 1
+		<if test="tag!=null and tag!='all'">
+			AND flag = #{tag}
+		</if>
+	</select>
+	<!-- 管理员获取公司列表 -->
+	<select id="findManagerCompanies" resultMap="CompanyInfoMap">
+		SELECT
+		id,
+		company_name,
+		company_type,
+		company_logo,
+		flag
+		FROM
+		company
+		WHERE
+		1 = 1
+		<if test="tag!=null and tag!='all'">
+			AND flag = #{tag}
+		</if>
+		LIMIT 6
+		OFFSET #{startIndex}
+	</select>
+	<!--根据老板id获取公司id -->
+	<select id="findCompanyId" resultType="String">
+		SELECT
+		company_id
+		FROM
+		cb
+		WHERE
+		boss_id = #{bossId}
+	</select>
+	<!-- 更新HR数量 -->
+	<update id="updateJobNum">
+		UPDATE
+		company
+		<set>
+			job_num = job_num + #{num}
+		</set>
+		WHERE
+		id = #{companyId}
+	</update>
+	<select id="findCompanyName" resultType="String">
+		SELECT
+		company_name
+		FROM
+		company c,
+		cb h
+		WHERE
+		h.boss_id = #{userId}
+		AND h.compnay_id = c.id
+
+	</select>
+</mapper>

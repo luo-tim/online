@@ -33,6 +33,9 @@
               
             </div>
         </div>
+         <div class="result_num">
+            饭碗为您找到相关结果约${pages.totalCount}个
+        </div>
         <div class="game-container">
             <ul>
                  <c:forEach items="${pages.items }" var="user">
@@ -60,14 +63,14 @@
                                             </div>
                                             <div class="info-append">
                                                
-                                                <div class="info-right"><a href="<c:url value="/managerPage/userListPage/deleteUserPage?userId=${user.id}" />" class="a-green">删除</a> </div>
+                                                <div class="info-right"><a href="<c:url value="/managerPage/userListPage/deleteUserPage?userId=${user.id}&tag=${param.tag }" />" class="a-green">删除</a> </div>
                                             </div>
                                         </div>
                                     </li>
                                     </c:forEach>
             </ul>
         </div>
-        <mytag:users/>
+        <mytag:users  tag="${param.tag }" pages="${pages}"/>
     </div>
 
 </body>

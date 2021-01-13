@@ -230,3 +230,10 @@ color: red;
 .info-btn-manager:hover{
     background-color: #00b5e5!important;
 }
+.result_num{
+    margin-left: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    color: #999;
+}

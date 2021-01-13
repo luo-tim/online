@@ -1,0 +1,68 @@
+.title{
+	width: 100%;
+	height: 50px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+
+.step{
+    position: relative;
+    float: left;
+    width: 33.333%;
+    color: #cdcdcd;
+    text-align: center;
+}
+.step .number{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    border: 1px solid #cdcdcd;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 auto 10px;
+}
+.step .line{
+    position: absolute;
+    height: 2px;
+    width: calc(100% - 43px);
+    background: #f2f2f2;
+    top: 21px;
+    left: calc(50% + 22px);
+}
+.step-text{
+	width: 80px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+	position: absolute;
+
+    top: 42px;
+    left: calc(50% - 40px);
+}
+.currentstep{
+    color: #2c82ff;
+}
+.passed{
+    color: #2c82ff;
+}
+.passed .line{
+    background: #2c82ff;
+}
+.passed .number{
+	border: 2px solid  #2c82ff;
+	color: #fff;
+    background-color: #2c82ff ;
+}
+
+.currentstep .line{
+    background: linear-gradient(to right, #2c82ff,#f2f2f2);
+}
+.currentstep .number{
+	border: 2px solid  #2c82ff;
+	color: #fff;
+    background-color: #2c82ff ;
+}
+
+

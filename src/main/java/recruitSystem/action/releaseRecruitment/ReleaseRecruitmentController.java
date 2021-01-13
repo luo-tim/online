@@ -25,7 +25,7 @@ import recruitSystem.view.User;
 
 /**
  * @author 72412
- *
+ *  老板工作管理控制
  */
 @Controller
 @RequestMapping("/releaseRecruitmentPage")
@@ -96,8 +96,10 @@ public class ReleaseRecruitmentController {
 
 	/**
 	 * 老板查看工作的页面
-	 * 
 	 * @param id
+	 * @param model
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/bossWorkDetailPage", method = RequestMethod.GET)
 	public String bossWorkDetail(@RequestParam(value = "id", defaultValue = "0") String id, Model model,
@@ -119,7 +121,9 @@ public class ReleaseRecruitmentController {
 		}
 	}
 	/**
-	 * 工作不存在页面
+	 *  工作不存在页面
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/jobNotPage", method = RequestMethod.GET)
 	public String UserExist(Model model) {
@@ -128,9 +132,9 @@ public class ReleaseRecruitmentController {
 	}
 
 	/**
-	 * 结束工作招聘,传入工作的，来结束,结束成功则返回详情页面，失败则返回错误提醒页面
-	 * 
+	 * 结束工作招聘
 	 * @param workId
+	 * @return
 	 */
 	@RequestMapping(value = "/finishRecruitmentPage", method = RequestMethod.GET)
 	public String finishRecruitmentPage(@RequestParam(value = "workId", defaultValue = "0") String workId) {
@@ -141,8 +145,10 @@ public class ReleaseRecruitmentController {
 
 	/**
 	 * 通过申请人
-	 * 
 	 * @param workerId
+	 * @param employId
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/passSignupPage", method = RequestMethod.GET)
 	public String passSignup(@RequestParam(value = "workerId", defaultValue = "0") String workerId,
@@ -158,16 +164,17 @@ public class ReleaseRecruitmentController {
 			information.setReceiveId(workerId);
 			information.setPostTime(sdf.format(new Date()));
 			information.setContext("我通过了你的申请，请及时联系我");
-			newsService.save(information);
+			newsService.sendMessage(information);
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + employId;
 		}
 	
 
 	/**
 	 * 拒绝申请人
-	 * 
 	 * @param workerId
 	 * @param employId
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/refuseSignupPage", method = RequestMethod.GET)
 	public String refuseSignup(@RequestParam(value = "workerId", defaultValue = "0") String workerId,
@@ -183,7 +190,7 @@ public class ReleaseRecruitmentController {
 			information.setReceiveId(workerId);
 			information.setPostTime(sdf.format(new Date()));
 			information.setContext("不好意思，你不符合我们所需标准");
-			newsService.save(information);
+			newsService.sendMessage(information);
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + employId;
 		
 	}

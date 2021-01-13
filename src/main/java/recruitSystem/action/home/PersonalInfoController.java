@@ -36,8 +36,13 @@ public class PersonalInfoController {
 	private UserService userService;
 	@Autowired
 	private CompanyService companyService;
+	
+	
 	/**
 	 * 进入个人中心页面，显示账户信息
+	 * @param model
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String accountInfo(Model model, HttpSession session) {
@@ -45,8 +50,13 @@ public class PersonalInfoController {
 		return "person/personalAccount";
 	}
 	
-	/*
+	
+	
+	/**
 	 * 修改个人信息
+	 * @param userName
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public String accountInfoSubmit(@RequestParam(value = "userName", defaultValue = "") String userName, HttpSession session) {
@@ -62,6 +72,8 @@ public class PersonalInfoController {
 	
 	/**
 	 * 人个人信息
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/infoPage", method = RequestMethod.GET)
 	public String workerInfo(Model model) {
@@ -70,6 +82,16 @@ public class PersonalInfoController {
 	}
 	/**
 	 * 个人信息修改
+	 * @param lastName
+	 * @param firstName
+	 * @param birth
+	 * @param IDNumber
+	 * @param phone
+	 * @param email
+	 * @param sex
+	 * @param session
+	 * @return
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/infoPage", method = RequestMethod.POST)
 	public String workerInfoSubmit(@RequestParam(value = "lastName", defaultValue = "") String lastName,
@@ -94,11 +116,15 @@ public class PersonalInfoController {
 	}
 	
 
-	/*
+	/**
 	 * 发布的工作,拦截器
+	 * @param tag
+	 * @param model
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/releaseInfoPage", method = RequestMethod.GET)
-	public String releaseInfo(@RequestParam(value = "tag", defaultValue = "3") int tag, Model model,
+	public String releaseInfo(@RequestParam(value = "tag", defaultValue = "all") String tag, Model model,
 			HttpSession session) {
 		model.addAttribute("message", "bossRelease");
 		User user =(User) session.getAttribute("user");
@@ -108,11 +134,15 @@ public class PersonalInfoController {
 		return "person/personalAccount";
 	}
 	
-	/*
+	/**
 	 * 申请的工作，拦截器
+	 * @param tag
+	 * @param model
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/requestInfoPage", method = RequestMethod.GET)
-	public String requestInfo(@RequestParam(value = "tag", defaultValue = "0") int tag, Model model,
+	public String requestInfo(@RequestParam(value = "tag", defaultValue = "all") String tag, Model model,
 			HttpSession session) {
 		model.addAttribute("message", "workerSignup");
 		User user = (User) session.getAttribute("user");
@@ -122,8 +152,11 @@ public class PersonalInfoController {
 		return "person/personalAccount";
 	}
 	
-	/*
+	/**
 	 * 打工人的浏览记录
+	 * @param model
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/workHistoryInfoPage", method = RequestMethod.GET)
 	public String workHistoryInfo(Model model, HttpSession session) {
@@ -134,7 +167,10 @@ public class PersonalInfoController {
 		return "person/personalAccount";
 	}
 	/**
-	 * HR所属公司
+	 *  HR所属公司
+	 * @param model
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/companyInfoPage", method = RequestMethod.GET)
 	public String companyInfo(Model model,HttpSession session) {

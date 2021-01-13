@@ -316,7 +316,15 @@ a{
 }
 .a-green{
     color: springgreen;
-    }
-    .a-red{
-    color: red;
-    }
+}
+.a-red{
+color: red;
+}
+.result_num{
+    margin-left: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    color: #999;
+}
+    

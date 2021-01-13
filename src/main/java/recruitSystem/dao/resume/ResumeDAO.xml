@@ -1,89 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
- <mapper   namespace="recruitSystem.dao.resume.ResumeDAO">
- 	<resultMap type="recruitSystem.view.Resume" id="ResumeMap">
- 		<result  column="id"  property="id" />
- 		<result  column="name"  property="name" />
- 		<result  column="date_of_birth"  property="dateOfBirth" />
- 		<result  column="nation"  property="nation" />
- 		<result  column="height"  property="height" />
- 		<result  column="sex"  property="sex" />
- 		<result  column="phone"  property="phone" />
- 		<result  column="politic_status"  property="politicsStatus" />
- 		<result  column="email"  property="email" />
- 		<result  column="school"  property="school" />
- 		<result  column="address"  property="address" />
- 		<result  column="education"  property="education" />
- 		<result  column="educationbg"  property="educationBg" />
- 		<result  column="i_experience"  property="Iexperience" />
- 		<result  column="s_experience"  property="Sexperience" />
- 		<result  column="skills"  property="skills" />
- 		<result  column="self"  property="self" />
- 	</resultMap>
- 	<select id="findResume" resultMap="ResumeMap" >
- 	SELECT
- 		id,
- 		name,
- 		date_of_birth,
- 		nation,
- 		height,
- 		sex,
- 		phone,
- 		politic_status,
- 		email,
- 		school,
- 		address,
- 		education,
- 		educationbg,
- 		i_experience,
- 		s_experience,
- 		skills,
- 		self
- 	FROM
- 		resume
- 	WHERE
- 		user_id = #{userId}
- 	
- 	</select>
- 	
- 	<select id="existResume"  resultType="int">
- 		SELECT
- 			COUNT(*)
- 		FROM
- 			resume
- 		WHERE
- 			user_id = #{userId}
- 	</select>
- 	
- 	<update id="updateResume">
- 		UPDATE resume
- 		<set>
- 			user_id = #{resume.userId},
- 			name = #{resume.name},
- 			date_of_birth = #{resume.dateOfBirth},
- 			nation = #{resume.nation},
- 			height = #{resume.height},
- 			sex = #{resume.sex},
- 			phone = #{resume.phone},
- 			politic_status = #{resume.politicsStatus},
- 			email = #{resume.email},
- 			school = #{resume.school},
- 			address = #{resume.address},
- 			education = #{resume.education},
- 			educationbg = #{resume.educationBg},
- 			i_experience = #{resume.Iexperience},
- 			s_experience = #{resume.Sexperience},
- 			skills = #{resume.skills},
- 			self = #{resume.self}
- 			
- 		</set>
- 		WHERE
- 			user_id = #{resume.userId}
- 	</update>
- 	
- 	<insert id="insert">
- 		INSERT INTO resume(user_id,name,date_of_birth,nation,height,sex,phone,politic_status,email,school,address,education,educationbg,i_experience,s_experience,skills,self)
- 		VALUES(#{resume.userId},#{resume.name},#{resume.dateOfBirth},#{resume.nation},#{resume.height},#{resume.sex},#{resume.phone},#{resume.politicsStatus},#{resume.email},#{resume.school},	#{resume.address},#{resume.education},#{resume.educationBg},#{resume.Iexperience},#{resume.Sexperience},#{resume.skills},#{resume.self})
- 	</insert>
- </mapper>
+<mapper namespace="recruitSystem.dao.resume.ResumeDAO">
+	<resultMap type="recruitSystem.view.Resume" id="ResumeMap">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="date_of_birth" property="dateOfBirth" />
+		<result column="nation" property="nation" />
+		<result column="height" property="height" />
+		<result column="sex" property="sex" />
+		<result column="phone" property="phone" />
+		<result column="politic_status" property="politicsStatus" />
+		<result column="email" property="email" />
+		<result column="school" property="school" />
+		<result column="address" property="address" />
+		<result column="education" property="education" />
+		<result column="educationbg" property="educationBg" />
+		<result column="i_experience" property="Iexperience" />
+		<result column="s_experience" property="Sexperience" />
+		<result column="skills" property="skills" />
+		<result column="self" property="self" />
+	</resultMap>
+	<!-- 获取简历 -->
+	<select id="findResume" resultMap="ResumeMap">
+		SELECT
+		id,
+		name,
+		date_of_birth,
+		nation,
+		height,
+		sex,
+		phone,
+		politic_status,
+		email,
+		school,
+		address,
+		education,
+		educationbg,
+		i_experience,
+		s_experience,
+		skills,
+		self
+		FROM
+		resume
+		WHERE
+		user_id = #{userId}
+
+	</select>
+	<!-- 判断简历是存在 -->
+	<select id="existResume" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM
+		resume
+		WHERE
+		user_id = #{userId}
+	</select>
+	<!--更新简历 -->
+	<update id="updateResume">
+		UPDATE resume
+		<set>
+			user_id = #{resume.userId},
+			name = #{resume.name},
+			date_of_birth = #{resume.dateOfBirth},
+			nation = #{resume.nation},
+			height = #{resume.height},
+			sex = #{resume.sex},
+			phone = #{resume.phone},
+			politic_status = #{resume.politicsStatus},
+			email = #{resume.email},
+			school = #{resume.school},
+			address = #{resume.address},
+			education = #{resume.education},
+			educationbg = #{resume.educationBg},
+			i_experience = #{resume.Iexperience},
+			s_experience = #{resume.Sexperience},
+			skills = #{resume.skills},
+			self = #{resume.self}
+
+		</set>
+		WHERE
+		user_id = #{resume.userId}
+	</update>
+	<!--插入简历 -->
+	<insert id="insert">
+		INSERT INTO
+		resume(user_id,name,date_of_birth,nation,height,sex,phone,politic_status,email,school,address,education,educationbg,i_experience,s_experience,skills,self)
+		VALUES(#{resume.userId},#{resume.name},#{resume.dateOfBirth},#{resume.nation},#{resume.height},#{resume.sex},#{resume.phone},#{resume.politicsStatus},#{resume.email},#{resume.school},
+		#{resume.address},#{resume.education},#{resume.educationBg},#{resume.Iexperience},#{resume.Sexperience},#{resume.skills},#{resume.self})
+	</insert>
+</mapper>

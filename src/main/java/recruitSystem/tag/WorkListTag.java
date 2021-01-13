@@ -22,6 +22,93 @@ import recruitSystem.view.Job;
  */
 public class WorkListTag extends SimpleTagSupport {
 
+	private String query;
+	private String type;
+	private String city;
+	private String pro;
+	private PaginationSupport<Job> pages;
+	
+	
+	/**
+	 * @return the query
+	 */
+	public String getQuery() {
+		return query;
+	}
+
+
+	/**
+	 * @param query the query to set
+	 */
+	public void setQuery(String query) {
+		this.query = query;
+	}
+
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	/**
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
+
+
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+	/**
+	 * @return the pro
+	 */
+	public String getPro() {
+		return pro;
+	}
+
+
+	/**
+	 * @param pro the pro to set
+	 */
+	public void setPro(String pro) {
+		this.pro = pro;
+	}
+
+
+	/**
+	 * @return the pages
+	 */
+	public PaginationSupport<Job> getPages() {
+		return pages;
+	}
+
+
+	/**
+	 * @param pages the pages to set
+	 */
+	public void setPages(PaginationSupport<Job> pages) {
+		this.pages = pages;
+	}
+
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -32,30 +119,12 @@ public class WorkListTag extends SimpleTagSupport {
 		// TODO Auto-generated method stub
 		super.doTag();
 		JspWriter out = getJspContext().getOut();
-		HttpServletRequest request = (HttpServletRequest) ((PageContext) getJspContext()).getRequest();
-		String query = request.getParameter("query");
-		String type = request.getParameter("type");
-		String city = request.getParameter("city");
-		String pro = request.getParameter("pro");
-		// System.out.println(city);
-		if (type.equals(null)) {
-			type = "工作类型";
-		}
-		if (query.equals(null)) {
-			query = "";
-		}
-		if (city.equals(null)) {
-			city = "城市";
-		}
-		if (pro.equals(null)) {
-			pro = "省份";
-		}
 
-		PaginationSupport<Job> jobPages = (PaginationSupport<Job>) request.getAttribute("pages");// 获取传过来的分页参数
+		
 		// 最多展示五个页码
-		int pageNo = jobPages.getPageNo();// 页码
-		int totalCount = jobPages.getTotalCount();// 总个数
-		int pageSize = jobPages.getPageSize();
+		int pageNo = pages.getPageNo();// 页码
+		int totalCount = pages.getTotalCount();// 总个数
+		int pageSize = pages.getPageSize();
 
 		out.println(" <div class='pagebtn-container'>" + "<ul>");
 		if (pageNo > 1) {

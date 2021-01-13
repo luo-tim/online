@@ -34,8 +34,13 @@ public class ManagementManagerController {
 	private UserService userService;
 	@Autowired
 	private NewsService newsService;
-	/*
+	
+	
+	/**
 	 * 进入管理者列表
+	 * @param pageNo
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String ManagementManager(@RequestParam(value="pageNo",defaultValue="1")int pageNo,Model model) {
@@ -47,16 +52,21 @@ public class ManagementManagerController {
 	
 	/**
 	 * 查看管理者的账户详情信息
+	 * @param userId
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/managerAccountInfoPage", method = RequestMethod.GET)
 	public String managerAccountInfo(@RequestParam(value = "userId", defaultValue = "0") String userId, Model model) {
 		User user = userService.findUser(userId);
 		model.addAttribute("userAccount", user);
-		return "userAccount";
+		return "manager/userAccount";
 	}
 	
 	/**
 	 * 删除管理员
+	 * @param userId
+	 * @return
 	 */
 	@RequestMapping(value = "/deleteManagerPage", method = RequestMethod.GET)
 	public String deleteManager(@RequestParam(value = "userId", defaultValue = "0") String  userId) {
@@ -68,8 +78,11 @@ public class ManagementManagerController {
 	}
 	
 	
-	/*
+	/**
 	 * 升级为超级管理员
+	 * @param userId
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/upManagerPage", method = RequestMethod.GET)
 	public String upManager(@RequestParam(value = "userId", defaultValue = "0") String userId,HttpSession session) {
@@ -87,12 +100,18 @@ public class ManagementManagerController {
 			return "redirect:/managerPage/managerListPage";
 		}
 	
-	/*
+	
+	/**
 	 * 进入增加管理员界面
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/addManagerPage", method = RequestMethod.GET)
-	public String addManager() {
-		return "basicInfo";
+	public String addManager(HttpSession session) {
+		User user=new User();
+		user.setIdentityId(2);
+		session.setAttribute("newUser", user);
+		return "register/basicInfo";
 	}
 
 	@RequestMapping(value = "/addManagerPage", method = RequestMethod.POST)
@@ -113,7 +132,7 @@ public class ManagementManagerController {
 		user.setEmail(email);
 		user.setSex(sex);
 		user.setIdentityId(2);
-		session.setAttribute("newManager", user);
+		session.setAttribute("newUser", user);
 		return "redirect:/registerPage/accountInfoPage";// 返回账号密码注册页面
 	}
 

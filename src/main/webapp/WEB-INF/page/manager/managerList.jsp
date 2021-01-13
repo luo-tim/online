@@ -18,6 +18,9 @@
 	 <div class="info-box-manager">
             <a class="info-btn-manager" href="<c:url value="/managerPage/managerListPage/addManagerPage" />">添加管理员</a>
         </div>
+         <div class="result_num">
+            饭碗为您找到相关结果约${pages.totalCount}个
+        </div>
   <div class="game-container">
             <ul>
             <c:forEach items="${pages.items }" var="manager">
@@ -53,7 +56,7 @@
                </c:forEach>
             </ul>
         </div>
-        <mytag:managers/>
+        <mytag:managers  pages="${pages}"/>
         </div>
 </body>
 </html>

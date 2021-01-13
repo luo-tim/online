@@ -23,6 +23,43 @@ import recruitSystem.view.Company;
  */
 public class CompanyListTag extends SimpleTagSupport{
 
+	
+	private String tag;
+	private PaginationSupport<Company> pages;
+	
+	
+	/**
+	 * @return the tag
+	 */
+	public String getTag() {
+		return tag;
+	}
+
+
+	/**
+	 * @param tag the tag to set
+	 */
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+
+	/**
+	 * @return the pages
+	 */
+	public PaginationSupport<Company> getPages() {
+		return pages;
+	}
+
+
+	/**
+	 * @param pages the pages to set
+	 */
+	public void setPages(PaginationSupport<Company> pages) {
+		this.pages = pages;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see javax.servlet.jsp.tagext.SimpleTagSupport#doTag()
 	 */
@@ -31,13 +68,11 @@ public class CompanyListTag extends SimpleTagSupport{
 		// TODO Auto-generated method stub
 		super.doTag();
 		JspWriter out = getJspContext().getOut();
-		HttpServletRequest request = (HttpServletRequest) ((PageContext) getJspContext()).getRequest();
-		String tag = request.getParameter("tag");
-		PaginationSupport<Company> jobPages = (PaginationSupport<Company>) request.getAttribute("pages");// 获取传过来的分页参数
+		
 		// 最多展示五个页码
-		int pageNo = jobPages.getPageNo();// 页码
-		int totalCount = jobPages.getTotalCount();// 总个数
-		int pageSize = jobPages.getPageSize();
+		int pageNo = pages.getPageNo();// 页码
+		int totalCount = pages.getTotalCount();// 总个数
+		int pageSize = pages.getPageSize();
 
 		out.println(" <div class='pagebtn-container'>" + "<ul>");
 		if (pageNo > 1) {

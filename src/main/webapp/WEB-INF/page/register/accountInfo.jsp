@@ -44,12 +44,16 @@
             </div>
             <div class="item">
                 <label class="info-text">账号: </label>
-                <input name="account" type="text" autocomplete="off" placeholder="你的账号" maxlength="20" class="info-input">
+                <input name="account" type="text" autocomplete="off" placeholder="你的账号，必须为6-18位字母、数字" maxlength="20" class="info-input">
             </div>
             <div class="item">
                 <label class="info-text">密码: </label>
-                <input name="password" type="password" autocomplete="off" placeholder="你的密码" maxlength="20" class="info-input">
+                <input name="password" type="password" autocomplete="off" placeholder="你的密码，必须为6-18位，包括字母、数字" maxlength="20" class="info-input">
           
+            </div>
+             <div class="item">
+                <label class="info-text">密码: </label>
+                <input name="confirmPassword" type="text" autocomplete="off" placeholder="确认密码，必须为6-18位，包括字母、数字" maxlength="20" class="info-input">
             </div>
             <div class="item">
                 <div class="info-line"></div>

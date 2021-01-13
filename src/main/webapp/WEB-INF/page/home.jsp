@@ -213,7 +213,7 @@
 							<div class="sub-li-bottom">
 								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
 									<p>
-										<img src="${pageContext.request.contextPath}/static/image/中信建投证券.jpg" alt="">
+										<img src="${pageContext.request.contextPath}/static/companyLogo/中信建投证券.jpg" alt="">
 									</p>
 								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
 									class="hotjob-name">中信建投证券</span> <span class="company-type">互联网金融</span>
@@ -236,7 +236,7 @@
 							<div class="sub-li-bottom">
 								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
 									<p>
-										<img src="${pageContext.request.contextPath}/static/image/腾讯.jpg" alt="">
+										<img src="${pageContext.request.contextPath}/static/companyLogo/腾讯.jpg" alt="">
 									</p>
 								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
 									class="hotjob-name">腾讯</span> <span class="company-type">互联网</span>
@@ -259,7 +259,7 @@
 							<div class="sub-li-bottom">
 								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
 									<p>
-										<img src="${pageContext.request.contextPath}/static/image/腾讯.jpg" alt="">
+										<img src="${pageContext.request.contextPath}/static/companyLogo/腾讯.jpg" alt="">
 									</p>
 								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
 									class="hotjob-name">腾讯</span> <span class="company-type">互联网</span>
@@ -282,7 +282,7 @@
 							<div class="sub-li-bottom">
 								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
 									<p>
-										<img src="${pageContext.request.contextPath}/static/image/华为.jpg" alt="">
+										<img src="${pageContext.request.contextPath}/static/companyLogo/华为.jpg" alt="">
 									</p>
 								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
 									class="hotjob-name">华为</span> <span class="company-type">计算机软件</span>
@@ -305,7 +305,7 @@
 							<div class="sub-li-bottom">
 								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
 									<p>
-										<img src="${pageContext.request.contextPath}/static/image/华为.jpg" alt="">
+										<img src="${pageContext.request.contextPath}/static/companyLogo/华为.jpg" alt="">
 									</p>
 								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
 									class="hotjob-name">华为</span> <span class="company-type">计算机软件</span>
@@ -327,7 +327,7 @@
 						<div class="sub-li-company">
 							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
 								<div class="img-box">
-									<img src="${pageContext.request.contextPath}/static/image/腾讯.jpg" alt="腾讯">
+									<img src="${pageContext.request.contextPath}/static/companyLogo/腾讯.jpg" alt="腾讯">
 								</div>
 								<div class="company-text">
 									<h4>腾讯</h4>
@@ -344,7 +344,7 @@
 						<div class="sub-li-company">
 							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
 								<div class="img-box">
-									<img src="${pageContext.request.contextPath}/static/image/蚂蚁金服.jpg" alt="蚂蚁金服">
+									<img src="${pageContext.request.contextPath}/static/companyLogo/蚂蚁金服.jpg" alt="蚂蚁金服">
 								</div>
 								<div class="company-text">
 									<h4>蚂蚁金服</h4>
@@ -361,7 +361,7 @@
 						<div class="sub-li-company">
 							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
 								<div class="img-box">
-									<img src="${pageContext.request.contextPath}/static/image/华为.jpg" alt="华为">
+									<img src="${pageContext.request.contextPath}/static/companyLogo/华为.jpg" alt="华为">
 								</div>
 								<div class="company-text">
 									<h4>华为</h4>
@@ -378,7 +378,7 @@
 						<div class="sub-li-company">
 							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
 								<div class="img-box">
-									<img src="${pageContext.request.contextPath}/static/image/奇安信集团.jpg" alt="奇安信集团">
+									<img src="${pageContext.request.contextPath}/static/companyLogo/奇安信集团.jpg" alt="奇安信集团">
 								</div>
 								<div class="company-text">
 									<h4>奇安信集团</h4>
@@ -395,7 +395,7 @@
 						<div class="sub-li-company">
 							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
 								<div class="img-box">
-									<img src="${pageContext.request.contextPath}/static/image/新华三技术有限公司.jpg" alt="新华三技术有限公司">
+									<img src="${pageContext.request.contextPath}/static/companyLogo/新华三技术有限公司.jpg" alt="新华三技术有限公司">
 								</div>
 								<div class="company-text">
 									<h4>新华三技术有限公司</h4>
@@ -412,7 +412,7 @@
 						<div class="sub-li-company">
 							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
 								<div class="img-box">
-									<img src="${pageContext.request.contextPath}/static/image/中信建投证券.jpg" alt="中信建投证券">
+									<img src="${pageContext.request.contextPath}/static/companyLogo/中信建投证券.jpg" alt="中信建投证券">
 								</div>
 								<div class="company-text">
 									<h4>中信建投证券</h4>

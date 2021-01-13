@@ -156,3 +156,10 @@ background: rgb(207, 90, 90);
     
 background: springgreen;
 }
+.result_num{
+    margin-left: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    color: #999;
+}

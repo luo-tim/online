@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper
+	namespace="recruitSystem.dao.activateInfo.ActivateInfoDAO">
+	<!-- 建立sql查询结果字段与实体属性的映射关系 -->
+	<resultMap id="ActivateInfoMap"
+		type="recruitSystem.view.ActivateInfo">
+		<result column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="type" property="type" />
+		<result column="code" property="code" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+
+	<!-- 根据用户id和验证类型，判断认证是否已存在 -->
+	<select id="selectByUserIdAndType" resultMap="ActivateInfoMap">
+		SELECT
+		*
+		FROM
+		activate_info
+		WHERE
+		user_id = #{userId}
+		AND type = #{type}
+	</select>
+
+	<!-- 插入 -->
+	<insert id="insert">
+		INSERT INTO
+		activate_info(user_id,type,code,create_time)
+		VALUES(#{userId},#{type},#{code},#{createTime})
+	</insert>
+
+	<!-- 更新 -->
+	<update id="update">
+		UPDATE activate_info
+		<set>
+			<if test="userId!=null">user_id=#{userId},</if>
+			<if test="type!=null">type=#{type},</if>
+			<if test="code!=null">code=#{code},</if>
+			<if test="createTime!=null">create_time=#{createTime},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<!-- 删除验证记录 -->
+	<delete id="delete">
+		DELETE FROM activate_info WHERE id = #{id}
+	</delete>
+
+	<!-- 获取验证记录 -->
+	<select id="selectByEmailAndCodeAndType"
+		resultMap="ActivateInfoMap">
+		SELECT
+		a.user_id,
+		a.create_time
+		FROM
+		user u,
+		activate_info a
+		WHERE
+		ui.id = ai.user_id
+		AND u.email = #{email}
+		AND a.code = #{code}
+		AND a.type =
+		#{type}
+	</select>
+</mapper>

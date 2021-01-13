@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import recruitSystem.service.companys.CompanyService;
 import recruitSystem.service.job.JobService;
 import recruitSystem.service.news.NewsService;
 import recruitSystem.util.PaginationSupport;
@@ -35,22 +34,28 @@ public class ManagementCheckRecruitmentController {
 	private JobService jobService;
 	@Autowired
 	private NewsService newsService;
-	@Autowired
-	private CompanyService companyService;
+
 	
-	/*
+	/**
 	 * 工作列表
+	 * @param pageNo
+	 * @param tag
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String checkRecruitment(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "all") String tag, Model model) {
 		PaginationSupport<Job> jobs = jobService.findJobs(pageNo,tag);
 		model.addAttribute("pages", jobs);
-		return "checkRecruitment";
+		return "manager/checkRecruitment";
 	}
 	
 
-	/*
+	/**
 	 * 审核通过
+	 * @param workId
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/successRecruitmentPage", method = RequestMethod.GET)
 	public String successRecruitment(@RequestParam(value = "workId", defaultValue = "0") String workId,
@@ -60,23 +65,16 @@ public class ManagementCheckRecruitmentController {
 			
 			User user = (User) session.getAttribute("user");
 		 	jobService.successJobs(user.getId(), workId);
-		 	
-			
-			String bossId=jobService.getBossId(workId);
-			companyService.updateJobNum(bossId);
-			Information information = new Information();// 发送消息
-			information.setContext("你的工作发布已通过，请查看");
-			information.setSendId(user.getId());
-			information.setReceiveId(bossId);
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
-			information.setPostTime(dateFormat.format(new Date()));
-			newsService.sendMessage(information);
-			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage";
+		 
+			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id="+workId;
 		
 	}
 	
-	/*
+	/**
 	 * 审核不通过
+	 * @param workId
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/failRecruitmentPage", method = RequestMethod.GET)
 	public String failRecruitment(@RequestParam(value = "workId", defaultValue = "0") String workId,HttpSession session) {
@@ -96,19 +94,26 @@ public class ManagementCheckRecruitmentController {
 		
 	}
 	
-	/*
-	 * 删除招聘
+	
+	/**
+	 * 删除工作
+	 * @param workId
+	 * @param tag
+	 * @return
 	 */
 	@RequestMapping(value = "/deleteRecruitmentPage", method = RequestMethod.GET)
-	public String deleteRecruitment(@RequestParam(value = "workId", defaultValue = "0") String workId) {
-		 	jobService.deleteJob(workId);
+	public String deleteRecruitment(@RequestParam(value = "workId", defaultValue = "0") String workId,@RequestParam(value = "tag", defaultValue = "0") int tag) {
+		 	jobService.deleteJob(workId,tag);
 	
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage";
 		
 	}
 
-	/*
+	/**
 	 * 查看招聘的详情页面
+	 * @param id
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/recruitmentDetailPage", method = RequestMethod.GET)
 	public String recruitmentDetail(@RequestParam(value = "id", defaultValue = "0") String id, Model model) {
@@ -122,8 +127,10 @@ public class ManagementCheckRecruitmentController {
 
 	}
 	
-	/*
+	/**
 	 * 工作不存在页面
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/notJobPage", method = RequestMethod.GET)
 	public String UserExist(Model model) {

@@ -24,31 +24,35 @@ public class NewsService {
 	private NewsDAO newsDAO;
 	@Autowired
 	private UserInfoDAO userInfoDAO;
+	
+	/**
+	 * 发送消息
+	 * @param information
+	 */
 	public void sendMessage(Information information) {
 		newsDAO.insert(information);
 	}
 	
+	
+	/**
+	 * 获取发送者列表
+	 * @param receiveId
+	 * @return
+	 */
 	public List<User> findSendUser(String receiveId ) {
 		return userInfoDAO.selectBySendUser(receiveId);
 	}
 	
+	/**
+	 * 获取发送的信息
+	 * @param sendId
+	 * @param receiveId
+	 * @return
+	 */
 	public List<Information> findInformations(String sendId, String receiveId) {
 		return newsDAO.selectBySendnReceive(sendId,receiveId);
 	}
 	
-	public void save(Information information) {
-		List<Information> informations = newsDAO.selectBySendnReceive(
-				information.getSendId(), information.getReceiveId());
-		Boolean exist = false;
-		for (Information information2 : informations) {
-			if (information.getId().equals(information2.getId())) {//已存在，更新
-				newsDAO.update(information);
-				exist=true;
-				break;
-			}
-		}
-		if (!exist) {//不存在，插入
-			newsDAO.insert(information);
-		}
-	}
+	
+	
 }

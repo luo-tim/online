@@ -38,8 +38,10 @@ public class CompanyControl {
 	@Autowired
 	private JobService jobService;
 	
-	/*
+	/**
 	 * 进入公司列表页面
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String company(Model model) {
@@ -50,11 +52,14 @@ public class CompanyControl {
 	
 	/**
 	 * 查看具体公司详情页面
+	 * @param companyId
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/companyDetailPage", method = RequestMethod.GET)
 	public String companyDetail(@RequestParam(value = "companyId", defaultValue = "0") String  companyId, Model model) {
 		
-			Company company = companyService.findCompanyById(companyId);
+			Company company = companyService.findCompanyById(companyId,true);
 			if (company!=null) {
 				model.addAttribute("company", company);
 				model.addAttribute("index", 0);
@@ -67,11 +72,14 @@ public class CompanyControl {
 	}
 	
 	/**
-	 * 查看具体公司的职位列表
+	 *  查看具体公司的职位列表
+	 * @param companyId
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/companyWorksPage", method = RequestMethod.GET)
 	public String companyWorks(@RequestParam(value = "companyId", defaultValue = "") String companyId, Model model) {
-			Company company = companyService.findCompanyById(companyId);
+			Company company = companyService.findCompanyById(companyId,true);
 			if (company != null) {
 			List<Job> jobs = jobService.findCompanyJobs(companyId);
 			model.addAttribute("company", company);
@@ -82,8 +90,11 @@ public class CompanyControl {
 			return "redirect:/companyPage/notCompanyPage";// 重定向到没有
 		}
 	}
+	
 	/**
-	 * 公司不存在
+	 *  公司不存在页面
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value="/notCompanyPage",method = RequestMethod.GET)
 	public String companyWorks(Model model) {
@@ -93,7 +104,8 @@ public class CompanyControl {
 	}
 	
 	/**
-	 * 公司注册页面
+	 *  公司注册页面
+	 * @return
 	 */
 	@RequestMapping(value = "/companyRegisterPage", method = RequestMethod.GET)
 	public String companyRegister() {
@@ -103,8 +115,20 @@ public class CompanyControl {
 		return "company/companyRegister";
 	}
 	
+	
 	/**
 	 * 公司注册提交
+	 * @param name
+	 * @param leader
+	 * @param introduce
+	 * @param address
+	 * @param type
+	 * @param treatment
+	 * @param file
+	 * @param request
+	 * @param model
+	 * @return
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/companyRegisterPage", method = RequestMethod.POST)
 	public String companyRegisterSubmit(@RequestParam(value = "name", defaultValue = "") String name,
@@ -190,8 +214,10 @@ public class CompanyControl {
 	}
 
 
-	/*
+	/**
 	 * 公司注册失败页面
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/companyErrorPage", method = RequestMethod.GET)
 	public String CompanyExist(Model model) {

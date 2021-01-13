@@ -32,20 +32,20 @@
                     <c:if test="${company.flag eq 1}">
                         <span>
                             <a href="#">
-                                <b>company.jobNum</b>
+                                <b>${company.jobNum}</b>
                                 在招职位
                             </a>
                         </span>
                         <span class="span">
                             <a href="#">
-                                <b>company.bossNum</b>
+                                <b>${company.bossNum}</b>
                                 位boss
                             </a>
                         </span>
 					</c:if>
                     </div>
                     <div class="info-primary">
-                        <img src="<c:url value="/resource/${company.companyLogo }"/>" alt="">
+                        <img src="${pageContext.request.contextPath}/static/companyLogo/${company.companyLogo }" alt="">
                         <div class="info">
                             <h1 class="name">${company.companyName }</h1>
                             <p>${company.companyType }</p>
@@ -95,7 +95,7 @@ ${company.address}
                 <ul>
                 <c:forEach items="${jobs}" var="job">
                     <li>
-                        <a href="#">
+                        <a href="<c:url value="/employmentPage/workDetailPage?id=${job.id }"/>">
 
                             <div class="work-primary">
                                 <div class="work-info">
@@ -113,7 +113,7 @@ ${company.address}
                                 </div>
                                 <div class="work-publish">
                                     <h3 class="bossname">
-                                        <img src="<c:url value="/resource/勾.png"/>" alt="">
+                                        <img src="${pageContext.request.contextPath}/static/image/勾.png" alt="">
                                         ${job.boss.lastName}
 <c:if test="${job.boss.sex eq '男' }">先生</c:if><c:if test="${job.boss.sex eq '女' }">女士</c:if>
                                         <em class="vline"></em>

@@ -51,8 +51,8 @@
                              </c:when>
                              <c:when test="${not empty sessionScope.user &&  sessionScope.user.identityId ge 2   }">
                              <c:if  test="${job.flag eq 0 }"><a href="<c:url value="/managerPage/checkRecruitmentPage/successRecruitmentPage?workId=${job.id}" />" class="half-green">通过</a><a href="<c:url value="/managerPage/checkRecruitmentPage/failRecruitmentPage?workId=${job.id}" />" class="half-red">拒绝</a></c:if>
-                             <c:if test="${ job.flag eq 1}"> <a href="<c:url value="/managerPage/checkRecruitmentPage/deleteRecruitmentPage?workId=${job.id}" />" class="red">删除</a></c:if>
-                             <c:if test="${job.flag eq 2 }">   <a href="<c:url value="/managerPage/checkRecruitmentPage/deleteRecruitmentPage?workId=${job.id}" />" class="red">删除</a></c:if>
+                             <c:if test="${ job.flag eq 1}"> <a href="<c:url value="/managerPage/checkRecruitmentPage/deleteRecruitmentPage?workId=${job.id}&tag=${ job.flag}" />" class="red">删除</a></c:if>
+                             <c:if test="${job.flag eq 2 }">   <a href="<c:url value="/managerPage/checkRecruitmentPage/deleteRecruitmentPage?workId=${job.id}&tag=${ job.flag}" />" class="red">删除</a></c:if>
                               </c:when>
                               
                              
@@ -71,7 +71,7 @@
                         <p class="company-title">公司基本信息</p>
                         <div class="company-info">
                             <a href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />" class="company-logo">
-                                <img src="<c:url value="/static/companyLogo/${job.company.companyLogo }"/>" alt="华为">
+                                <img src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo }" alt="华为">
                             </a>
                             <a href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />" class="company-name">
                                 ${job.company.companyName }
@@ -84,7 +84,7 @@
                 <div class="job-detail">
                     <div class="detail-op">
                         <div class="detail-figure">
-                            <img src="<c:url value="/static/companyLogo/${job.company.companyLogo }"/>" alt="">
+                            <img src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo }" alt="">
                         </div>
                         <h2 class="detail-personname">${job.boss.lastName}
 <c:if test="${job.boss.sex eq '男' }">先生</c:if><c:if test="${job.boss.sex eq '女' }">女士</c:if></h2>

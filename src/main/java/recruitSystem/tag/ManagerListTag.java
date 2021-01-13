@@ -12,6 +12,7 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import recruitSystem.util.PaginationSupport;
+import recruitSystem.view.Company;
 import recruitSystem.view.User;
 
 
@@ -22,20 +23,42 @@ import recruitSystem.view.User;
  */
 public class ManagerListTag extends SimpleTagSupport {
 
+
+
+	private PaginationSupport<Company> pages;
+	
+	
+	/**
+	 * @return the pages
+	 */
+	public PaginationSupport<Company> getPages() {
+		return pages;
+	}
+
+
+	/**
+	 * @param pages the pages to set
+	 */
+	public void setPages(PaginationSupport<Company> pages) {
+		this.pages = pages;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see javax.servlet.jsp.tagext.SimpleTagSupport#doTag()
 	 */
 	@Override
 	public void doTag() throws JspException, IOException {
+		
+		
 		// TODO Auto-generated method stub
 		super.doTag();
 		JspWriter out = getJspContext().getOut();
-		HttpServletRequest request = (HttpServletRequest) ((PageContext) getJspContext()).getRequest();
-		PaginationSupport<User> jobPages = (PaginationSupport<User>) request.getAttribute("pages");// 获取传过来的分页参数
+		
 		// 最多展示五个页码
-		int pageNo = jobPages.getPageNo();// 页码
-		int totalCount = jobPages.getTotalCount();// 总个数
-		int pageSize = jobPages.getPageSize();
+		int pageNo = pages.getPageNo();// 页码
+		int totalCount = pages.getTotalCount();// 总个数
+		int pageSize = pages.getPageSize();
 
 		out.println(" <div class='pagebtn-container'>" + "<ul>");
 		if (pageNo > 1) {

@@ -24,24 +24,26 @@ public class Job {
 	private User boss;//发布工作的HR
 	private Company company;//所属公司
 	private String mid;//审核的管理员id
-	private String bossId;
+	private String bossId;//老板id
 	private SignUpJob signUpJob;//申请的工作
 	private BrowseJob browseJob;//浏览的工作
 	
 
 
+	
+
 	/**
-	 * @return the sinUpJob
+	 * @return the signUpJob
 	 */
-	public SignUpJob getSinUpJob() {
+	public SignUpJob getSignUpJob() {
 		return signUpJob;
 	}
 
 	/**
-	 * @param sinUpJob the sinUpJob to set
+	 * @param signUpJob the signUpJob to set
 	 */
-	public void setSinUpJob(SignUpJob sinUpJob) {
-		this.signUpJob = sinUpJob;
+	public void setSignUpJob(SignUpJob signUpJob) {
+		this.signUpJob = signUpJob;
 	}
 
 	/**

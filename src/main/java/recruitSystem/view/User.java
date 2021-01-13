@@ -3,11 +3,14 @@
  */
 package recruitSystem.view;
 
+import java.io.Serializable;
+
 /**
  * @author 72412
- *用户实体类，存储用户的基本信息
+ *用户实体类，存储用户的基本信息,序列化
  */
-public class User {
+@SuppressWarnings("serial")
+public class User implements Serializable{
 	private String id;//用户id
 	private String userName;//用户名
 	private String account;//用户账号

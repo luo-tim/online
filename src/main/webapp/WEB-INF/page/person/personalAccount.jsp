@@ -47,11 +47,11 @@
 					
 					<li
 						class="person-item <c:if test="${message eq 'bossRelease'}">on</c:if>"><a
-						href="<c:url value="/personalPage/releaseInfoPage?tag=3" />"><span
+						href="<c:url value="/personalPage/releaseInfoPage?tag=all" />"><span
 							class="item-name">发布记录</span></a></li>
 							<li
 						class="person-item <c:if test="${message eq 'bossCompany'}">on</c:if>"><a
-						href="<c:url value="/personalPage/releaseInfoPage?tag=3" />"><span
+						href="<c:url value="/personalPage/companyInfoPage" />"><span
 							class="item-name">所属公司</span></a></li>
 				</c:if>
 			</ul>
@@ -102,7 +102,7 @@
 													</p>
 												</div>
 												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${history.company.id}"/>"> <img class="company-logo"
-													src="<c:url value="/resource/${history.company.companyLogo}"/>" alt="">
+													src="${pageContext.request.contextPath}/static/companyLogo/${history.company.companyLogo}" alt="">
 												</a>
 											</div>
 										</div>
@@ -130,17 +130,17 @@
 					<div class="person-right-bottom">
 						<!--工作类别-->
 						<div class="game-nav">
-							<div class="game-item <c:if test="${param.tag eq 0 }"> active</c:if>">
-								<a href="<c:url value="/personalPage/requestInfoPage?tag=0" />">全部申请</a>
+							<div class="game-item <c:if test="${param.tag eq 'all' }"> active</c:if>">
+								<a href="<c:url value="/personalPage/requestInfoPage?tag=all" />">全部申请</a>
 							</div>
-							<div class="game-item <c:if test="${param.tag eq 1 }"> active</c:if>">
-								<a href="<c:url value="/personalPage/requestInfoPage?tag=1" />">申请中</a>
+							<div class="game-item <c:if test="${param.tag eq '0' }"> active</c:if>">
+								<a href="<c:url value="/personalPage/requestInfoPage?tag=0" />">申请中</a>
 							</div>
-							<div class="game-item <c:if test="${param.tag eq 2 }"> active</c:if>">
-								<a href="<c:url value="/personalPage/requestInfoPage?tag=2" />">申请通过</a>
+							<div class="game-item <c:if test="${param.tag eq '1' }"> active</c:if>">
+								<a href="<c:url value="/personalPage/requestInfoPage?tag=1" />">申请通过</a>
 							</div>
-							<div class="game-item <c:if test="${param.tag eq 3 }"> active</c:if>" >
-								<a href="<c:url value="/personalPage/requestInfoPage?tag=3" />">申请拒绝</a>
+							<div class="game-item <c:if test="${param.tag eq '2' }"> active</c:if>" >
+								<a href="<c:url value="/personalPage/requestInfoPage?tag=2" />">申请拒绝</a>
 							</div>
 						</div>
 						<div class="game-container">
@@ -178,15 +178,15 @@
 													</p>
 												</div>
 												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${signup.company.id}"/>"> <img class="company-logo"
-													src="<c:url value="/resource/${signup.company.companyLogo}"/>" alt="">
+													src="${pageContext.request.contextPath}/static/companyLogo/${signup.company.companyLogo}" alt="">
 												</a>
 											</div>
 										</div>
 										<div class="info-append">
 											<div class="info-left">
-												<c:if test="${signup.signUpJob.flag eq 1}"><span class="info-left-blue">申请中</span></c:if>
-												<c:if test="${signup.signUpJob.flag eq 2}"><span class="info-left-green">申请通过</span></c:if>
-												<c:if test="${signup.signUpJob.flag eq 3}"><span class="info-left-red">申请失败</span></c:if>
+												<c:if test="${signup.signUpJob.flag eq 0}"><span class="info-left-blue">申请中</span></c:if>
+												<c:if test="${signup.signUpJob.flag eq 1}"><span class="info-left-green">申请通过</span></c:if>
+												<c:if test="${signup.signUpJob.flag eq 2}"><span class="info-left-red">申请失败</span></c:if>
 											</div>
 											<div class="info-right">${signup.jobDescription}</div>
 										</div>
@@ -209,17 +209,17 @@
 					<div class="person-right-bottom">
 						<!--比赛类别-->
 						<div class="game-nav">
-							<div class="game-item <c:if test="${param.tag eq 3 }"> active</c:if>">
-								<a href="<c:url value="/personalPage/releaseInfoPage?tag=3" />">全部招聘</a>
+							<div class="game-item <c:if test="${param.tag eq 'all' }"> active</c:if>">
+								<a href="<c:url value="/personalPage/releaseInfoPage?tag=all" />">全部招聘</a>
 							</div>
-							<div class="game-item <c:if test="${param.tag eq 0 }"> active</c:if>">
-								<a href="<c:url value="/personalPage/releaseInfoPage?tag=0" />">正在进行</a>
+							<div class="game-item <c:if test="${param.tag eq '1' }"> active</c:if>">
+								<a href="<c:url value="/personalPage/releaseInfoPage?tag=1" />">正在进行</a>
 							</div>
-							<div class="game-item <c:if test="${param.tag eq 1 }"> active</c:if>">
-								<a href="<c:url value="/personalPage/releaseInfoPage?tag=1" />">已经结束</a>
+							<div class="game-item <c:if test="${param.tag eq '2' }"> active</c:if>">
+								<a href="<c:url value="/personalPage/releaseInfoPage?tag=2" />">已经结束</a>
 							</div>
-								<div class="game-item <c:if test="${param.tag eq 5 }"> active</c:if>">
-								<a href="<c:url value="/personalPage/releaseInfoPage?tag=5" />">审核中</a>
+								<div class="game-item <c:if test="${param.tag eq '0' }"> active</c:if>">
+								<a href="<c:url value="/personalPage/releaseInfoPage?tag=0" />">审核中</a>
 							</div>
 						</div>
 						<div class="game-container">
@@ -254,15 +254,15 @@
 													</p>
 												</div>
 												<a href="<c:url value="/companyPage/companyDetailPage?companyId=${release.company.id}"/>"> <img class="company-logo"
-													src="<c:url value="/resource/${release.company.companyLogo}"/>" alt="">
+													src="${pageContext.request.contextPath}/static/companyLogo/${release.company.companyLogo}" alt="">
 												</a>
 											</div>
 										</div>
 										<div class="info-append">
 											<div class="info-left">
-											<c:if test="${release.flag eq  5 }"><span class="info-left-green">审核中</span></c:if>
-												<c:if test="${release.flag eq 0 }"><span class="info-left-green">进行中</span></c:if>
-												<c:if test="${release.flag eq 1 }"><span class="info-left-red">已结束</span></c:if>
+											<c:if test="${release.flag eq 0 }"><span class="info-left-green">审核中</span></c:if>
+												<c:if test="${release.flag eq 1}"><span class="info-left-green">进行中</span></c:if>
+												<c:if test="${release.flag eq 2 }"><span class="info-left-red">已结束</span></c:if>
 											</div>
 											<div class="info-right">${release.jobDescription }</div>
 										</div>

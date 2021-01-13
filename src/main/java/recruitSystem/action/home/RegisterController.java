@@ -32,8 +32,11 @@ public class RegisterController {
 	@Autowired
 	private CompanyService  companyService;
 	
+	
 	/**
 	 * 进入注册页面，选择身份
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String selectIdentity(HttpSession session) {
@@ -41,8 +44,12 @@ public class RegisterController {
 		return "register/selectIdentity";
 	}
 
+	
+	
 	/**
-	 * 工人 填写个人基础信息，
+	 *  工人 填写个人基础信息，
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/workerBasicInfo", method = RequestMethod.GET)
 	public String workerBasicInfo(HttpSession session) {
@@ -52,8 +59,12 @@ public class RegisterController {
 		session.setAttribute("newUser", user);
 		return "register/basicInfo";
 	}
+
+	
 	/**
 	 * 填写个人基础信息，老板的jsp页面
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/bossBasicInfo", method = RequestMethod.GET)
 	public String bossBasicInfo(HttpSession session) {
@@ -63,8 +74,21 @@ public class RegisterController {
 		session.setAttribute("newUser", user);
 		return "register/basicInfo";
 	}
+
+
 	/**
 	 * 提交个人信息，目前写的是老板的提交
+	 * @param lastName
+	 * @param firstName
+	 * @param birth
+	 * @param IDNumber
+	 * @param phone
+	 * @param email
+	 * @param company
+	 * @param sex
+	 * @param session
+	 * @return
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/bossBasicInfo", method = RequestMethod.POST)
 	public String bossBasicInfoSubmit(@RequestParam(value = "lastName", defaultValue = "") String lastName,
@@ -94,8 +118,13 @@ public class RegisterController {
 				
 
 	}
-	/*
+	
+	
+	/**
 	 * 公司未注册提示
+	 * @param session
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/notFoundCompanyPage", method = RequestMethod.GET)
 	public String notFoundCompany(HttpSession session, Model model) {
@@ -104,8 +133,19 @@ public class RegisterController {
 		return "error/error";
 	}
 	
+	
 	/**
 	 * 提交个人信息，目前写的是打工人的提交
+	 * @param lastName
+	 * @param firstName
+	 * @param birth
+	 * @param IDNumber
+	 * @param phone
+	 * @param email
+	 * @param sex
+	 * @param session
+	 * @return
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/workerBasicInfo", method = RequestMethod.POST)
 	public String workerBasicInfoSubmit(@RequestParam(value = "lastName", defaultValue = "") String lastName,
@@ -127,8 +167,9 @@ public class RegisterController {
 		return "redirect:/registerPage/accountInfoPage";// 返回账号密码注册页面
 	}
 
-	/*
+	/**
 	 * 填写用户信息
+	 * @return
 	 */
 	@RequestMapping(value = "/accountInfoPage", method = RequestMethod.GET)
 	public String accountInfo() {
@@ -137,6 +178,11 @@ public class RegisterController {
 	
 	/**
 	 * 提交用户信息
+	 * @param userName
+	 * @param account
+	 * @param password
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/accountInfoPage", method = RequestMethod.POST)
 	public String accountInfoSubmit(@RequestParam(value = "userName", defaultValue = "") String userName,
@@ -144,25 +190,18 @@ public class RegisterController {
 			@RequestParam(value = "password", defaultValue = "") String password, HttpSession session) {
 		int num=userService.countUser(account);
 		if (num==0) {//用户不存在，则创建用户
-			User user=(User) session.getAttribute("newUser");
-			user.setAccount(account);
-			user.setPassword(MD5.md5(password));
-			user.setUserName(userName);
-			session.setAttribute("newUser", user);
-			if (user.getIdentityId()==1) {
-				String companyId=(String) session.getAttribute("companyId");
-				userService.insert(user, companyId);
-			}else {
-				userService.insert(user);
-			}
+			userService.insert(session,userName,account,password);
 			return "redirect:/loginPage";// 成功返回注册页面
 			
 		}else {
+			session.removeAttribute("newUser");
 			return "redirect:/registerPage/UserExistPage";// 返回错误页面
 		}
 	}
-	/*
+	/**
 	 * 用户存在页面
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/UserExistPage", method = RequestMethod.GET)
 	public String UserExist(Model model) {

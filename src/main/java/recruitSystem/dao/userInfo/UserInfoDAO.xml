@@ -1,217 +1,287 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
- <mapper namespace="recruitSystem.dao.userInfo.UserInfoDAO">
- 	<!-- 建立sql查询结果字段与实体属性的映射关系 -->
- 	<resultMap id="UserInfoMap" type="recruitSystem.view.User">
- 		<result  column="id"  property="id" />
- 		<result  column="user_name"  property="userName" />
- 		<result  column="account"  property="account" />
- 		<result  column="password"  property="password" />
- 		<result  column="identity_id"  property="identityId" />
- 		<result  column="credit"  property="credit" />
- 		<result  column="enable"  property="enable" />
- 		<result  column="last_name"  property="lastName" />
- 		<result  column="first_name"  property="firstName" />
- 		<result  column="date_of_birth"  property="dateOfBirth" />
- 		<result  column="id_number"  property="IDNumber" />
- 		<result  column="phone_number"  property="phoneNumber" />
- 		<result  column="email"  property="email" />
- 		<result  column="sex"  property="sex" />
- 		<association property="signUpJob" javaType="recruitSystem.view.SignUpJob">
-	 		 <result  column="signup_id"  property="signUpId" />
-			 <result  column="signup_t"  property="signUpTime" />
-			 <result  column="signup_flag"  property="flag" />
-	 	</association>
- 	</resultMap>
- 	<!-- 查询用户 -->
- 	<select id="selectUser" resultMap="UserInfoMap">
-	 	SELECT
-	 		id,
-	 		user_name,
-	 		account,
-	 		password,
-	 		identity_id,
-	 		credit,
-	 		enable,
-	 		last_name,
-	 		first_name,
-	 		date_of_birth,
-	 		id_number,
-	 		phone_number,
-	 		email,
-	 		sex
-	 	FROM
-	 		user
-	 	WHERE
-	 		account = #{account}
-	 	AND password = #{password}
- 	</select>
+<mapper namespace="recruitSystem.dao.userInfo.UserInfoDAO">
+	<!-- 建立sql查询结果字段与实体属性的映射关系 -->
+	<resultMap id="UserInfoMap" type="recruitSystem.view.User">
+		<result column="id" property="id" />
+		<result column="user_name" property="userName" />
+		<result column="account" property="account" />
+		<result column="password" property="password" />
+		<result column="identity_id" property="identityId" />
+		<result column="credit" property="credit" />
+		<result column="enable" property="enable" />
+		<result column="last_name" property="lastName" />
+		<result column="first_name" property="firstName" />
+		<result column="date_of_birth" property="dateOfBirth" />
+		<result column="id_number" property="IDNumber" />
+		<result column="phone_number" property="phoneNumber" />
+		<result column="email" property="email" />
+		<result column="sex" property="sex" />
+		<association property="signUpJob"
+			javaType="recruitSystem.view.SignUpJob">
+			<result column="signup_id" property="signUpId" />
+			<result column="signup_t" property="signUpTime" />
+			<result column="signup_flag" property="flag" />
+		</association>
+	</resultMap>
+	<!-- 查询用户 -->
+	<select id="selectUser" resultMap="UserInfoMap">
+		SELECT
+		id,
+		user_name,
+		account,
+		password,
+		identity_id,
+		credit,
+		enable,
+		last_name,
+		first_name,
+		date_of_birth,
+		id_number,
+		phone_number,
+		email,
+		sex
+		FROM
+		user
+		WHERE
+		account = #{account}
+		AND password = #{password}
+	</select>
 	<!-- 判断用户是否存在 -->
- 	<select id="countUser" resultType="int">
-	 	SELECT
-	 		COUNT(*)
-	 	FROM
-	 		user
-	 	WHERE
-	 		account = #{account}
- 	</select>
- 	
- 	<!-- 注册新用户 -->
- 	<insert id="insert">
- 		INSERT INTO user(user_name,account,password,identity_id,credit,enable,last_name,first_name,date_of_birth,id_number,phone_number,email,sex)
- 		VALUES(#{user.userName},#{user.account},#{user.password},#{user.identityId},100,true,#{user.lastName},#{user.firstName},#{user.dateOfBirth},#{user.IDNumber},#{user.phoneNumber},#{user.email},#{user.sex})
- 	</insert>
- 	
- 	<!-- 修改用户名 -->
- 	<update id="updateUserName">
- 		UPDATE user
-	 		<set>
-	 			user_name = #{userName}
-	 		</set>
- 		WHERE account = #{account}
- 	</update>
- 	<!--修改用户基本信息 -->
- 	<update id="updateBasicInfo">
- 		UPDATE user
- 			<set>
- 				last_name = #{user.lastName},
- 				first_name = #{user.firstName},
- 				date_of_birth = #{user.dateOfBirth},
- 				id_number = #{user.IDNumber},
- 				phone_number = #{user.phoneNumber},
- 				email = #{user.email},
- 				sex = #{user.sex}
- 			</set>
- 		WHERE account = #{user.account}
- 	</update>
- 	<select id="findUser"  resultMap="UserInfoMap">
- 	SELECT
- 		id,
- 		user_name,
- 		account,
- 		password,
- 		identity_id,
- 		credit,
- 		enable,
- 		last_name,
- 		first_name,
- 		date_of_birth,
- 		id_number,
- 		phone_number,
- 		email,
- 		sex
- 	FROM
- 		user
- 	WHERE
- 		id = #{userId}
- 	</select>
- 	<update id="deleteUser">
- 		UPDATE user
- 		<set>
- 			enable = false
- 		</set>
- 		WHERE
- 			id = #{userId}
- 	</update>
- 	<update id="updateManager">
- 		UPDATE user
- 		<set>
- 			identity_id = 3
- 		</set>
- 		WHERE
- 			id = #{userId}
- 	</update>
- 	
- 		<!-- 通过接收者查找发送者 -->
- 	<select id="selectBySendUser" resultMap="UserInfoMap">
- 		SELECT *
- 		FROM user
- 		WHERE id = (
- 			SELECT send_id
- 			FROM news
- 			WHERE receive_id = #{receiveId}
- 		)
- 	</select>
- 	<select id="findSignupUsers" resultMap="UserInfoMap">
- 		SELECT
- 			w.t signup_t,
- 			w.flag signup_flag,
- 			u.last_name,
- 			u.first_name,
- 			u.user_name,
- 			u.id
+	<select id="countUser" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM
+		user
+		WHERE
+		account = #{account}
+	</select>
+
+	<!-- 注册新用户 -->
+	<insert id="insert" parameterType="recruitSystem.view.User"
+		useGeneratedKeys="true" keyProperty="user.id">
+		INSERT INTO
+		user(user_name,account,password,identity_id,credit,enable,last_name,first_name,date_of_birth,id_number,phone_number,email,sex)
+		VALUES(#{user.userName},#{user.account},#{user.password},#{user.identityId},100,true,#{user.lastName},#{user.firstName},#{user.dateOfBirth},#{user.IDNumber},#{user.phoneNumber},#{user.email},#{user.sex})
+	</insert>
+
+	<!-- 修改用户名 -->
+	<update id="updateUserName">
+		UPDATE user
+		<set>
+			user_name = #{userName}
+		</set>
+		WHERE account = #{account}
+	</update>
+	<!--修改用户基本信息 -->
+	<update id="updateBasicInfo">
+		UPDATE user
+		<set>
+			last_name = #{user.lastName},
+			first_name = #{user.firstName},
+			date_of_birth = #{user.dateOfBirth},
+			id_number = #{user.IDNumber},
+			phone_number = #{user.phoneNumber},
+			email = #{user.email},
+			sex = #{user.sex}
+		</set>
+		WHERE account = #{user.account}
+	</update>
+	<!-- 根据用户id获取用户 -->
+	<select id="findUser" resultMap="UserInfoMap">
+		SELECT
+		id,
+		user_name,
+		account,
+		password,
+		identity_id,
+		credit,
+		enable,
+		last_name,
+		first_name,
+		date_of_birth,
+		id_number,
+		phone_number,
+		email,
+		sex
+		FROM
+		user
+		WHERE
+		id = #{userId}
+	</select>
+	<!-- 删除用户 -->
+	<update id="deleteUser">
+		UPDATE user
+		<set>
+			enable = false
+		</set>
+		WHERE
+		id = #{userId}
+	</update>
+	<!--将管理员升级为超级管理员 -->
+	<update id="updateManager">
+		UPDATE user
+		<set>
+			identity_id = 3
+		</set>
+		WHERE
+		id = #{userId}
+	</update>
+
+	<!-- 通过接收者查找发送者 -->
+	<select id="selectBySendUser" resultMap="UserInfoMap">
+		SELECT 
+ 			u.id,
+	 		u.user_name,
+	 		u.account,
+	 		u.password,
+	 		u.identity_id,
+	 		u.credit,
+	 		u.enable,
+	 		u.last_name,
+	 		u.first_name,
+	 		u.date_of_birth,
+	 		u.id_number,
+	 		u.phone_number,
+	 		u.email,
+	 		u.sex
  		FROM
- 			user u,
- 			workersignup w
- 		WHERE
- 			w.worker_id = u.id
- 		AND	w.employment_id = #{jobId}
- 		
- 	</select>
- 	<update id="successWorker">
- 		UPDATE workersignup
- 		<set>
- 		 	t = #{date},
- 		 	flag = #{flag}
- 		</set>
- 		WHERE
- 		 	worker_id = #{userId} 
- 		AND employment_id= #{jobId}
- 	</update>
- 	<select id="userCount"  resultType="int">
- 		SELECT 
- 			COUNT(*) 
- 		FROM 
- 			user 
- 		WHERE  
- 			enable=1
- 		<choose>
- 			<when test="tag!=null and tag!='0' and tag!='1'">
-				AND (identity_id = 0 OR identity_id = 1)
-			</when>
-			<otherwise>
-				AND identity_id = #{tag}
-			</otherwise>
- 		</choose>
- 		
- 	</select>
- 	<select id="findUsers">
- 		SELECT
- 			id,
- 			user_name,
- 			identity_id
- 		<choose>
- 			<when test="tag!=null and tag!='0' and tag!='1'">
-				AND (identity_id = 0 OR identity_id = 1)
-			</when>
-			<otherwise>
-				AND identity_id = #{tag}
-			</otherwise>
- 		</choose>
- 		LIMIT 5
- 		OFFSET  #{startIndex}
- 	</select>
- 	<select id="ManagerCount">
-	 	SELECT
-	 	 	COUNT(*) 
-	 	FROM 
-	 		user
-	 	WHERE identity_id = 2 
-		AND enable = 1
- 	</select>
- 	<select id="findManagers" resultMap="UserInfoMap">
- 		SELECT 
- 			last_name,
- 			first_name,
- 			id ,
- 			userName  
- 		FROM 
- 			user 
+			user u,
+			news n
  		WHERE 
- 			identity_id = 2 
- 		AND enable = 1
- 		LIMIT 5 
- 		OFFSET  #{startIndex}
- 	</select>
- </mapper>
+ 			u.id = n.send_id
+ 		AND	n.receive_id = #{receiveId}	
+	</select>
+	<!-- 根据工作id获取申请的用户 -->
+	<select id="findSignupUsers" resultMap="UserInfoMap">
+		SELECT
+		w.t signup_t,
+		w.flag signup_flag,
+		u.last_name,
+		u.first_name,
+		u.user_name,
+		u.id
+		FROM
+		user u,
+		workersignup w
+		WHERE
+		w.worker_id = u.id
+		AND w.employment_id = #{jobId}
+
+	</select>
+	<!-- 获取用户数量 -->
+	<select id="userCount" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM
+		user
+		WHERE
+		enable=1
+		<choose>
+			<when test="tag!=null and tag!='0' and tag!='1'">
+				AND (identity_id = 0 OR identity_id = 1)
+			</when>
+			<otherwise>
+				AND identity_id = #{tag}
+			</otherwise>
+		</choose>
+
+	</select>
+	<!--获取用户列表 -->
+	<select id="findUsers" resultMap="UserInfoMap">
+		SELECT
+		id,
+		user_name,
+		identity_id
+		<choose>
+			<when test="tag!=null and tag!='0' and tag!='1'">
+				AND (identity_id = 0 OR identity_id = 1)
+			</when>
+			<otherwise>
+				AND identity_id = #{tag}
+			</otherwise>
+		</choose>
+		AND enable = 1
+		LIMIT 5
+		OFFSET #{startIndex}
+	</select>
+	<!--获取管理员列表 -->
+	<select id="ManagerCount" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM
+		user
+		WHERE identity_id = 2
+		AND enable = 1
+	</select>
+	<!-- 获取管理员列表 -->
+	<select id="findManagers" resultMap="UserInfoMap">
+		SELECT
+		last_name,
+		first_name,
+		id ,
+		user_name
+		FROM
+		user
+		WHERE
+		identity_id = 2
+		AND enable = 1
+		LIMIT 5
+		OFFSET #{startIndex}
+	</select>
+	<!--更改申请状态 -->
+	<update id="alterSignUpFlag">
+		UPDATE workersignup
+		<set>
+			t = #{date},
+			flag = #{flag}
+		</set>
+		WHERE
+		worker_id = #{userId}
+		AND employment_id = #{jobId}
+	</update>
+	<!-- 获取用户的身份标识 -->
+	<select id="findUserIdentityId" resultType="int">
+		SELECT
+		identity_id
+		FROM
+		user
+		WHERE
+		id = #{userId}
+
+	</select>
+	<!-- 修改密码 -->
+	<update id="alterPassword">
+		UPDATE
+		user
+		<set>
+			password = #{password}
+		</set>
+		WHERE
+		password = #{oldPassword}
+		AND account = #{account}
+	</update>
+	<!-- 通过账号来查询邮箱等信息 -->
+	<select id="findEmail" resultMap="UserInfoMap">
+		SELECT
+		user_name,
+		email
+		FROM
+		user
+		WHERE
+		account = #{account}
+		AND enable = true
+	</select>
+	<!-- 找回密码，修改密码 -->
+	<update id="findBackPassword">
+		UPDATE
+		user
+		<set>
+			password = #{newPassword}
+		</set>
+		WHERE
+		account = #{account}
+
+	</update>
+</mapper>

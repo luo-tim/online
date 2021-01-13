@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.text-container{
+    position: relative;
+    font-size: 48px;
+    font-weight: 800;
+    color: #fff;
+    width: 650px;
+    margin: 0 auto;
+    margin-top: 70px;
+
+}
+.text-container span{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    /* background-color: aqua; */
+    line-height: 80px;
+    text-align: center;
+    /* z-index: 0; */
+    transform: skewY(-15deg);
+    transform-origin:left ;
+}
+
+.text-container span:nth-child(even){
+    transform: skewY(15deg);
+    transform-origin: right;
+}
+.text-container  span::after{
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 80px;
+    left: 0;
+    top: 0;
+    background-color: #00b894;
+    z-index: -1;
+   
+}
+.text-container span:nth-child(even)::after {
+    background-color: #056653;
+}
+.text-container  span::before{
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 80px;
+    left: 0;
+    top: 0;
+    background-color:#0febc0;
+    z-index: -1;
+    transform: skewY(15deg);
+    transform-origin:left ;
+}
+
+.text-container span:nth-child(even)::before{
+    transform: skewY(-15deg);
+    transform-origin: right;
+}
+/* 鼠标移入时效果 */
+
+.text-container span.flat {
+    transform: skewY(0deg);
+}
+
+.text-container span.flat:nth-child(even) {
+    transform: skewY(0deg);
+}
+
+.text-container span.flat::before {
+    transform: skewY(0deg);
+}
+
+.text-container span.flat:nth-child(even)::before {
+    transform: skewY(0deg);
+}
+
+.text-container span.flat::after {
+    background-color:  #c57052;
+}
+
+
+
+
+

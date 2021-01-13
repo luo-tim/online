@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: url(../image/背景1.jpg);
+    line-height: 0px;
+    color: #414a60;
+    position: relative;
+}
+.FB-container{
+    height: 400px;
+    width: 740px;
+    padding: 0;
+    background: rgb(241, 243, 243);
+    box-shadow: 0 6px 13px 0 rgba(0,0,0,.1);
+    border-radius: 20px;
+    margin-top: 180px;
+    margin: auto;
+    top: 0px;
+
+}
+.submitSuccess{
+    top: 175px;
+    font-size: 30px;
+    font-style: italic;
+    margin-top: 180px;
+    color: rgb(250, 130, 18);
+    text-align: center;
+    position: relative;
+}

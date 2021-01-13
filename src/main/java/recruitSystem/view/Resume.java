@@ -10,37 +10,37 @@ package recruitSystem.view;
 public class Resume {
 
 	private String id;//主键
-	private String name;
+	private String name;//名字
 
-	private String dateOfBirth;
+	private String dateOfBirth;//出生日期
 
-	private String nation;
+	private String nation;//国家
 
-	private String height;
-	private String sex;
-	private String phone;
+	private String height;//身高
+	private String sex;//性别
+	private String phone;//手机号
 
-	private String politicsStatus;
+	private String politicsStatus;//政治身份
 
-	private String email;
+	private String email;//电子邮箱
 
-	private String school;
+	private String school;//毕业学校
 
-	private String address;
+	private String address;//家庭住地址
 
-	private String education;
+	private String education;//学历
 
-	private String educationBg;
+	private String educationBg;//教育背景
 
-	private String Iexperience;
+	private String Iexperience;//实习经历
 
-	private String Sexperience;
+	private String Sexperience;//校园经历
 
-	private String skills;
+	private String skills;//掌握技能
 
-	private String self;
+	private String self;//自我介绍
 
-	private String userId; 
+	private String userId; //用户id
 
 
 

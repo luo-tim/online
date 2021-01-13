@@ -34,8 +34,14 @@ public class ManagementCheckCompanyController {
 	@Autowired
 	private JobService jobService;
 	
-	/*
+
+
+	/**
 	 * 查看公司列表
+	 * @param pageNo
+	 * @param tag
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String CompanyList(@RequestParam(value="pageNo",defaultValue="1")int pageNo,@RequestParam(value = "tag", defaultValue = "all") String tag, Model model) {
@@ -45,8 +51,12 @@ public class ManagementCheckCompanyController {
 	}
 	
 
-	/*
+
+	/**
 	 * 审核通过
+	 * @param companyId
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value = "/successCompanyPage", method = RequestMethod.GET)
 	public String successCompany(@RequestParam(value = "companyId", defaultValue = "0") String companyId,
@@ -59,8 +69,11 @@ public class ManagementCheckCompanyController {
 	}
 
 	
-	/*
+	/**
 	 * 审核不通过
+	 * @param companyId
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/failCompanyPage", method = RequestMethod.GET)
 	public String failCompany(@RequestParam(value = "companyId", defaultValue = "0") String companyId, Model model) {
@@ -68,23 +81,29 @@ public class ManagementCheckCompanyController {
 		return "redirect:/managerPage/checkCompanyPage";
 	}
 	
-	/*
+	/**
 	 * 查看公司的详情页面
+	 * @param companyId
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/companyDetailPage", method = RequestMethod.GET)
 	public String companyDetail(@RequestParam(value = "companyId", defaultValue = "0") String companyId, Model model) {
-		Company company = companyService.findCompanyById(companyId);
+		Company company = companyService.findCompanyById(companyId,false);
 		model.addAttribute("company", company);
 		model.addAttribute("index", 0);
 		return "company/companyDetail";
 	}
 
-	/*
+	/**
 	 * 公司的工作详情
+	 * @param companyId
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/jobsDetailPage", method = RequestMethod.GET)
 	public String jobsDetail(@RequestParam(value = "companyId", defaultValue = "0") String companyId, Model model) {
-		Company company = companyService.findCompanyById(companyId);
+		Company company = companyService.findCompanyById(companyId,false);
 		model.addAttribute("company", company);
 		List<Job> jobs = jobService.findCompanyJobs(companyId);
 		model.addAttribute("jobs", jobs);

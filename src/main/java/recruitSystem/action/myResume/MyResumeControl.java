@@ -31,6 +31,9 @@ public class MyResumeControl {
 	
 	/**
 	 * 进入简历页面
+	 * @param model
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String myResume( Model model,
@@ -49,8 +52,10 @@ public class MyResumeControl {
 		}
 
 }
-	/*
+	/**
 	 * 提示没有简历界面
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/notFoundResumePage", method = RequestMethod.GET)
 	public String tipResume(Model model) {
@@ -61,6 +66,9 @@ public class MyResumeControl {
 
 	/**
 	 * 进入简历修改页面
+	 * @param workerId
+	 * @param model
+	 * @return
 	 */
 	@RequestMapping(value = "/alterPage", method = RequestMethod.GET)
 	public String alterResume(@RequestParam(value = "workerId", defaultValue = "0") String workerId, Model model) {
@@ -77,6 +85,25 @@ public class MyResumeControl {
 	
 	/**
 	 * 提交简历
+	 * @param name
+	 * @param nation
+	 * @param education
+	 * @param birth
+	 * @param height
+	 * @param sex
+	 * @param school
+	 * @param politic
+	 * @param phone
+	 * @param email
+	 * @param address
+	 * @param educationbg
+	 * @param practice
+	 * @param skills
+	 * @param campus
+	 * @param self
+	 * @param session
+	 * @return
+	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/alterPage", method = RequestMethod.POST)
 	public String submitResume(@RequestParam(value = "name", defaultValue = "") String name,
@@ -125,7 +152,6 @@ public class MyResumeControl {
 
 		return "redirect:/myResumePage";// 跳转到简历信息
 	}
-	
 	
 
 }

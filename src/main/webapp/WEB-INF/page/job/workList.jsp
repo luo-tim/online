@@ -71,6 +71,9 @@
             <input class="search-btn" type="submit" value="搜索">
         </form>
         </div>
+		 <div class="result_num">
+            饭碗为您找到相关结果约${pages.totalCount}个
+        </div>
 		<div class="job-lists">
 			<ul>
 			<c:forEach items="${pages.items}" var="job">
@@ -108,7 +111,7 @@
 									</p>
 								</div>
 								<a href="#"> <img class="company-logo"
-									src="<c:url value="/resource/${job.company.companyLogo}"/>" alt="">
+									src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo}"/>" alt="">
 								</a>
 							</div>
 						</div>
@@ -121,7 +124,7 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<mytag:works/>
+		<mytag:works query="${param.query}" city="${param.city }" pro="${param.pro }" type="${param.type }"  pages="${pages }"/>
 	</div>
 	   <script src="${pageContext.request.contextPath}/static/js/jquery-3.5.1.min.js"></script> 
         <script src="${pageContext.request.contextPath}/static/js/city.js"></script> 

@@ -10,29 +10,142 @@
 		<name>works</name>
 		<tag-class>recruitSystem.tag.WorkListTag</tag-class>
 		<body-content>empty</body-content>
+		<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>query</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+		
+		<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>city</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+		
+		<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>pro</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+		
+		<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>pages</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        	<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>type</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+		
 	</tag>
 
 	<tag>
 		<name>users</name>
 		<tag-class>recruitSystem.tag.UserListTag</tag-class>
 		<body-content>empty</body-content>
+		<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>pages</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        	<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>tag</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
 	</tag>
 
 	<tag>
 		<name>managers</name>
 		<tag-class>recruitSystem.tag.ManagerListTag</tag-class>
 		<body-content>empty</body-content>
+		<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>pages</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        
 	</tag>
 
 	<tag>
 		<name>jobs</name>
 		<tag-class>recruitSystem.tag.JobListTag</tag-class>
 		<body-content>empty</body-content>
+		<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>pages</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        	<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>tag</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
 	</tag>
 	<tag>
 		<name>companys</name>
 		<tag-class>recruitSystem.tag.CompanyListTag</tag-class>
 		<body-content>empty</body-content>
+		<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>pages</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        	<!-- 指定标签中的属性 -->
+        <attribute>
+            <!-- 指定属性名称 -->
+            <name>tag</name>
+            <!-- 该属性为true时表示其指定是属性为必须属性 -->
+            <required>true</required>
+            <!-- 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 -->
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
 	</tag>
 
 </taglib>
