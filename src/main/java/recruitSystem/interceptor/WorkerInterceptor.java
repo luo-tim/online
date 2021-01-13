@@ -19,9 +19,9 @@ import recruitSystem.view.User;
 
 /**
  * @author 72412
- *老板拦截器
+ *工人的拦截器
  */
-public class BossInterceptor implements HandlerInterceptor{
+public class WorkerInterceptor implements HandlerInterceptor{
 	private final static Log log = LogFactory.getLog(SuperManagerInterceptor.class);
 	/**
 	 * 
@@ -52,21 +52,19 @@ public class BossInterceptor implements HandlerInterceptor{
 		log.debug("1.Called before handler method");
 	
 		HttpSession session = request.getSession();
-		User boss = (User) session.getAttribute("user");
-		
+		User worker = (User) session.getAttribute("user");
+	
 		// 判断session中是否有用户数据，如果有，则返回true，继续向下执行
-		if (boss != null && boss.getIdentityId()==1) {
+		if (worker != null && worker.getIdentityId()==0) {
 			return true;
 		}
 		// 不符合条件的转发到登录页面
+		
 		/*
-		 *   /companyInfoPage
-		 *   /releaseInfoPage
-		 *   /releaseRecruitmentPage
-		 *   /bossWorkDetailPage
-		 *   /finishRecruitmentPage
-		 *   /passSignupPage
-		 *   /refuseSignupPage
+		 *  /requestInfoPage
+		 *  /workHistoryInfoPage
+		 *  /myResumePage
+		 *  /alterPage
 		 */
 		response.sendRedirect(request.getContextPath()+"/homePage");
 		return false;

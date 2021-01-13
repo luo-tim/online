@@ -22,6 +22,7 @@
 		where
 		send_id = #{sendId}
 		AND receive_id = #{receiveId}
+		ORDER BY post_time DESC
 	</select>
 	<!-- 更新消息 -->
 	<update id="update">

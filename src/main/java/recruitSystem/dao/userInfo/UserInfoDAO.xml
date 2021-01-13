@@ -179,14 +179,15 @@
 		WHERE
 		enable=1
 		<choose>
-			<when test="tag!=null and tag!='0' and tag!='1'">
+			<when test="tag!=null and tag=='all' ">
 				AND (identity_id = 0 OR identity_id = 1)
 			</when>
 			<otherwise>
 				AND identity_id = #{tag}
 			</otherwise>
 		</choose>
-
+		AND identity_id!=2
+		AND identity_id!=3
 	</select>
 	<!--获取用户列表 -->
 	<select id="findUsers" resultMap="UserInfoMap">
@@ -194,15 +195,20 @@
 		id,
 		user_name,
 		identity_id
+		FROM
+			user
+		WHERE
+			enable = 1
 		<choose>
-			<when test="tag!=null and tag!='0' and tag!='1'">
+			<when test="tag!=null and tag=='all' ">
 				AND (identity_id = 0 OR identity_id = 1)
 			</when>
 			<otherwise>
 				AND identity_id = #{tag}
 			</otherwise>
 		</choose>
-		AND enable = 1
+		AND identity_id!=2
+		AND identity_id!=3
 		LIMIT 5
 		OFFSET #{startIndex}
 	</select>

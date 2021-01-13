@@ -145,7 +145,9 @@ public class HomeController {
 		if (!currentUser.isAuthenticated()) {
 			// 将用户名密码封装为UsernamePasswordToken对象
 			UsernamePasswordToken token = new UsernamePasswordToken(account, MD5.md5(password));
-			token.setRememberMe(true);
+			if (remember==1) {
+				token.setRememberMe(true);
+			}
 			// System.out.println(currentUser.isRemembered());
 			try {
 				currentUser.login(token);

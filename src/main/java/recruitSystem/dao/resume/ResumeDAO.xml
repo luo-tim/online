@@ -20,6 +20,7 @@
 		<result column="s_experience" property="Sexperience" />
 		<result column="skills" property="skills" />
 		<result column="self" property="self" />
+		<result column="photo" property="photo" />
 	</resultMap>
 	<!-- 获取简历 -->
 	<select id="findResume" resultMap="ResumeMap">
@@ -40,7 +41,8 @@
 		i_experience,
 		s_experience,
 		skills,
-		self
+		self,
+		photo
 		FROM
 		resume
 		WHERE
@@ -74,10 +76,11 @@
 			education = #{resume.education},
 			educationbg = #{resume.educationBg},
 			i_experience = #{resume.Iexperience},
+		<if  test="resume.photo!=null and resume.photo!=''">photo = #{resume.photo},</if>
 			s_experience = #{resume.Sexperience},
 			skills = #{resume.skills},
 			self = #{resume.self}
-
+		
 		</set>
 		WHERE
 		user_id = #{resume.userId}
@@ -85,8 +88,8 @@
 	<!--插入简历 -->
 	<insert id="insert">
 		INSERT INTO
-		resume(user_id,name,date_of_birth,nation,height,sex,phone,politic_status,email,school,address,education,educationbg,i_experience,s_experience,skills,self)
-		VALUES(#{resume.userId},#{resume.name},#{resume.dateOfBirth},#{resume.nation},#{resume.height},#{resume.sex},#{resume.phone},#{resume.politicsStatus},#{resume.email},#{resume.school},
+		resume(user_id,photo,name,date_of_birth,nation,height,sex,phone,politic_status,email,school,address,education,educationbg,i_experience,s_experience,skills,self)
+		VALUES(#{resume.userId},#{resume.photo},#{resume.name},#{resume.dateOfBirth},#{resume.nation},#{resume.height},#{resume.sex},#{resume.phone},#{resume.politicsStatus},#{resume.email},#{resume.school},
 		#{resume.address},#{resume.education},#{resume.educationBg},#{resume.Iexperience},#{resume.Sexperience},#{resume.skills},#{resume.self})
 	</insert>
 </mapper>

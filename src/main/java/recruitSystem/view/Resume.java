@@ -41,8 +41,24 @@ public class Resume {
 	private String self;//自我介绍
 
 	private String userId; //用户id
+	
+	private String photo;//用户照片
 
 
+
+	/**
+	 * @return the photo
+	 */
+	public String getPhoto() {
+		return photo;
+	}
+
+	/**
+	 * @param photo the photo to set
+	 */
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
 	/**
 	 * @return the userId

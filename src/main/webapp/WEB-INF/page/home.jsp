@@ -108,7 +108,7 @@
 				<ul class="cur">
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">通用软件开发工程师</p>
 									<p class="hotjob-salary">15-30K·15薪</p>
@@ -119,11 +119,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/华为.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">华为</span> <span class="company-type">计算机软件</span>
 								</a>
 							</div>
@@ -131,7 +131,7 @@
 					</li>
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">高级Java开发工程师</p>
 									<p class="hotjob-salary">15-25K·14薪</p>
@@ -142,11 +142,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/奇安信集团.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">奇安信集团</span> <span class="company-type">信息安全</span>
 								</a>
 							</div>
@@ -154,7 +154,7 @@
 					</li>
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">急招C++/Java/Python</p>
 									<p class="hotjob-salary">13-26K·15薪</p>
@@ -165,11 +165,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/华为.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">华为</span> <span class="company-type">计算机软件</span>
 								</a>
 							</div>
@@ -177,7 +177,7 @@
 					</li>
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">智慧城市方案售前经理</p>
 									<p class="hotjob-salary">12-24K·14薪</p>
@@ -188,11 +188,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/新华三技术有限公司.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">新华三技术有限公司</span> <span class="company-type">计算机软件</span>
 								</a>
 							</div>
@@ -200,7 +200,7 @@
 					</li>
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">IOS平台高级开发管理岗</p>
 									<p class="hotjob-salary">20-35K·16薪</p>
@@ -211,11 +211,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/中信建投证券.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">中信建投证券</span> <span class="company-type">互联网金融</span>
 								</a>
 							</div>
@@ -223,7 +223,7 @@
 					</li>
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">后台开发工程师（腾讯云全资子公司）</p>
 									<p class="hotjob-salary">15-30K·16薪</p>
@@ -234,11 +234,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/腾讯.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">腾讯</span> <span class="company-type">互联网</span>
 								</a>
 							</div>
@@ -246,7 +246,7 @@
 					</li>
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">Python</p>
 									<p class="hotjob-salary">15-30K·16薪</p>
@@ -257,11 +257,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/腾讯.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">腾讯</span> <span class="company-type">互联网</span>
 								</a>
 							</div>
@@ -269,7 +269,7 @@
 					</li>
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">C/C++研发工程师</p>
 									<p class="hotjob-salary">18-30K</p>
@@ -280,11 +280,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/华为.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">华为</span> <span class="company-type">计算机软件</span>
 								</a>
 							</div>
@@ -292,7 +292,7 @@
 					</li>
 					<li class="cur-job">
 						<div class="sub-li">
-							<a href="<c:url value="/employmentPage/workDetailPage?id=1" />" class="job-info">
+							<a href="#" class="job-info">
 								<div class="sub-li-top">
 									<p class="hotjob-name">Java开发工程师</p>
 									<p class="hotjob-salary">15-30K</p>
@@ -303,11 +303,11 @@
 								</p>
 							</a>
 							<div class="sub-li-bottom">
-								<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company">
+								<a href="#" class="hotjob-company">
 									<p>
 										<img src="${pageContext.request.contextPath}/static/companyLogo/华为.jpg" alt="">
 									</p>
-								</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="hotjob-company-info"> <span
+								</a> <a href="#" class="hotjob-company-info"> <span
 									class="hotjob-name">华为</span> <span class="company-type">计算机软件</span>
 								</a>
 							</div>
@@ -317,7 +317,7 @@
 
 				</ul>
 				<p class="common-tab-more">
-					<a href="<c:url value="/employmentPage" />" class="btn-outline">查看更多</a>
+					<a href="#" class="btn-outline">查看更多</a>
 				</p>
 			</div>
 			<div class="hot-job">
@@ -325,7 +325,7 @@
 				<ul class="cur">
 					<li class="cur-company">
 						<div class="sub-li-company">
-							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
+							<a href="#" class="company-info">
 								<div class="img-box">
 									<img src="${pageContext.request.contextPath}/static/companyLogo/腾讯.jpg" alt="腾讯">
 								</div>
@@ -333,7 +333,7 @@
 									<h4>腾讯</h4>
 									<p>互联网</p>
 								</div>
-							</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="about-info">
+							</a> <a href="#" class="about-info">
 								<p>
 									<span class="text-blue">1</span> 个热招职位
 								</p>
@@ -342,7 +342,7 @@
 					</li>
 					<li class="cur-company">
 						<div class="sub-li-company">
-							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
+							<a href="#" class="company-info">
 								<div class="img-box">
 									<img src="${pageContext.request.contextPath}/static/companyLogo/蚂蚁金服.jpg" alt="蚂蚁金服">
 								</div>
@@ -350,7 +350,7 @@
 									<h4>蚂蚁金服</h4>
 									<p>互联网</p>
 								</div>
-							</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="about-info">
+							</a> <a href="#" class="about-info">
 								<p>
 									<span class="text-blue">1</span> 个热招职位
 								</p>
@@ -359,7 +359,7 @@
 					</li>
 					<li class="cur-company">
 						<div class="sub-li-company">
-							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
+							<a href="#" class="company-info">
 								<div class="img-box">
 									<img src="${pageContext.request.contextPath}/static/companyLogo/华为.jpg" alt="华为">
 								</div>
@@ -367,7 +367,7 @@
 									<h4>华为</h4>
 									<p>计算机软件</p>
 								</div>
-							</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="about-info">
+							</a> <a href="#" class="about-info">
 								<p>
 									<span class="text-blue">1</span> 个热招职位
 								</p>
@@ -376,7 +376,7 @@
 					</li>
 					<li class="cur-company">
 						<div class="sub-li-company">
-							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
+							<a href="#" class="company-info">
 								<div class="img-box">
 									<img src="${pageContext.request.contextPath}/static/companyLogo/奇安信集团.jpg" alt="奇安信集团">
 								</div>
@@ -384,7 +384,7 @@
 									<h4>奇安信集团</h4>
 									<p>信息安全</p>
 								</div>
-							</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="about-info">
+							</a> <a href="#" class="about-info">
 								<p>
 									<span class="text-blue">1</span> 个热招职位
 								</p>
@@ -393,7 +393,7 @@
 					</li>
 					<li class="cur-company">
 						<div class="sub-li-company">
-							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
+							<a href="#" class="company-info">
 								<div class="img-box">
 									<img src="${pageContext.request.contextPath}/static/companyLogo/新华三技术有限公司.jpg" alt="新华三技术有限公司">
 								</div>
@@ -401,7 +401,7 @@
 									<h4>新华三技术有限公司</h4>
 									<p>计算机软件</p>
 								</div>
-							</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="about-info">
+							</a> <a href="#" class="about-info">
 								<p>
 									<span class="text-blue">1</span> 个热招职位
 								</p>
@@ -410,7 +410,7 @@
 					</li>
 					<li class="cur-company">
 						<div class="sub-li-company">
-							<a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="company-info">
+							<a href="#" class="company-info">
 								<div class="img-box">
 									<img src="${pageContext.request.contextPath}/static/companyLogo/中信建投证券.jpg" alt="中信建投证券">
 								</div>
@@ -418,7 +418,7 @@
 									<h4>中信建投证券</h4>
 									<p>互联网金融</p>
 								</div>
-							</a> <a href="<c:url value="/companyPage/companyDetailPage?id=1" />" class="about-info">
+							</a> <a href="#" class="about-info">
 								<p>
 									<span class="text-blue">1</span> 个热招职位
 								</p>
@@ -427,7 +427,7 @@
 					</li>
 				</ul>
 				<p class="common-tab-more">
-					<a href="<c:url value="/companyPage" />" class="btn-outline">查看更多</a>
+					<a href="#" class="btn-outline">查看更多</a>
 				</p>
 			</div>
 

@@ -276,6 +276,7 @@ function postResume(){
 
     let resumeForm=document.resumeForm;
     let name=resumeForm.name.value;
+   
     let height=resumeForm.height.value;
     let nation=resumeForm.nation.value;
     let birth=resumeForm.birth.value;
@@ -295,6 +296,7 @@ function postResume(){
         alert("名字不能为空");
         return false;
     }
+  
     if(!isValidLength(name,20)){
         alert("请输入正确长度的名字");
         return false;

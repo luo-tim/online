@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import recruitSystem.service.companys.CompanyService;
 import recruitSystem.service.user.UserService;
-import recruitSystem.util.MD5;
 import recruitSystem.view.User;
 
 /**

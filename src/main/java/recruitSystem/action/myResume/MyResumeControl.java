@@ -3,8 +3,14 @@
  */
 package recruitSystem.action.myResume;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.ParseException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import recruitSystem.service.myResume.ResumeService;
 import recruitSystem.view.Resume;
@@ -121,10 +128,39 @@ public class MyResumeControl {
 			@RequestParam(value = "practice", defaultValue = "") String practice,
 			@RequestParam(value = "skills", defaultValue = "") String skills,
 			@RequestParam(value = "campus", defaultValue = "") String campus,
-			@RequestParam(value = "self", defaultValue = "") String self, HttpSession session) throws ParseException {
+			@RequestParam(value = "self", defaultValue = "") String self,@RequestParam(value = "photo", defaultValue = "") CommonsMultipartFile photo, HttpSession session, HttpServletRequest request) throws ParseException {
 		
 		User user = (User) session.getAttribute("user");
 		Resume resume=new Resume();
+		if (phone!=null) {
+			String uploadFileName = photo.getOriginalFilename();
+			String fileSuffixName = uploadFileName.substring(uploadFileName.lastIndexOf(".") + 1);
+			String uploadPath = request.getServletContext().getRealPath("/static/photo");
+			File realPath = new File(uploadPath);
+			if (!realPath.exists()) {
+				realPath.mkdir();
+			}
+			String fileName = name+phone + "." + fileSuffixName;// 保存的文件名称为公司名称加文件的后缀格式
+			try {
+				InputStream is = photo.getInputStream(); // 文件输入流
+				OutputStream os = new FileOutputStream(new File(realPath, fileName)); // 文件输出流
+
+				// 读取写出
+				int len = 0;
+				byte[] buffer = new byte[1024];
+				while ((len = is.read(buffer)) != -1) {
+					os.write(buffer, 0, len);
+					os.flush();
+				}
+				os.close();
+				is.close();
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			resume.setPhoto(fileName);
+		}
+		
 		resume.setName(name);
 		resume.setNation(nation);
 		resume.setEducation(education);

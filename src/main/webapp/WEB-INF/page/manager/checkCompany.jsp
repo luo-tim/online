@@ -44,7 +44,7 @@
                     <div class="sub-li-company">
                        <a href="<c:url value="/managerPage/checkCompanyPage/companyDetailPage?companyId=${company.id }" />" class="company-info">
                            <div class="img-box">
-                               <img src="${pageContext.request.contextPath}/static/companyLogo/${company.companyLogo }" />" alt="${company.companyName }">
+                               <img src="${pageContext.request.contextPath}/static/companyLogo/${company.companyLogo }"  alt="${company.companyName }" />
                            </div>
                            <div class="company-text">
                                <h4>${company.companyName }</h4>

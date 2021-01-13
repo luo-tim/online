@@ -20,6 +20,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -43,6 +44,7 @@ public class EmailService {
 	 * @param subject
 	 * @param type
 	 */
+	@Async
 	public void  sendEmail(User user,String subject, String type){
 		
 		// 获取当前系统时间

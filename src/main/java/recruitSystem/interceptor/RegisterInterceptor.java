@@ -19,13 +19,10 @@ import recruitSystem.view.User;
 
 /**
  * @author 72412
- *老板拦截器
+ *注册拦截器
  */
-public class BossInterceptor implements HandlerInterceptor{
+public class RegisterInterceptor implements HandlerInterceptor{
 	private final static Log log = LogFactory.getLog(SuperManagerInterceptor.class);
-	/**
-	 * 
-	 */
 	@Override
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
@@ -33,9 +30,6 @@ public class BossInterceptor implements HandlerInterceptor{
 		log.debug("3.Called after rendering the view");
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public void postHandle(HttpServletRequest arg0, HttpServletResponse response, Object arg2, ModelAndView arg3)
 			throws Exception {
@@ -43,32 +37,24 @@ public class BossInterceptor implements HandlerInterceptor{
 		log.debug("2.Called after handler method request completion, before rendering the view");
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
 		// TODO Auto-generated method stub
 		log.debug("1.Called before handler method");
 	
 		HttpSession session = request.getSession();
-		User boss = (User) session.getAttribute("user");
-		
+		User user = (User) session.getAttribute("newUser");
 		// 判断session中是否有用户数据，如果有，则返回true，继续向下执行
-		if (boss != null && boss.getIdentityId()==1) {
+		if (user != null &&user.getDateOfBirth()!=null) {
 			return true;
 		}
-		// 不符合条件的转发到登录页面
+		// 不符合条件的转发到注册页面
 		/*
-		 *   /companyInfoPage
-		 *   /releaseInfoPage
-		 *   /releaseRecruitmentPage
-		 *   /bossWorkDetailPage
-		 *   /finishRecruitmentPage
-		 *   /passSignupPage
-		 *   /refuseSignupPage
+		 *   /workerBasicInfo
+		 *   /bossBasicInfo
+		 *   
 		 */
-		response.sendRedirect(request.getContextPath()+"/homePage");
+		response.sendRedirect(request.getContextPath()+"/registerPage");
 		return false;
 	}
 

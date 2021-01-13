@@ -92,6 +92,7 @@
 			AND j.flag=#{tag}
 		</if>
 		AND j.flag &lt;&gt; 3
+		ORDER BY j.release_time DESC
 	</select>
 	<!-- 查找申请的工作 -->
 	<select id="findSignupJob" resultMap="JobInfoMap">
@@ -129,6 +130,7 @@
 			AND w.flag=#{tag}
 		</if>
 		AND ( j.flag=1 OR j.flag=2 )
+		ORDER BY w.t DESC
 	</select>
 	<!-- 查找历史浏览的工作 -->
 	<select id="findHistoryJob" resultMap="JobInfoMap">
@@ -160,6 +162,7 @@
 		AND u.id = h.boss_id
 		AND h.company_id = c.id
 		AND w.worker_id= #{id}
+		ORDER BY w.t DESC
 	</select>
 	<!-- 查找工作根据工作id -->
 	<select id="findJob" resultMap="JobInfoMap">
@@ -300,7 +303,6 @@
 		c.company_logo,
 		c.treatment
 
-
 		FROM
 		user u,
 		job j,
@@ -313,7 +315,8 @@
 		AND u.id = h.boss_id
 		AND h.company_id = c.id
 		AND c.id = #{companyId}
-		AND (j.flag=0 OR j.flag=1 OR j.flag=2)
+		AND j.flag=1
+		ORDER BY j.release_time DESC
 	</select>
 	<!-- 插入工作,返回工作id -->
 	<insert id="insert" parameterType="recruitSystem.view.Job"
@@ -438,7 +441,7 @@
 			AND j.flag=#{tag}
 		</if>
 			
-		j.flag &lt;&gt; 3
+		AND j.flag &lt;&gt; 3
 	
 		
 		<if test="query!=null and query!=''">
@@ -453,6 +456,7 @@
 		</if>
 		LIMIT 5
 		OFFSET #{startIndex}
+		ORDER BY j.release_time DESC
 	</select>
 	<!-- 获取工作的状态 -->
 	<select id="findFlag" resultType="string">

@@ -60,14 +60,14 @@ public class ManagementUserController {
 		return "manager/userAccount";
 	}
 	
-	/**
-	 * 修改用户的信誉分
-	 * @return
-	 */
-	@RequestMapping(value = "/alterUserScorePage", method = RequestMethod.GET)
-	public String alterUserScore() {
-		return "";
-	}
+//	/**
+//	 * 修改用户的信誉分
+//	 * @return
+//	 */
+//	@RequestMapping(value = "/alterUserScorePage", method = RequestMethod.GET)
+//	public String alterUserScore() {
+//		return "";
+//	}
 	
 	/**
 	 * 删除用户

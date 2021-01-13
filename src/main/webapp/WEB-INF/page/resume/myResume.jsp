@@ -28,7 +28,7 @@
                     <td>${resume.name }</td>
                     <td>性别:</td>
                     <td>${resume.sex }</td>
-                    <td rowspan="5"></td>
+                    <td rowspan="5"  style="background: url(${pageContext.request.contextPath}/static/photo/${resume.photo }) no-repeat; background-size: 100%  100%; "></td>
                 </tr>
                 <tr align=center>
                     <td>毕业院校:</td>
