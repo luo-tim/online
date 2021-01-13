@@ -24,8 +24,11 @@
                 <div class="login-item">
                     <input type="text" class="login-input" name="account" placeholder="账号">
                 </div>
-                <div class="login-item">
+                <div class="login-item-p">
                     <input type="text" class="login-input" name="password" placeholder="密码">
+                </div>
+                  <div class="login-item-check">
+                    <input  type="checkbox" class="login-check" name="remember" id="remember" value="1"  checked><label for="remember">记住密码</label>
                 </div>
                 <div class="login-btn">
                     <button type="submit" class="login-submit">登录</button>

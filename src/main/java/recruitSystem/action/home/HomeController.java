@@ -139,7 +139,8 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
 	public String processLogin(@RequestParam(value = "account", defaultValue = "") String account,
-			@RequestParam(value = "password", defaultValue = "") String password, HttpSession session, Model model) {
+			@RequestParam(value = "password", defaultValue = "") String password,@RequestParam(value="remember",defaultValue="0")Integer remember, HttpSession session, Model model) {
+		System.out.println(remember);
 		Subject currentUser = SecurityUtils.getSubject();
 		if (!currentUser.isAuthenticated()) {
 			// 将用户名密码封装为UsernamePasswordToken对象
@@ -205,7 +206,7 @@ public class HomeController {
 		// 删除整个会话
 		Subject currentUser = SecurityUtils.getSubject();
 		currentUser.logout();
-		session.invalidate();
+		//session.invalidate();
 		
 		return "redirect:/homePage";// 返回首页
 	}

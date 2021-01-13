@@ -105,7 +105,7 @@ public class ManagementCheckRecruitmentController {
 	public String deleteRecruitment(@RequestParam(value = "workId", defaultValue = "0") String workId,@RequestParam(value = "tag", defaultValue = "0") int tag) {
 		 	jobService.deleteJob(workId,tag);
 	
-			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage";
+			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id="+workId;
 		
 	}
 

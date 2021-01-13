@@ -128,34 +128,34 @@ public class WorkListTag extends SimpleTagSupport {
 
 		out.println(" <div class='pagebtn-container'>" + "<ul>");
 		if (pageNo > 1) {
-			out.println("<li><a href='/SpringBigJob/employmentPage?pageNo=" + (pageNo - 1) + "&type=" + type + "&pro="
+			out.println("<li><a href='/online/employmentPage?pageNo=" + (pageNo - 1) + "&type=" + type + "&pro="
 					+ pro + "&city=" + city + "&query=" + query + "' >&lt</a></li>");
 		}
 		if (pageNo - 2 > 0) {
-			out.println("<li><a href='/SpringBigJob/employmentPage?pageNo=" + (pageNo - 2) + "&type=" + type + "&pro="
+			out.println("<li><a href='/online/employmentPage?pageNo=" + (pageNo - 2) + "&type=" + type + "&pro="
 					+ pro + "&city=" + city + "&query=" + query + "'>" + (pageNo - 2) + "</a></li>");
 		}
 		if (pageNo - 1 > 0) {
-			out.println("<li><a href='/SpringBigJob/employmentPage?pageNo=" + (pageNo - 1) + "&type=" + type + "&pro="
+			out.println("<li><a href='/online/employmentPage?pageNo=" + (pageNo - 1) + "&type=" + type + "&pro="
 					+ pro + "&city=" + city + "&query=" + query + "'>" + (pageNo - 1) + "</a></li>");
 		}
 		if (totalCount != 0) {
-			out.println("<li class='focus'><a href=\"/SpringBigJob/employmentPage?pageNo=" + pageNo + "&type=" + type
+			out.println("<li class='focus'><a href=\"/online/employmentPage?pageNo=" + pageNo + "&type=" + type
 					+ "&pro=" + pro + "&city=" + city + "&query=" + query + "\">" + pageNo + "</a></li>");
 		}
 
 		if ((pageNo) * pageSize < totalCount) {
-			out.println("<li><a href=\"/SpringBigJob/employmentPage?pageNo=" + (pageNo + 1) + "&type=" + type + "&pro="
+			out.println("<li><a href=\"/online/employmentPage?pageNo=" + (pageNo + 1) + "&type=" + type + "&pro="
 					+ pro + "&city=" + city + "&query=" + query + "\">" + (pageNo + 1) + "</a></li>");
 		}
 		if ((pageNo + 1) * pageSize < totalCount) {
-			out.println("<li><a href='/SpringBigJob/employmentPage?pageNo=" + (pageNo + 2) + "&type=" + type + "&pro="
+			out.println("<li><a href='/online/employmentPage?pageNo=" + (pageNo + 2) + "&type=" + type + "&pro="
 					+ pro + "&city=" + city + "&query=" + query + "'>" + (pageNo + 2) + "</a></li>");
 		}
 
 		if (pageNo * pageSize < totalCount) {
 
-			out.println("<li><a href=\"/SpringBigJob/employmentPage?pageNo=" + (pageNo + 1) + "&type=" + type + "&pro="
+			out.println("<li><a href=\"/online/employmentPage?pageNo=" + (pageNo + 1) + "&type=" + type + "&pro="
 					+ pro + "&city=" + city + "&query=" + query + "\">&gt</a></li>");
 
 		}

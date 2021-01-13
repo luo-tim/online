@@ -58,10 +58,9 @@
 		user u,
 		activate_info a
 		WHERE
-		ui.id = ai.user_id
+		u.id = a.user_id
 		AND u.email = #{email}
 		AND a.code = #{code}
-		AND a.type =
-		#{type}
+		AND a.type = #{type}
 	</select>
 </mapper>

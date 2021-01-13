@@ -56,6 +56,10 @@ body{
     margin: 0 0 24px;
     z-index: 10;
 }
+.login-item-1{
+    margin: 0 0 14px;
+    z-index: 10;
+}
 .login-input{
     width: 324px;
     min-width: 0;
@@ -74,7 +78,7 @@ body{
     outline: 0;
 }
 .login-btn{
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .login-submit{
     width: 100%;
@@ -116,4 +120,24 @@ background: #6fe0d5;
 }
 .a-pw:hover{
     text-decoration: underline;
+}
+.login-item-check{
+
+    z-index: 10;
+}
+.login-check{
+   
+    min-width: 0;
+    width: 16px;
+    height: 16px;
+    padding: 9px 9px;
+    vertical-align: middle;
+    margin-right: 5px;
+    border: 1px solid #e3e7ed;
+    font-size: 13px;
+   
+}
+.login-item-check label{
+    font-size: 10px;
+    color: rgb(156, 153, 153);
 }

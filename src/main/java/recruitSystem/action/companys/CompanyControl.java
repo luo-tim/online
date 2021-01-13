@@ -26,8 +26,7 @@ import recruitSystem.view.Company;
 import recruitSystem.view.Job;
 
 /**
- * @author 72412
- *公司招聘控制
+ * @author 72412 公司招聘控制
  */
 @Controller
 @RequestMapping("/companyPage")
@@ -37,9 +36,10 @@ public class CompanyControl {
 	private CompanyService companyService;
 	@Autowired
 	private JobService jobService;
-	
+
 	/**
 	 * 进入公司列表页面
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -49,38 +49,39 @@ public class CompanyControl {
 		model.addAttribute("companys", companies);
 		return "company/companys";
 	}
-	
+
 	/**
 	 * 查看具体公司详情页面
+	 * 
 	 * @param companyId
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/companyDetailPage", method = RequestMethod.GET)
-	public String companyDetail(@RequestParam(value = "companyId", defaultValue = "0") String  companyId, Model model) {
-		
-			Company company = companyService.findCompanyById(companyId,true);
-			if (company!=null) {
-				model.addAttribute("company", company);
-				model.addAttribute("index", 0);
-				return "company/companyDetail";
-			}
-			else {
+	public String companyDetail(@RequestParam(value = "companyId", defaultValue = "0") String companyId, Model model) {
+
+		Company company = companyService.findCompanyById(companyId, true);
+		if (company != null) {
+			model.addAttribute("company", company);
+			model.addAttribute("index", 0);
+			return "company/companyDetail";
+		} else {
 			return "redirect:/companyPage/notCompanyPage";// 重定向到没有
-			}
+		}
 
 	}
-	
+
 	/**
-	 *  查看具体公司的职位列表
+	 * 查看具体公司的职位列表
+	 * 
 	 * @param companyId
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/companyWorksPage", method = RequestMethod.GET)
 	public String companyWorks(@RequestParam(value = "companyId", defaultValue = "") String companyId, Model model) {
-			Company company = companyService.findCompanyById(companyId,true);
-			if (company != null) {
+		Company company = companyService.findCompanyById(companyId, true);
+		if (company != null) {
 			List<Job> jobs = jobService.findCompanyJobs(companyId);
 			model.addAttribute("company", company);
 			model.addAttribute("index", 1);
@@ -90,21 +91,23 @@ public class CompanyControl {
 			return "redirect:/companyPage/notCompanyPage";// 重定向到没有
 		}
 	}
-	
+
 	/**
-	 *  公司不存在页面
+	 * 公司不存在页面
+	 * 
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/notCompanyPage",method = RequestMethod.GET)
+	@RequestMapping(value = "/notCompanyPage", method = RequestMethod.GET)
 	public String companyWorks(Model model) {
-		
+
 		model.addAttribute("error", "该公司不存在");
 		return "error/error";
 	}
-	
+
 	/**
-	 *  公司注册页面
+	 * 公司注册页面
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/companyRegisterPage", method = RequestMethod.GET)
@@ -114,10 +117,10 @@ public class CompanyControl {
 //		System.out.println(request.getServletContext().getRealPath("/static/companyLogo"));
 		return "company/companyRegister";
 	}
-	
-	
+
 	/**
 	 * 公司注册提交
+	 * 
 	 * @param name
 	 * @param leader
 	 * @param introduce
@@ -138,10 +141,10 @@ public class CompanyControl {
 			@RequestParam(value = "type", defaultValue = "") String type,
 			@RequestParam(value = "treatment", defaultValue = "") String treatment,
 			@RequestParam(value = "file", defaultValue = "") CommonsMultipartFile file, HttpServletRequest request,
-			Model model) throws IOException {
+			Model model) {
 
 		String companyId = companyService.findCompany(name);
-		if (companyId==null) {
+		if (companyId == null) {
 			// 下载图片
 			// 获取文件名 : file.getOriginalFilename();
 			String uploadFileName = file.getOriginalFilename();
@@ -158,10 +161,10 @@ public class CompanyControl {
 //			}
 			System.out.println("上传文件名 : " + uploadFileName);
 			// 上传路径保存设置
-			//String uploadPath = request.getContextPath()+"/static/companyLogo";
+			// String uploadPath = request.getContextPath()+"/static/companyLogo";
 			String uploadPath = request.getServletContext().getRealPath("/static/companyLogo");
-			//System.out.println("上传文件保存地址："+uploadPath);
-			//System.out.println(request.getContextPath());
+			// System.out.println("上传文件保存地址："+uploadPath);
+			// System.out.println(request.getContextPath());
 			// 如果路径不存在，创建一个
 			File realPath = new File(uploadPath);
 			if (!realPath.exists()) {
@@ -176,25 +179,31 @@ public class CompanyControl {
 			 * File(filePath); if(!realPathFile.exists()) realPathFile.mkdir();
 			 */
 			String fileName = name + "." + fileSuffixName;// 保存的文件名称为公司名称加文件的后缀格式
-			InputStream is = file.getInputStream(); // 文件输入流
-			OutputStream os = new FileOutputStream(new File(realPath, fileName)); // 文件输出流
+			try {
+				InputStream is = file.getInputStream(); // 文件输入流
+				OutputStream os = new FileOutputStream(new File(realPath, fileName)); // 文件输出流
 
-			// 读取写出
-			int len = 0;
-			byte[] buffer = new byte[1024];
-			while ((len = is.read(buffer)) != -1) {
-				os.write(buffer, 0, len);
-				os.flush();
+				// 读取写出
+				int len = 0;
+				byte[] buffer = new byte[1024];
+				while ((len = is.read(buffer)) != -1) {
+					os.write(buffer, 0, len);
+					os.flush();
+				}
+				os.close();
+				is.close();
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
 			}
-			os.close();
-			is.close();
 
 			// String url=realPath+"/"+uploadFileName;
 
 			// System.out.println(url);
 
-			//Company company = new Company(name, introduce, address, treatment, type, fileName, leader);
-			Company company=new Company();
+			// Company company = new Company(name, introduce, address, treatment, type,
+			// fileName, leader);
+			Company company = new Company();
 			company.setCompanyName(name);
 			company.setLeaderIntroduce(leader);
 			company.setCompanyDescription(introduce);
@@ -213,9 +222,9 @@ public class CompanyControl {
 
 	}
 
-
 	/**
 	 * 公司注册失败页面
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -224,6 +233,5 @@ public class CompanyControl {
 		model.addAttribute("error", "公司注册失败，请重新注册");
 		return "error/error";
 	}
-
 
 }

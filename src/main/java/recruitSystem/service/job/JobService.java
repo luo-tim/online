@@ -214,8 +214,7 @@ public class JobService {
 	 * @return
 	 */
 	public PaginationSupport<Job> findJobs(int pageNo,String tag){
-		int totalCount=0;
-		jobInfoDAO.jobCount(tag, null, null, null);
+		int totalCount=jobInfoDAO.jobCount(tag, null, null, null);
 		int startIndex=PaginationSupport.convertFromPageToStartIndex(pageNo);
 		if (startIndex >= totalCount) {
 			startIndex = 0;

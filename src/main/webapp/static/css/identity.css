@@ -47,7 +47,8 @@ body{
    transform: rotateY(180deg) ;
 }
 .worker-before{
-    background-color: royalblue;
+    background: url(../image/应聘者.png) no-repeat;
+    background-size: 100% 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -95,7 +96,8 @@ body{
    transform: rotateY(180deg) ;
 }
 .boss-before{
-    background-color: royalblue;
+    background: url(../image/企业家.png) no-repeat;
+    background-size: 100% 100%;
     position: absolute;
     top: 0;
     left: 0;

@@ -9,8 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>审查工作</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/resource/pagebtn.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/checkJob.css" >
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/pagebtn.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/checkJob.css" >
 </head>
 <body>
 <jsp:include page="../navigationBar.jsp"></jsp:include>
@@ -20,21 +20,21 @@
             <div class="sex">
                 <label class="radio">
                     <input type="radio" checked class="radio-btn" name="identity" <c:if test="${param.tag eq 'all' }">checked</c:if> value="全部">
-                    <a href="<c:url value="/managerPage/checkRecruitmentPage?tag=3" />" class="radio-text">全部</a>
+                    <a href="<c:url value="/managerPage/checkRecruitmentPage?tag=all" />" class="radio-text">全部</a>
                 </label>
                 <label class="radio">
                     <input class="radio-btn"  type="radio" name="identity" <c:if test="${param.tag eq '1' }">checked</c:if> value="招聘中">
-                    <a href="<c:url value="/managerPage/checkRecruitmentPage?tag=0" />" class="radio-text">招聘中</a>
+                    <a href="<c:url value="/managerPage/checkRecruitmentPage?tag=1" />" class="radio-text">招聘中</a>
                 </label>
                 
                 <label class="radio">
                     <input class="radio-btn" type="radio" name="identity" <c:if test="${param.tag eq '0' }">checked</c:if> value="审核中">
                     
-                    <a href="<c:url value="/managerPage/checkRecruitmentPage?tag=5" />" class="radio-text">审核中</a>
+                    <a href="<c:url value="/managerPage/checkRecruitmentPage?tag=0" />" class="radio-text">审核中</a>
                 </label>
                  <label class="radio">
                     <input class="radio-btn"  type="radio" name="identity" <c:if test="${param.tag eq '2' }">checked</c:if> value="招聘结束">
-                    <a href="<c:url value="/managerPage/checkRecruitmentPage?tag=1" />" class="radio-text">招聘结束</a>
+                    <a href="<c:url value="/managerPage/checkRecruitmentPage?tag=2" />" class="radio-text">招聘结束</a>
                 </label>
             </div>
         </div>
@@ -61,7 +61,7 @@
 											${job.experience} <span class="vline"></span> ${job.education }
 										</p>
 										<div class="info-publish">
-											<h3 class="name">${job..boss.lastName}
+											<h3 class="name">${job.boss.lastName}
 <c:if test="${job.boss.sex eq '男' }">先生</c:if><c:if test="${job.boss.sex eq '女' }">女士</c:if>
 </h3>
 										</div>
@@ -78,7 +78,7 @@
 									</p>
 								</div>
 								<a href="#"> <img class="company-logo"
-									src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo}"/>" alt="">
+									src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo}" alt="">
 								</a>
 							</div>
 						</div>

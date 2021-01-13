@@ -266,6 +266,7 @@
 	<select id="findEmail" resultMap="UserInfoMap">
 		SELECT
 		user_name,
+		id,
 		email
 		FROM
 		user

@@ -71,29 +71,29 @@ public class UserListTag extends SimpleTagSupport {
 
 		out.println(" <div class='pagebtn-container'>" + "<ul>");
 		if (pageNo > 1) {
-			out.println("<li><a href='/SpringBigJob/managerPage/userListPage?pageNo=" + (pageNo - 1) + "&tag=" + tag + "' >&lt</a></li>");
+			out.println("<li><a href='/online/managerPage/userListPage?pageNo=" + (pageNo - 1) + "&tag=" + tag + "' >&lt</a></li>");
 		}
 		if (pageNo - 2 > 0) {
-			out.println("<li><a href='/SpringBigJob/managerPage/userListPage?pageNo=" + (pageNo - 2) + "&tag=" + tag + "'>" + (pageNo - 2) + "</a></li>");
+			out.println("<li><a href='/online/managerPage/userListPage?pageNo=" + (pageNo - 2) + "&tag=" + tag + "'>" + (pageNo - 2) + "</a></li>");
 		}
 		if (pageNo - 1 > 0) {
-			out.println("<li><a href='/SpringBigJob/managerPage/userListPage?pageNo=" + (pageNo - 1) + "&tag=" + tag + "'>" + (pageNo - 1) + "</a></li>");
+			out.println("<li><a href='/online/managerPage/userListPage?pageNo=" + (pageNo - 1) + "&tag=" + tag + "'>" + (pageNo - 1) + "</a></li>");
 		}
 		if (totalCount != 0) {
-			out.println("<li class='focus'><a href=\"/SpringBigJob/managerPage/userListPage?pageNo=" + pageNo + "&tag=" + tag
+			out.println("<li class='focus'><a href=\"/online/managerPage/userListPage?pageNo=" + pageNo + "&tag=" + tag
 					 + "\">" + pageNo + "</a></li>");
 		}
 
 		if ((pageNo) * pageSize < totalCount) {
-			out.println("<li><a href=\"/SpringBigJob/managerPage/userListPage?pageNo=" + (pageNo + 1) + "&tag=" + tag + "\">" + (pageNo + 1) + "</a></li>");
+			out.println("<li><a href=\"/online/managerPage/userListPage?pageNo=" + (pageNo + 1) + "&tag=" + tag + "\">" + (pageNo + 1) + "</a></li>");
 		}
 		if ((pageNo + 1) * pageSize < totalCount) {
-			out.println("<li><a href='/SpringBigJob/managerPage/userListPage?pageNo=" + (pageNo + 2) + "&tag=" + tag + "'>" + (pageNo + 2) + "</a></li>");
+			out.println("<li><a href='/online/managerPage/userListPage?pageNo=" + (pageNo + 2) + "&tag=" + tag + "'>" + (pageNo + 2) + "</a></li>");
 		}
 
 		if (pageNo * pageSize < totalCount) {
 
-			out.println("<li><a href=\"/SpringBigJob/managerPage/userListPage?pageNo=" + (pageNo + 1) + "&tag=" + tag + 
+			out.println("<li><a href=\"/online/managerPage/userListPage?pageNo=" + (pageNo + 1) + "&tag=" + tag + 
 					"\">&gt</a></li>");
 
 		}

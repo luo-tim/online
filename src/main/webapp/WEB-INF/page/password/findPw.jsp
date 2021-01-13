@@ -44,12 +44,12 @@
 		</div>
 	</div>
 	<div class="login-container">
-		<div <c:if test="${index eq 1 }">class="isShow"</c:if> >
+		<div <c:if test="${index ne 1 }">class="isShow"</c:if> >
 			<div class="box-title">
 				输入账号
 			</div>
 			<div class="login-box">
-				<form  class="login-form" name="form1">
+				<form method="POST" class="login-form" name="form1">
 					<div class="login-item">
 						<input name="account"  type="text" class="login-input" placeholder="账号">
 					</div>
@@ -59,15 +59,15 @@
 				</form>
 			</div>
 		</div>
-		<div <c:if test="${index eq 2 }">class="isShow"</c:if> >
+		<div <c:if test="${index ne 2 }">class="isShow"</c:if> >
 			<div class="box-title">
 				输入验证码
 			</div>
 			<div class="alert-text">
-				我们已经将验证码发送给xxxx.com邮箱，请在下方输入验证码进行身份验证。
+				我们已经将验证码发送给${email}邮箱，请在下方输入验证码进行身份验证。
 			</div>
 			<div class="login-box">
-				<form  class="login-form"  name="form2">
+				<form method="POST" class="login-form"  name="form2">
 					<div class="login-item">
 						<input name="identifyingCode" type="text" class="login-input" placeholder="验证码">
 					</div>
@@ -77,12 +77,12 @@
 				</form>
 			</div>
 		</div>
-		<div <c:if test="${index eq 3 }">class="isShow"</c:if>>
+		<div <c:if test="${index ne 3 }">class="isShow"</c:if>>
 			<div class="box-title">
 				设置新密码
 			</div>
 			<div class="login-box ">
-				<form action="" class="login-form"  name="form3">
+				<form method="POST" class="login-form"  name="form3">
 					<div class="login-item">
 						<input name="newPassword" type="text" class="login-input" placeholder="新密码，必须为6-18位，包括字母、数字">
 					</div>
@@ -95,7 +95,7 @@
 				</form>
 			</div>
 		</div>
-		<div <c:if test="${index eq 4 }">class="isShow"</c:if> >
+		<div <c:if test="${index ne 4 }">class="isShow"</c:if> >
 			<div class="box-title">
 				修改成功
 			</div>

@@ -57,7 +57,7 @@
 		FROM
 		company
 		WHERE
-		flag != 0
+		flag &lt;&gt; 0
 	</select>
 
 	<!-- 根据公司id查找公司 -->
@@ -80,7 +80,7 @@
 		WHERE
 		c.id = h.company_id
 		AND h.boss_id = #{bossId}
-		AND c.flag != 0
+		AND c.flag &lt;&gt; 0
 		)
 	</select>
 	<!-- 公司审核通过 -->
@@ -112,6 +112,7 @@
 		<if test="tag!=null and tag!='all'">
 			AND flag = #{tag}
 		</if>
+		AND flag &lt;&gt; 2
 	</select>
 	<!-- 管理员获取公司列表 -->
 	<select id="findManagerCompanies" resultMap="CompanyInfoMap">
@@ -128,6 +129,7 @@
 		<if test="tag!=null and tag!='all'">
 			AND flag = #{tag}
 		</if>
+		AND flag &lt;&gt; 2
 		LIMIT 6
 		OFFSET #{startIndex}
 	</select>

@@ -62,29 +62,29 @@ public class ManagerListTag extends SimpleTagSupport {
 
 		out.println(" <div class='pagebtn-container'>" + "<ul>");
 		if (pageNo > 1) {
-			out.println("<li><a href='/SpringBigJob/managerPage/managerListPage?pageNo=" + (pageNo - 1) +"' >&lt</a></li>");
+			out.println("<li><a href='/online/managerPage/managerListPage?pageNo=" + (pageNo - 1) +"' >&lt</a></li>");
 		}
 		if (pageNo - 2 > 0) {
-			out.println("<li><a href='/SpringBigJob/managerPage/managerListPage?pageNo=" + (pageNo - 2) +  "'>" + (pageNo - 2) + "</a></li>");
+			out.println("<li><a href='/online/managerPage/managerListPage?pageNo=" + (pageNo - 2) +  "'>" + (pageNo - 2) + "</a></li>");
 		}
 		if (pageNo - 1 > 0) {
-			out.println("<li><a href='/SpringBigJob/managerPage/managerListPage?pageNo=" + (pageNo - 1) +  "'>" + (pageNo - 1) + "</a></li>");
+			out.println("<li><a href='/online/managerPage/managerListPage?pageNo=" + (pageNo - 1) +  "'>" + (pageNo - 1) + "</a></li>");
 		}
 		if (totalCount != 0) {
-			out.println("<li class='focus'><a href=\"/SpringBigJob/managerPage/managerListPage?pageNo=" + pageNo + 
+			out.println("<li class='focus'><a href=\"/online/managerPage/managerListPage?pageNo=" + pageNo + 
 					  "\">" + pageNo + "</a></li>");
 		}
 
 		if ((pageNo) * pageSize < totalCount) {
-			out.println("<li><a href=\"/SpringBigJob/managerPage/managerListPage?pageNo=" + (pageNo + 1) + "\">" + (pageNo + 1) + "</a></li>");
+			out.println("<li><a href=\"/online/managerPage/managerListPage?pageNo=" + (pageNo + 1) + "\">" + (pageNo + 1) + "</a></li>");
 		}
 		if ((pageNo + 1) * pageSize < totalCount) {
-			out.println("<li><a href='/SpringBigJob/managerPage/managerListPage?pageNo=" + (pageNo + 2) + "'>" + (pageNo + 2) + "</a></li>");
+			out.println("<li><a href='/online/managerPage/managerListPage?pageNo=" + (pageNo + 2) + "'>" + (pageNo + 2) + "</a></li>");
 		}
 
 		if (pageNo * pageSize < totalCount) {
 
-			out.println("<li><a href=\"/SpringBigJob/managerPage/managerListPage?pageNo=" + (pageNo + 1) + 
+			out.println("<li><a href=\"/online/managerPage/managerListPage?pageNo=" + (pageNo + 1) + 
 					"\">&gt</a></li>");
 
 		}

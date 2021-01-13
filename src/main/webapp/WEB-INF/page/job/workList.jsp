@@ -111,7 +111,7 @@
 									</p>
 								</div>
 								<a href="#"> <img class="company-logo"
-									src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo}"/>" alt="">
+									src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo}" alt="">
 								</a>
 							</div>
 						</div>

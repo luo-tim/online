@@ -73,7 +73,7 @@ public class PasswordControl {
  * @param session
  * @return
  */
-	@RequestMapping(value="findPasswordPage",method= RequestMethod.POST)
+	@RequestMapping(value="findPwAccountPage",method= RequestMethod.POST)
 	public String findPwAccountSubmit(@RequestParam(value="account",defaultValue="0")String account,HttpSession session) {
 		//
 		User user=userService.findEmail(account);
@@ -153,8 +153,8 @@ public class PasswordControl {
 	public String findPwAlterSubmit(@RequestParam(value="newPassword",defaultValue="")String newPassword,HttpSession session) {
 		//
 		String account=(String) session.getAttribute("account");
-		userService.findBackPassword(account,newPassword);
-		return "redirect:/passwordPage/findPwAlterPage";
+		userService.findBackPassword(account,MD5.md5(newPassword));
+		return "redirect:/passwordPage/findPwCompletePage";
 	}
 	
 	/**

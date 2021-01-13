@@ -91,6 +91,7 @@
 		<if test="tag!=null and tag!='all'">
 			AND j.flag=#{tag}
 		</if>
+		AND j.flag &lt;&gt; 3
 	</select>
 	<!-- 查找申请的工作 -->
 	<select id="findSignupJob" resultMap="JobInfoMap">
@@ -275,7 +276,7 @@
 		</set>
 		WHERE
 		id = #{jobId}
-		flag !=0
+		AND flag &lt;&gt; 0
 	</update>
 	<!-- 查找公司的工作 -->
 	<select id="findCompanyJobs" resultMap="JobInfoMap">
@@ -383,9 +384,11 @@
 		AND u.id = j.boss_id
 		AND h.company_id = c.id
 		AND u.id = h.boss_id
-		<if test="flag!=null and flag!='all'">
-			AND j.flag= #{flag}
-		</if>
+			<if test="flag!=null and flag!='all'">
+				AND j.flag= #{flag}
+			</if>
+			AND j.flag &lt;&gt; 3
+	
 		<if test="query!=null and query!=''">
 			AND (j.job_name LIKE #{query} OR c.company_name LIKE #{query} OR j.city
 			LIKE #{query})
@@ -434,6 +437,10 @@
 		<if test="tag!=null and tag!='all'">
 			AND j.flag=#{tag}
 		</if>
+			
+		j.flag &lt;&gt; 3
+	
+		
 		<if test="query!=null and query!=''">
 			AND (j.job_name LIKE #{query} OR c.company_name LIKE #{query} OR j.city
 			LIKE #{query})
