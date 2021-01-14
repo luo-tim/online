@@ -13,21 +13,21 @@
 <body>
 <jsp:include page="../navigationBar.jsp"></jsp:include>
  <div class="registerSteps">
-        <!--第一步-->
+        <%--第一步--%>
         <div class="step currentstep">
           
             <div class="number"></div>
-             <!--直线-->
+             <%--直线--%>
             <div class="line"></div>
            
         </div>
-        <!--第二步-->
+        <%--第二步--%>
         <div class="step currentstep">
             <div class="number"></div>
             <div class="line"></div>
  
         </div>
-        <!--第三步-->
+        <%--第三步--%>
         <div class="step">
             <div class="number"></div>
          

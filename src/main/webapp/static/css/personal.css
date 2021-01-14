@@ -606,3 +606,89 @@ a{
     line-height: 1;
     vertical-align: middle;
 }
+
+.company-info{
+    display: block;
+    padding: 20px 20px 0;
+    position: relative;
+    clear:both;
+    cursor: default;
+    height: 625px;
+    overflow-y: scroll;
+}
+.team-name{
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+.team-company-logo{
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 10px;
+}
+.team-name-text{
+    font-weight: 600;
+    font-size: 30px;
+    color: rgb(41, 36, 36);
+    height: 40px;
+    line-height: 40px;
+    float: left;
+}
+.team-info{
+    padding: 36px 0;
+    border-bottom: 1px solid #e5e9ef;
+
+}
+.team-info-title{
+    font-size: 30px;
+    color: rgb(68, 202, 102);
+ 
+}
+.team-info-text{
+    margin-top: 20px;
+    
+}
+.team-leader{
+    padding: 36px 0;
+    border-bottom: 1px solid #e5e9ef;
+
+}
+.leader-title{
+    font-size: 30px;
+    color: rgb(211, 127, 17);
+}
+.leader-text{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    background-color:rgb(211, 127, 17) ;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    margin-left: 90px;
+}
+.team-member{
+    padding: 36px 0;
+    border-bottom: 1px solid #e5e9ef;
+}
+.member-title{
+    font-size: 30px;
+    color: rgb(18, 165, 223);
+}
+.members{
+    display: flex;
+    
+}
+.member-text{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    background-color:rgb(18, 165, 223) ;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    margin-left: 90px;
+}

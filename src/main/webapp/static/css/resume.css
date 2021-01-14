@@ -8,7 +8,9 @@ body {
      /*使翻转动画有立体感*/
      perspective:1500px ;
 }
-
+a{
+	text-decoration:none;
+}
 .resume {
     position: relative;
     width: 950px;
@@ -37,7 +39,7 @@ body {
     height: 1020px;
     
     border-radius: 50px;
-    background:url(简历2.jpg) no-repeat ;
+    background:url(../image/简历2.jpg) no-repeat ;
     background-size: 100% 100%;
     z-index: 10;
     backface-visibility: hidden;
@@ -47,7 +49,7 @@ body {
 
     /*background: url(简历背景.jpg), ;*/
     /*background-image: url("简历背景.jpg");*/
-    background:url(简历背景.png) rgb(248, 244, 186) no-repeat; 
+    background:url(../image/简历背景.png) rgb(248, 244, 186) no-repeat; 
     background-size: 100% 100%;
     position: absolute;
     top: 25px;
@@ -87,7 +89,6 @@ td {
     position: relative;
 
 }
-
 .info-btn{
     font-size: 14px;
     width: 110px;

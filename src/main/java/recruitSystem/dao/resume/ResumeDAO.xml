@@ -20,6 +20,7 @@
 		<result column="s_experience" property="Sexperience" />
 		<result column="skills" property="skills" />
 		<result column="self" property="self" />
+		<result column="user_id" property="userId" />
 		<result column="photo" property="photo" />
 	</resultMap>
 	<!-- 获取简历 -->

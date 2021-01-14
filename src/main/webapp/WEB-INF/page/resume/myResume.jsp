@@ -12,11 +12,11 @@
 </head>
 <body>
 	<jsp:include page="../navigationBar.jsp"></jsp:include>
-   <!--卡片-->
+   <%--卡片--%>
     <div class="resume">
-        <!--卡片正面-->
+        <%--卡片正面--%>
         <div class="front-resume"></div>
-        <!--卡片背面-->
+        <%--卡片背面--%>
         <div class="back-resume">
             <table align="center" border=1 cellpadding=12 cellspacing=0>
                 <caption>个人简历</caption>
@@ -93,7 +93,7 @@
             <div class="item">
 
                 <div class="info-btn-box">
-                     <a  class="info-btn" href="<c:url value="/myResumePage/alterPage?workerId=${resume.userId }" />" >修改</a>
+                     <a  class="info-btn" href="<c:url value="/myResumePage/alterPage" />" >修改</a>
                 </div>
             </div>
             </c:if>

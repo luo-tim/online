@@ -12,10 +12,10 @@
 <body>
  <div class="nav">
         <nav class="nav-bar">
-            <!--logo-->
+            <%--logo--%>
             <div class="nav-logo">
-
-            </div>
+                <a href="<c:url value="/homePage" />"> <img class="nav-logo-img" src="${pageContext.request.contextPath}/static/image/logo.jpg" alt=""> </a>
+             </div>
             <ul class="nav-items">
                 <li> <a href="<c:url value="/homePage" />" class="nav-item">首页</a></li>
                 <li> <a href="<c:url value="/employmentPage?pro=省份&city=城市&type=工作类型&query=" />" class="nav-item">职位</a></li>

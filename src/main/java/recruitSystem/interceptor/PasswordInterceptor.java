@@ -23,11 +23,12 @@ public class PasswordInterceptor  implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String index=(String) request.getAttribute("index");
 		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("email");
-		if (index!=null&&index.equals("2")&& email!=null) {
-			
+	
+		System.out.println(request.getRequestURI().toString());
+		String validate = (String) session.getAttribute("validate");
+	
+		if (validate!=null &&validate.equals("root")) {
 			return true;
 		}
 		response.sendRedirect(request.getContextPath()+"/passwordPage/findPwAccountPage");
@@ -41,6 +42,7 @@ public class PasswordInterceptor  implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
+
 		
 	}
 

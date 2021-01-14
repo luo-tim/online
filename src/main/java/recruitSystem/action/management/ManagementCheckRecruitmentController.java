@@ -3,9 +3,6 @@
  */
 package recruitSystem.action.management;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import recruitSystem.service.job.JobService;
-import recruitSystem.service.news.NewsService;
 import recruitSystem.util.PaginationSupport;
-import recruitSystem.view.Information;
 import recruitSystem.view.Job;
 import recruitSystem.view.User;
 
@@ -32,8 +27,7 @@ import recruitSystem.view.User;
 public class ManagementCheckRecruitmentController {
 	@Autowired
 	private JobService jobService;
-	@Autowired
-	private NewsService newsService;
+
 
 	
 	/**
@@ -78,19 +72,12 @@ public class ManagementCheckRecruitmentController {
 	 */
 	@RequestMapping(value = "/failRecruitmentPage", method = RequestMethod.GET)
 	public String failRecruitment(@RequestParam(value = "workId", defaultValue = "0") String workId,HttpSession session) {
-		jobService.failJobs(workId);
+			
 		
 			User user = (User) session.getAttribute("user");
-			String bossId=jobService.getBossId(workId);
+			jobService.failJobs(workId,user.getId());
 			
-			Information information = new Information();// 发送消息
-			information.setContext("你的工作发布因违反相关规定，被拒绝。如有问题请联系客服");
-			information.setSendId(user.getId());
-			information.setReceiveId(bossId);
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
-			information.setPostTime(dateFormat.format(new Date()));
-			newsService.sendMessage(information);
-			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage";
+			return "redirect:/managerPage/checkRecruitmentPage";
 		
 	}
 	

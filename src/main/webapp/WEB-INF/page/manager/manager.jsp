@@ -15,7 +15,7 @@
 <jsp:include page="../navigationBar.jsp"></jsp:include>
 
   <div class="text-container">
-        <!--每个字符后的span不能有间隔-->
+        <%--每个字符后的span不能有间隔--%>
         <span>欢</span><span>迎</span><span>来</span><span>到</span><span>管</span><span>理</span><span>界</span><span>面</span>
     </div>
 <div class="box">

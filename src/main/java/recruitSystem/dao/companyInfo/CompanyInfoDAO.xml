@@ -73,15 +73,14 @@
 	<!-- 根据老板id查找公司 -->
 	<select id="findCompanyByBossId" resultMap="CompanyInfoMap">
 		SELECT *
-		FROM company
-		WHERE id = (
-		SELECT c.id
-		FROM company c,cb h
-		WHERE
+		FROM 
+			company c,
+			cb h
+		WHERE 
 		c.id = h.company_id
 		AND h.boss_id = #{bossId}
-		AND c.flag &lt;&gt; 0
-		)
+		AND c.flag = 1
+		
 	</select>
 	<!-- 公司审核通过 -->
 	<update id="successCompany">
@@ -160,7 +159,7 @@
 		cb h
 		WHERE
 		h.boss_id = #{userId}
-		AND h.compnay_id = c.id
+		AND h.company_id = c.id
 
 	</select>
 </mapper>

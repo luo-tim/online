@@ -16,7 +16,7 @@
             发布工作
         </div> 
         <div class="info-container">
-            <!--打工人的基本信息-->
+            <%--打工人的基本信息--%>
             <form method="POST" class="info-form" name="workerForm">
                 <div class="item">
                     <label class="info-text"> 职位：</label>

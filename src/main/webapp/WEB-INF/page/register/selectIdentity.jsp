@@ -13,21 +13,21 @@
 <body>
 <jsp:include page="../navigationBar.jsp"></jsp:include>
   <div class="registerSteps">
-        <!--第一步-->
+        <%--第一步--%>
         <div class="step">
           
             <div class="number"></div>
-             <!--直线-->
+             <%--直线--%>
             <div class="line"></div>
            
         </div>
-        <!--第二步-->
+        <%--第二步--%>
         <div class="step">
             <div class="number"></div>
             <div class="line"></div>
  
         </div>
-        <!--第三步-->
+        <%--第三步--%>
         <div class="step">
             <div class="number"></div>
          
@@ -36,26 +36,26 @@
    <div class="box-title">
         身份选择
     </div>
-    <!--身份选择卡片-->
+    <%--身份选择卡片--%>
     <div class="identity">
-        <!--打工人卡片-->
+        <%--打工人卡片--%>
         <div class="worker-card">
-            <!--正面卡片-->
+            <%--正面卡片--%>
             <div class="worker-before">
 
             </div>
-            <!--背面卡片-->
+            <%--背面卡片--%>
             <div class="worker-after">
 				<a href=" <c:url value="/registerPage/workerBasicInfo" /> "></a>
             </div>
         </div>
-        <!--老板卡片-->
+        <%--老板卡片--%>
         <div class="boss-card">
-            <!--正面卡片-->
+            <%--正面卡片--%>
             <div class="boss-before">
 
             </div>
-            <!--背面卡片-->
+            <%--背面卡片--%>
             <div class="boss-after">
 				<a  href="<c:url value="/registerPage/bossBasicInfo" /> "></a>
             </div>

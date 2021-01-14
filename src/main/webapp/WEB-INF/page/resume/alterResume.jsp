@@ -18,11 +18,11 @@
         </div>
         <div class="info-container">
          
-            <!--打工人的基本信息-->
+            <%--打工人的基本信息--%>
             <form method="POST" class="info-form" name="resumeForm"  enctype="multipart/form-data">
                 <div class="item">
                     <label class="info-text">姓名：</label>
-                    <input type="text" name="name" autocomplete="off"  placeholder="你的姓名" maxlength="20" value="<c:if test="${not empty resume }">${resume.name }</c:if>" class="info-input">
+                    <input type="text" name="name" autocomplete="off"  placeholder="你的姓名" maxlength="20" value="<c:if test="${not empty resume}">${resume.name}</c:if>" class="info-input">
                 </div>
                   <div class="item">
                     <label class="info-text">照片：</label>

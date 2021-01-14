@@ -14,21 +14,21 @@
 <body>
 <jsp:include page="../navigationBar.jsp"></jsp:include>
   <div class="registerSteps">
-        <!--第一步-->
+        <%--第一步--%>
         <div class="step currentstep">
           
             <div class="number"></div>
-             <!--直线-->
+             <%--直线--%>
             <div class="line"></div>
            
         </div>
-        <!--第二步-->
+        <%--第二步--%>
         <div class="step">
             <div class="number"></div>
             <div class="line"></div>
  
         </div>
-        <!--第三步-->
+        <%--第三步--%>
         <div class="step">
             <div class="number"></div>
          
@@ -40,7 +40,7 @@
         </div>
 	   <c:if test="${sessionScope.newUser.identityId eq 0 }">
         <div class="info-container">
-            <!--打工人的基本信息-->
+            <%--打工人的基本信息--%>
               <form method="POST" class="info-form" name="workerForm">
                 <div class="item">
                     <label class="info-text">姓：</label>
@@ -92,7 +92,7 @@
         </c:if>
         <c:if test="${sessionScope.newUser.identityId eq 1 }">
         <div class="info-container">
-            <!--老板的基本信息-->
+            <%--老板的基本信息--%>
             <form method="POST" class="info-form" name="bossForm">
                 <div class="item">
                     <label class="info-text">姓：</label>
@@ -147,7 +147,7 @@
         </c:if>
         <c:if test="${sessionScope.newUser.identityId eq 2 }">
         <div class="info-container">
-            <!--管理员的基本信息-->
+            <%--管理员的基本信息--%>
               <form method="POST" class="info-form" name="workerForm">
                 <div class="item">
                     <label class="info-text">姓：</label>

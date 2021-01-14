@@ -53,8 +53,8 @@
                     </div>
                 </div>
                 <div class="company-tab">
-                    <a href="<c:url value="/managerPage/checkCompanyPage/companyDetailPage?companyId=${company.id }"/>" <c:if test="${index eq 0 }"> class="cur"</c:if> >公司简介</a>
-                    <a href="<c:url value="/managerPage/checkCompanyPage/jobsDetailPage?companyId=${company.id }"/>" <c:if test="${index eq 1 }"> class="cur"</c:if> >招聘职位</a>
+                    <a href="<c:url value="/companyPage/companyDetailPage?companyId=${company.id }"/>" <c:if test="${index eq 0 }"> class="cur"</c:if> >公司简介</a>
+                    <a href="<c:url value="/companyPage/companyWorksPage?companyId=${company.id }"/>" <c:if test="${index eq 1 }"> class="cur"</c:if> >招聘职位</a>
                 </div>
             </div>
         </div>

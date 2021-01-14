@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<div class="main">
-			<!--左侧职位选择-->
+			<%--左侧职位选择--%>
 			<div class="home-left">
 				<div class="job-menu">
 					<dl class="dl">

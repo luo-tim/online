@@ -13,9 +13,9 @@
 <body>
 	<jsp:include page="../navigationBar.jsp"></jsp:include>
   <div class="userAccount-container">
-           <!--账户信息-->
+           <%--账户信息--%>
            <div class="person-right">
-            <!--小标题-->
+            <%--小标题--%>
             <div class="person-right-title">
                 <span class="person-right-title-name">账户信息</span>
             </div>
@@ -43,9 +43,9 @@
     </div>
 
 	    <div class="userAccount-container">
-        <!--账户信息-->
+        <%--账户信息--%>
         <div class="person-right">
-         <!--小标题-->
+         <%--小标题--%>
          <div class="person-right-title">
              <span class="person-right-title-name">个人信息</span>
          </div>

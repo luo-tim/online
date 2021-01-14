@@ -37,6 +37,8 @@ public class ReleaseRecruitmentController {
 	private NewsService newsService;
 	@Autowired
 	private JobService jobService;
+	
+	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	
 	
@@ -194,4 +196,19 @@ public class ReleaseRecruitmentController {
 			return "redirect:/releaseRecruitmentPage/bossWorkDetailPage?id=" + employId;
 		
 	}
+	
+	/**
+	 * 查看用户的账号信息
+	 * @param userId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/userAccountPage", method = RequestMethod.GET)
+	public String userAccount(@RequestParam(value = "userId", defaultValue = "0") String userId, Model model) {
+		User user = userService.findUser(userId);
+		
+		model.addAttribute("userAccount", user);
+		return "manager/userAccount";
+	}
+	
 }

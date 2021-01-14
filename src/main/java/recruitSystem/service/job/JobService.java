@@ -120,9 +120,19 @@ public class JobService {
 	/**
 	 * 工作审核失败
 	 * @param jobId
+	 * @param sendId
 	 */
-	public void failJobs(String jobId) {
+	@Transactional
+	public void failJobs(String jobId,String sendId) {
 		jobInfoDAO.failJobs(jobId);
+		String bossId=getBossId(jobId);
+		Information information = new Information();// 发送消息
+		information.setContext("你的工作发布因违反相关规定，被拒绝。如有问题请联系客服");
+		information.setSendId(sendId);
+		information.setReceiveId(bossId);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+		information.setPostTime(dateFormat.format(new Date()));
+		newsService.sendMessage(information);
 	}
 	
 

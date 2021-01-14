@@ -18,7 +18,7 @@
             公司注册
         </div> 
         <div class="info-container">
-            <!--打工人的基本信息-->
+            <%--打工人的基本信息--%>
             <form method="POST" class="info-form" name="companyForm" enctype="multipart/form-data">
                <div class="item">
                     <label class="info-text"> 公司名称：</label>

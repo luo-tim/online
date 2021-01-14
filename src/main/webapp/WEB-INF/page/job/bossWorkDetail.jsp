@@ -129,11 +129,11 @@
                                                     <div class="primary-box-person">
                                                         <div class="job-title-person">
                                                             <span class="job-name-person">
-                                                                <a href="<c:url value="/personalPage/workerAccountPage?userId=${worker.id}" />">${worker.userName }</a>
+                                                                <a href="<c:url value="/releaseRecruitmentPage/userAccountPage?userId=${worker.id}" />">${worker.userName }</a>
                                                             </span>
                                                             <span class="job-area-person">
                                                                 <span class="job-name-person">
-                                                                <a href="<c:url value="/personalPage/userbasicInfoPage?workerId=${worker.id}" />">${worker.lastName }${worker.firstName }</a></span>
+                                                                <a href="<c:url value="/releaseRecruitmentPage/userAccountPage?userId=${worker.id}" />">${worker.lastName }${worker.firstName }</a></span>
                                                             </span>
                                                         </div>
                                                     </div>

@@ -107,6 +107,7 @@ public class PasswordControl {
 	public String findPwValidateSubmit(@RequestParam(value="identifyingCode",defaultValue="0")String identifyingCode,HttpSession session) {
 		//
 		String email =(String) session.getAttribute("email");
+		session.setAttribute("validate", "root");
 		try {
 			if (activateInfoService.findPwdCode(email, identifyingCode)) {
 				
@@ -154,17 +155,20 @@ public class PasswordControl {
 		//
 		String account=(String) session.getAttribute("account");
 		userService.findBackPassword(account,MD5.md5(newPassword));
+	
 		return "redirect:/passwordPage/findPwCompletePage";
 	}
 	
 	/**
 	 * 密码找回成功
 	 * @param model
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value="findPwCompletePage",method= RequestMethod.GET)
-	public String findPwComplete(Model model) {
+	public String findPwComplete(Model model,HttpSession session) {
 		model.addAttribute("index", 4);
+		session.removeAttribute("validate");
 		return "password/findPw";
 	}
 

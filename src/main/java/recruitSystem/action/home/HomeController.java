@@ -139,13 +139,15 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/loginPage", method = RequestMethod.POST)
 	public String processLogin(@RequestParam(value = "account", defaultValue = "") String account,
-			@RequestParam(value = "password", defaultValue = "") String password,@RequestParam(value="remember",defaultValue="0")Integer remember, HttpSession session, Model model) {
+			@RequestParam(value = "password", defaultValue = "") String password,
+			@RequestParam(value = "remember", defaultValue = "0") Integer remember, HttpSession session, Model model) {
 		System.out.println(remember);
 		Subject currentUser = SecurityUtils.getSubject();
+		
 		if (!currentUser.isAuthenticated()) {
 			// 将用户名密码封装为UsernamePasswordToken对象
 			UsernamePasswordToken token = new UsernamePasswordToken(account, MD5.md5(password));
-			if (remember==1) {
+			if (remember == 1) {
 				token.setRememberMe(true);
 			}
 			// System.out.println(currentUser.isRemembered());
@@ -170,6 +172,8 @@ public class HomeController {
 				model.addAttribute("loginError", "登录失败");
 				return "login";// 登录失败返回登录失败提醒页面
 			}
+		}else {
+			return "redirect:/UserLogoinPage";// 返回首页
 		}
 		//
 //		//校验用户名，密码是否正确
@@ -196,7 +200,16 @@ public class HomeController {
 		}
 
 	}
-
+	/**
+	 * 用户已经登录页面
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/UserLogoinPage", method = RequestMethod.GET)
+	public String UserExist(Model model) {
+		model.addAttribute("error", "用户已经登录，请先退出再登录，");
+		return "error/error";
+	}
 	/**
 	 * 退出登录
 	 * 
@@ -208,8 +221,8 @@ public class HomeController {
 		// 删除整个会话
 		Subject currentUser = SecurityUtils.getSubject();
 		currentUser.logout();
-		//session.invalidate();
-		
+		// session.invalidate();
+
 		return "redirect:/homePage";// 返回首页
 	}
 

@@ -41,7 +41,7 @@
 						href="<c:url value="/personalPage/requestInfoPage?tag=0" />"><span
 							class="item-name">申请记录</span></a></li>
 				</c:if>
-				<!--老板的浏览记录-->
+				<%--老板的浏览记录--%>
 				<c:if
 					test="${not empty sessionScope.user && sessionScope.user.identityId eq 1 }">
 					
@@ -59,9 +59,9 @@
 		<c:choose>
 
 			<c:when test="${message eq 'workerHistory'}">
-				<!--打工人浏览记录  person-right-active-->
+				<%--打工人浏览记录  person-right-active--%>
 				<div class="person-right ">
-					<!--小标题-->
+					<%--小标题--%>
 					<div class="person-right-title">
 						<span class="person-right-title-name">浏览记录</span>
 					</div>
@@ -121,14 +121,14 @@
 			</c:when>
 			
 			<c:when test="${message eq 'workerSignup'}">
-				<!--打工人申请记录  person-right-active-->
+				<%--打工人申请记录  person-right-active--%>
 				<div class="person-right  ">
-					<!--小标题-->
+					<%--小标题--%>
 					<div class="person-right-title">
 						<span class="person-right-title-name">申请记录</span>
 					</div>
 					<div class="person-right-bottom">
-						<!--工作类别-->
+						<%--工作类别--%>
 						<div class="game-nav">
 							<div class="game-item <c:if test="${param.tag eq 'all' }"> active</c:if>">
 								<a href="<c:url value="/personalPage/requestInfoPage?tag=all" />">全部申请</a>
@@ -200,14 +200,14 @@
 				</div>
 			</c:when>
 			<c:when test="${message eq 'bossRelease'}">
-				<!--老板发布记录-->
+				<%--老板发布记录--%>
 				<div class="person-right">
-					<!--小标题-->
+					<%--小标题--%>
 					<div class="person-right-title">
 						<span class="person-right-title-name">发布记录</span>
 					</div>
 					<div class="person-right-bottom">
-						<!--比赛类别-->
+						<%--比赛类别--%>
 						<div class="game-nav">
 							<div class="game-item <c:if test="${param.tag eq 'all' }"> active</c:if>">
 								<a href="<c:url value="/personalPage/releaseInfoPage?tag=all" />">全部招聘</a>
@@ -276,9 +276,9 @@
 				</div>
 			</c:when>
 			<c:when test="${message eq 'basicInfo'}">
-				<!--个人基本信息-->
+				<%--个人基本信息--%>
 				<div class="person-right">
-					<!--小标题-->
+					<%--小标题--%>
 					<div class="person-right-title">
 						<span class="person-right-title-name">个人信息</span>
 					</div>
@@ -344,13 +344,42 @@
 
 			</c:when>
 			<%-- 所属公司 --%>
-			<c:when test="${message eq 'bossComapny'}">
-			<p>公司</p>
+			<c:when test="${message eq 'bossCompany'}">
+			 <div class="person-right person-right-active">
+            <div class="person-right-title">
+                <span class="person-right-title-name">公司信息</span>
+            </div>
+            <div class="company-info">
+                <div class="team-name">
+                    <img src="${pageContext.request.contextPath}/static/image/${company.companyLogo}" class="team-company-logo" alt="" >
+                    <div class="team-name-text">公司名称</div>
+                </div>
+                <div class="team-info">
+                    <span class="team-info-title">公司介绍</span>
+                    <div class="team-info-text">
+                        ${company.companyDescription}
+                    </div>
+                </div>
+                <div class="team-leader">
+                   <span class="leader-title">公司地址</span>
+                   <div class="team-info-text">
+                  ${company.address }
+                </div>
+                </div>
+                <div class="team-member">
+                    <span  class="member-title">公司待遇</span>
+                    <div class="team-info-text">
+                        ${company.treatment }
+                    </div>
+                </div>
+
+            </div>
+        </div>
 			</c:when>
 			<c:otherwise>
-				<!--账户信息-->
+				<%--账户信息--%>
 				<div class="person-right">
-					<!--小标题-->
+					<%--小标题--%>
 					<div class="person-right-title">
 						<span class="person-right-title-name">账户信息</span>
 					</div>

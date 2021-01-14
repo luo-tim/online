@@ -20,10 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import recruitSystem.service.job.JobHistoryService;
 import recruitSystem.service.job.JobService;
 import recruitSystem.service.job.JobSignupService;
-import recruitSystem.service.news.NewsService;
 import recruitSystem.util.PaginationSupport;
 import recruitSystem.view.BrowseJob;
-import recruitSystem.view.Information;
 import recruitSystem.view.Job;
 import recruitSystem.view.SignUpJob;
 import recruitSystem.view.User;
@@ -42,8 +40,7 @@ public class JobController {
 	private JobHistoryService jobHistoryService;
 	@Autowired
 	private JobSignupService jobSignupService;
-	@Autowired
-	private NewsService newsService;
+
 
 
 	/**
@@ -119,7 +116,7 @@ public class JobController {
 			User user = (User) session.getAttribute("user");
 			String flag=null;
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
-			if (user.getIdentityId() == 0) {// 如果是打工人登录，查询用户是否已经报名，将浏览记录添加
+			if (user!=null&&user.getIdentityId() == 0) {// 如果是打工人登录，查询用户是否已经报名，将浏览记录添加
 				//
 				int row = jobHistoryService.existHistory(user.getId(), id);
 				BrowseJob browseJob=new BrowseJob();
@@ -157,23 +154,13 @@ public class JobController {
 		String flag=jobService.findFlag(id);
 		if (flag.equals("1")) {
 			User user = (User) session.getAttribute("user");
-			if ( user.getIdentityId()==0) {// 是打工人则报名
+			if (user!=null&& user.getIdentityId()==0) {// 是打工人则报名
 				SignUpJob signUpJob=new SignUpJob();
 				signUpJob.setUserId(user.getId());
 				signUpJob.setJobId(id);
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
 				signUpJob.setSignUpTime(dateFormat.format(new Date()));
 				jobSignupService.insertWorkerSignup(signUpJob);
-				
-				String bossId = jobService.getBossId(id);// 获取老板的id
-				Information information = new Information();// 发送消息
-			
-				information.setSendId(user.getId());
-				information.setReceiveId(bossId);
-				information.setContext("我申请了你的工作，请查看我的简历");
-				
-				information.setPostTime(dateFormat.format(new Date()));
-				newsService.sendMessage(information);
 				return "redirect:/employmentPage/workDetailPage?id=" + id;// 重新进入到页面中
 			} else {// 不是打工人禁止报名
 				model.addAttribute("error", "身份错误，无法申请");

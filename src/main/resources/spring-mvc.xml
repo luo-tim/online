@@ -73,6 +73,7 @@
 			<mvc:mapping path="/personalPage/infoPage" />
 			<mvc:mapping path="/personalPage" />
 			<mvc:mapping path="/newsPage" />
+			<mvc:mapping path="/myResumePage**" />
 			<bean class="recruitSystem.interceptor.UserInterceptor"></bean>
 		</mvc:interceptor>
 		<mvc:interceptor>

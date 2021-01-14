@@ -18,6 +18,7 @@
 		<result column="job_request" property="jobRequest" />
 		<result column="release_time" property="releaseTime" />
 		<result column="mid" property="mid" />
+		<result column="boss_id" property="bossId" />
 		<association property="boss"
 			javaType="recruitSystem.view.User">
 			<result column="user_id" property="id" />
@@ -245,7 +246,7 @@
 		VALUES(#{signUpJob.userId},#{signUpJob.jobId},#{signUpJob.signUpTime},0)
 	</insert>
 	<!-- 根据jobId获取bossId -->
-	<select id="getBossId" resultType="string">
+	<select id="getBossId" resultType="String">
 		SELECT
 		boss_id
 		FROM
@@ -454,9 +455,10 @@
 		<if test="type!=null and type!='工作类型'">
 			AND j.job_type = #{type}
 		</if>
+		ORDER BY j.release_time DESC
 		LIMIT 5
 		OFFSET #{startIndex}
-		ORDER BY j.release_time DESC
+		
 	</select>
 	<!-- 获取工作的状态 -->
 	<select id="findFlag" resultType="string">
