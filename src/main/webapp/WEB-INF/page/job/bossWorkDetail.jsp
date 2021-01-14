@@ -70,10 +70,10 @@
                     <div class="right-company">
                         <p class="company-title">公司基本信息</p>
                         <div class="company-info">
-                            <a href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />" class="company-logo">
+                            <a target="_blank" href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />" class="company-logo">
                                 <img src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo }" alt="华为">
                             </a>
-                            <a href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />" class="company-name">
+                            <a target="_blank" href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />" class="company-name">
                                 ${job.company.companyName }
                             </a>
                         </div>
@@ -129,18 +129,18 @@
                                                     <div class="primary-box-person">
                                                         <div class="job-title-person">
                                                             <span class="job-name-person">
-                                                                <a href="<c:url value="/releaseRecruitmentPage/userAccountPage?userId=${worker.id}" />">${worker.userName }</a>
+                                                                <a target="_blank" href="<c:url value="/releaseRecruitmentPage/userAccountPage?userId=${worker.id}" />">${worker.userName }</a>
                                                             </span>
                                                             <span class="job-area-person">
                                                                 <span class="job-name-person">
-                                                                <a href="<c:url value="/releaseRecruitmentPage/userAccountPage?userId=${worker.id}" />">${worker.lastName }${worker.firstName }</a></span>
+                                                                <a target="_blank" href="<c:url value="/releaseRecruitmentPage/userAccountPage?userId=${worker.id}" />">${worker.lastName }${worker.firstName }</a></span>
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="job-company-person">
                                                     <h3 class="resume">
-                                                        <a href="<c:url value="/myResumePage?workerId=${worker.id}" />">简历</a>
+                                                        <a target="_blank" href="<c:url value="/myResumePage?workerId=${worker.id}" />">简历</a>
                                                     </h3>
                                                 </div>
                                             </div>

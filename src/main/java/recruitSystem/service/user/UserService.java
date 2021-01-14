@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -194,16 +195,23 @@ public class UserService {
 		return pm;
 	}
 
+	
 	/**
 	 * 修改密码
-	 * 
 	 * @param account
 	 * @param oldPassword
 	 * @param password
+	 * @return
 	 */
-	public void alterPassword(String account, String oldPassword, String password) {
+	public boolean alterPassword(String account, String oldPassword, String password) {
 
-		userInfoDAO.alterPassword(account, oldPassword, password);
+		User user=userInfoDAO.selectUser(account, oldPassword);
+		if (user!=null) {
+			userInfoDAO.alterPassword(account, oldPassword, password);
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	/**
@@ -234,6 +242,7 @@ public class UserService {
 	 * @param account
 	 * @param password
 	 */
+	@Async
 	@Transactional
 	public void insert(HttpSession session, String userName, String account, String password) {
 		User user = (User) session.getAttribute("newUser");

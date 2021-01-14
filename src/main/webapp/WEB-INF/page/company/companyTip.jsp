@@ -13,7 +13,7 @@
 <body>
 	<jsp:include page="../navigationBar.jsp"></jsp:include>
  <div class="FB-container">
-    <h1 class="submitSuccess">申请提交成功，等待管理员审核...</h1>
+    <h1 class="submitSuccess">${success }</h1>
   </div>
 
 </body>

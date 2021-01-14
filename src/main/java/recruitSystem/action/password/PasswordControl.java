@@ -42,18 +42,45 @@ public class PasswordControl {
 	public String alterPassword() {
 		return "password/alterPw";
 	}
+	
 	/**
 	 * 提交修改的密码
 	 * @param account
 	 * @param oldPassword
 	 * @param password
+	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value="alterPasswordPage", method = RequestMethod.POST)
-	public String alterPasswordSubmit(@RequestParam(value="account",defaultValue="")String account,@RequestParam(value="oldPassword",defaultValue="")String oldPassword,@RequestParam(value="password",defaultValue="")String password) {
+	public String alterPasswordSubmit(@RequestParam(value="account",defaultValue="")String account,@RequestParam(value="oldPassword",defaultValue="")String oldPassword,@RequestParam(value="password",defaultValue="")String password,Model model) {
 		// 返回修改成功页面
-		userService.alterPassword(account,MD5.md5(oldPassword),MD5.md5(password));
-		return "redirect:/homePage";
+		boolean success=userService.alterPassword(account,MD5.md5(oldPassword),MD5.md5(password));
+		if (success) {
+			
+			return "redirect:/passwordPage/PasswordSuccessPage";
+		}else {
+			return "redirect:/passwordPage/PasswordErrorPage";
+		}
+	}
+	/**
+	 * 密码修改成功提醒
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/PasswordSuccessPage", method = RequestMethod.GET)
+	public String passwordSuccess(Model model) {
+		model.addAttribute("success", "密码修改成功");
+		return "company/companyTip";
+	}
+	/**
+	 * 密码修改错误提醒
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/PasswordErrorPage", method = RequestMethod.GET)
+	public String passwordFail(Model model) {
+		model.addAttribute("error", "旧密码错误");
+		return "error/error";
 	}
 	/**
 	 * 输入要找回密码的账号页面

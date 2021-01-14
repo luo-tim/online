@@ -351,8 +351,9 @@
             </div>
             <div class="company-info">
                 <div class="team-name">
-                    <img src="${pageContext.request.contextPath}/static/image/${company.companyLogo}" class="team-company-logo" alt="" >
-                    <div class="team-name-text">公司名称</div>
+                    <img src="${pageContext.request.contextPath}/static/companyLogo/${company.companyLogo}" class="team-company-logo" alt="" >
+                  <!--   <div class="team-name-text">公司名称</div>   -->
+                  		<div class="team-name-text">${company.companyName}</div>
                 </div>
                 <div class="team-info">
                     <span class="team-info-title">公司介绍</span>

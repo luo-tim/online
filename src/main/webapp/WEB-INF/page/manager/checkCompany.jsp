@@ -42,7 +42,7 @@
             <c:forEach items="${pages.items }" var="company">
                 <li class="cur-company">
                     <div class="sub-li-company">
-                       <a href="<c:url value="/managerPage/checkCompanyPage/companyDetailPage?companyId=${company.id }" />" class="company-info">
+                       <a  href="<c:url value="/managerPage/checkCompanyPage/companyDetailPage?companyId=${company.id }" />" class="company-info">
                            <div class="img-box">
                                <img src="${pageContext.request.contextPath}/static/companyLogo/${company.companyLogo }"  alt="${company.companyName }" />
                            </div>

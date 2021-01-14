@@ -83,12 +83,11 @@
                 <div class="info-box">
                     <span class="info-text">公司: </span>
                     <span class="info-value">${companyName}</span>
-                    
                 </div>
                 </c:if>
                 <c:if test="${sessionScope.user.identityId ge 2 && not empty sessionScope.user.account && not empty sessionScope.user && userAccount.identityId eq 0}">
                 <div class="info-box">
-                    <a class="info-btn" href="<c:url value="/myResumePage?workerId="${userAccount.id} />">简历</a>
+                    <a class="info-btn" href="<c:url value="/myResumePage?workerId=${userAccount.id}"/>">简历</a>
                 </div>
                 </c:if>
          </div>

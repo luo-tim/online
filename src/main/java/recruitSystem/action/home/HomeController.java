@@ -114,6 +114,7 @@ public class HomeController {
 		attr.addAttribute("type", "工作类型");
 		attr.addAttribute("pro", "省份");
 		attr.addAttribute("city", "城市");
+		//System.out.println(query);
 		attr.addAttribute("query", query);
 		return "redirect:/employmentPage";
 	}

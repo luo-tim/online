@@ -124,8 +124,11 @@ public class JobService {
 	 */
 	@Transactional
 	public void failJobs(String jobId,String sendId) {
-		jobInfoDAO.failJobs(jobId);
 		String bossId=getBossId(jobId);
+		jobInfoDAO.failJobs(jobId);
+		System.out.println("工作:"+jobId);
+		
+		System.out.println("bossId:"+bossId);
 		Information information = new Information();// 发送消息
 		information.setContext("你的工作发布因违反相关规定，被拒绝。如有问题请联系客服");
 		information.setSendId(sendId);

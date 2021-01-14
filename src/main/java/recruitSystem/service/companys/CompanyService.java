@@ -6,6 +6,7 @@ package recruitSystem.service.companys;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import recruitSystem.dao.companyInfo.CompanyInfoDAO;
@@ -69,6 +70,7 @@ public class CompanyService {
 	 * 插入公司
 	 * @param company
 	 */
+	@Async
 	public void insert(Company company) {
 		companyInfoDAO.insert(company);
 	}

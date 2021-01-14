@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>工作详情</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/employInfo.css" />">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/employInfo.css" />
 </head>
 <body>
 <jsp:include page="../navigationBar.jsp"></jsp:include>

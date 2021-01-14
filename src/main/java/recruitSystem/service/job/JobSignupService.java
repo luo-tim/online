@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +33,7 @@ public class JobSignupService {
 	 * 插入申请的工作
 	 * @param signUpJob
 	 */
+	@Async
 	@Transactional
 	public void insertWorkerSignup(SignUpJob signUpJob) {
 		jobInfoDAO.insertWorkerSignup(signUpJob);

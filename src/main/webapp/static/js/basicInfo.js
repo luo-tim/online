@@ -306,7 +306,7 @@ function postResume(){
         return false;
     }
     if(nation===""){
-        alert("名族不能为空");
+        alert("民族不能为空");
         return false;
     }
     if(birth===""){

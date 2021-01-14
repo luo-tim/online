@@ -6,6 +6,7 @@ package recruitSystem.service.news;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import recruitSystem.dao.news.NewsDAO;
@@ -29,6 +30,7 @@ public class NewsService {
 	 * 发送消息
 	 * @param information
 	 */
+	@Async
 	public void sendMessage(Information information) {
 		newsDAO.insert(information);
 	}

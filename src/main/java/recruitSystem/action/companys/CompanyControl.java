@@ -212,7 +212,7 @@ public class CompanyControl {
 			company.setCompanyLogo(fileName);
 			company.setCompanyType(type);
 			companyService.insert(company);
-			model.addAttribute("companyTip", "公司注册成功");
+			model.addAttribute("success", "申请提交成功，等待管理员审核...");
 			// 提交成功后，返回成功信息
 			return "company/companyTip"; // 返回成功页面
 		} else {

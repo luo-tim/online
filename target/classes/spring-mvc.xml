@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mvc="http://www.springframework.org/schema/mvc"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
@@ -11,53 +15,90 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
-	
 
-    <!--开始组件扫描-->
-    <context:component-scan base-package="recruitSystem"></context:component-scan>
+	<!--导入shiro的配置 -->
+	<import resource="classpath:application-shiro.xml" />
+	<!--开始组件扫描 -->
+	<context:component-scan
+		base-package="recruitSystem"></context:component-scan>
 
-    <!--启用注解驱动-->
-    <mvc:annotation-driven></mvc:annotation-driven>
-    <!--处理静态资源-->
-    <mvc:default-servlet-handler></mvc:default-servlet-handler>
-    <!--配置视图解析器-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-   <!--前缀-->
-    <property name="prefix" value="/WEB-INF/page/"></property>
-    <!--文件后缀-->
-    <property name="suffix" value=".jsp"></property>
-    </bean>
-    <!--拦截器-->
-    <mvc:interceptors>
-     <!--多个拦截器，顺序执行-->
+	<!--启用注解驱动 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!--处理静态资源 -->
+	<mvc:default-servlet-handler></mvc:default-servlet-handler>
+	<!--配置视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!--前缀 -->
+		<property name="prefix" value="/WEB-INF/page/"></property>
+		<!--文件后缀 -->
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!--拦截器 -->
+	<mvc:interceptors>
+		<!--多个拦截器，顺序执行 -->
 
-    <mvc:interceptor>
-    <mvc:mapping path="/managerPage"/>
-     <mvc:mapping path="/managerPage/**"/>
-       <!-- 配置不需要拦截作用的路径 -->
-        <mvc:exclude-mapping path="/managerPage/managerListPage" />
-            <mvc:exclude-mapping path="/managerPage/managerListPage/**" />
-    <bean class="recruitSystem.interceptor.ManagerInterceptor"></bean>
-    </mvc:interceptor>
-      <mvc:interceptor>
-    <mvc:mapping path="/managerPage/managerListPage"/>
-      <mvc:mapping path="/managerPage/managerListPage/**"/>
-    <bean class="recruitSystem.interceptor.SuperManagerInterceptor"></bean>
-    </mvc:interceptor>
-      <mvc:interceptor>
-    <mvc:mapping path="/releaseRecruitmentPage"/>
-    <mvc:mapping path="/releaseRecruitmentPage/**"/>
-       <!-- 配置不需要拦截作用的路径 -->
-        <mvc:exclude-mapping path="/releaseRecruitmentPage/bossWorkDetailPage" />
-    <bean class="recruitSystem.interceptor.BossInterceptor"></bean>
-    </mvc:interceptor>
-    </mvc:interceptors>
-<!--文件上传-->
-<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-<!--设置默认编码-->
-<property name="defaultEncoding" value="utf-8"></property>
-<!--上传文件总的大小最大为5M-->
-<property name="maxUploadSize" value="5242440"></property>
-</bean>
+		<mvc:interceptor>
+			<mvc:mapping path="/managerPage" />
+			<mvc:mapping path="/managerPage/**" />
+			<!-- 配置不需要拦截作用的路径 -->
+			<mvc:exclude-mapping
+				path="/managerPage/managerListPage" />
+			<mvc:exclude-mapping
+				path="/managerPage/managerListPage/**" />
+			<bean class="recruitSystem.interceptor.ManagerInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/managerPage/managerListPage" />
+			<mvc:mapping path="/managerPage/managerListPage/**" />
+			<bean class="recruitSystem.interceptor.SuperManagerInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/releaseRecruitmentPage" />
+			<mvc:mapping path="/releaseRecruitmentPage/**" />
+			<mvc:mapping path="/personalPage/releaseInfoPage" />
+			<mvc:mapping path="/personalPage/companyInfoPage" />
+			<!-- 配置不需要拦截作用的路径 -->
+			<mvc:exclude-mapping
+				path="/releaseRecruitmentPage/bossWorkDetailPage" />
+			<bean class="recruitSystem.interceptor.BossInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/personalPage/infoPage" />
+			<mvc:mapping path="/personalPage" />
+			<mvc:mapping path="/newsPage" />
+			<bean class="recruitSystem.interceptor.UserInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/personalPage/infoPage" />
+			<mvc:mapping path="/personalPage" />
+			<mvc:mapping path="/newsPage" />
+			<mvc:mapping path="/myResumePage**" />
+			<bean class="recruitSystem.interceptor.UserInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/personalPage/requestInfoPage" />
+			<mvc:mapping path="/personalPage/workHistoryInfoPage" />
+			<mvc:mapping path="/employmentPage/signupWorkPage" />
+			<bean class="recruitSystem.interceptor.WorkerInterceptor"></bean>
+		</mvc:interceptor>
+			<mvc:interceptor>
+			<mvc:mapping path="/registerPage/accountInfoPage" />
+		
+			<bean class="recruitSystem.interceptor.RegisterInterceptor"></bean>
+		</mvc:interceptor>
+			<mvc:interceptor>
+			<mvc:mapping path="/passwordPage/findPwAlterPage" />
+			<bean class="recruitSystem.interceptor.PasswordInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<!--文件上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!--设置默认编码 -->
+		<property name="defaultEncoding" value="utf-8"></property>
+		<!--上传文件总的大小最大为5M -->
+		<property name="maxUploadSize" value="5242440"></property>
+	</bean>
 
-    </beans>
+</beans>

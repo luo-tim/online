@@ -104,13 +104,13 @@
 							<div class="job-company">
 								<div class="company-text">
 									<h3 class="company-name">
-										<a href="#">${job.company.companyName }</a>
+										<a target="_blank" href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />">${job.company.companyName }</a>
 									</h3>
 									<p>
-										<a href="#">${job.company.companyType }</a>
+										<a target="_blank" href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />">${job.company.companyType }</a>
 									</p>
 								</div>
-								<a href="#"> <img class="company-logo"
+								<a target="_blank" href="<c:url value="/companyPage/companyDetailPage?id=${job.company.id}" />"> <img class="company-logo"
 									src="${pageContext.request.contextPath}/static/companyLogo/${job.company.companyLogo}" alt="">
 								</a>
 							</div>
